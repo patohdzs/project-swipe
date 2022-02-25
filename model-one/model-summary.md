@@ -1,3 +1,4 @@
+# Model One: Budget-Constrained Swiping
 ## Setup
 ### Life, actions, and payoffs
 - In essence, the Tinder platform represents to an agent a sequence of suggested partners

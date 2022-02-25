@@ -1,5 +1,6 @@
-# Setup
-## The Stage Interaction
+# Model Two: Two-Sided Strategic Search 
+## Setup
+### The Stage Interaction
 - Consider the search market formed by the Tinder platform with both male and female agents, indexed $m$ and $w$ respectively, looking for potential partners.
 - For ease of exposition, we assume that this market is heteronormative such that male agents search for female agents only and vice-versa.
 - Time is discrete and indexed $t=0,1,...$ over an infinite horizon
@@ -11,12 +12,12 @@
     - Notice that the suggested partner’s action is only *observable* if one swipes right
 - Upon matching, agents earn a payoff $u(\theta_{-i}),\, i=m,w$
     - We assume $u(\cdot)$ is strictly increasing, bounded, and satisfies $u(0)=0$ 
-## Life, Death, and the Tinder Market
+### Life, Death, and the Tinder Market
 - The masses of men and women on Tinder at any given time period $t$ are denoted by $N^t_{m}$ and $N^t_{w}$, respectively.
 - Each period, $\lambda_m$ new men and $\lambda_w$ new women arrive
     - The attractiveness of new male and female users is drawn i.i.d from exogenous distributions with c.d.f’s $F_m$ and $F_w$ respectively
 - Agents leave the platform exogenously (ie. they ‘die’) at a rate of $(1-\delta)$ 
-- Given sample spaces $\Theta_{m}\times \mathcal{B}_{m}$ and $\Theta_{w}\times \mathcal{B}_{w}$, let $\mathbb{P}_{m}$ and $\mathbb{P}_{w}$ be the probability measures over the their corresponding $\sigma$-algebras
+- Given sample spaces $\Theta_{m}\times \mathcal{B}_{m}$ and $\Theta_{w}\times \mathcal{B}_{w}$, let $\mathbb{P}_{m}$ and $\mathbb{P}_{w}$ be the probability measures over the corresponding $\sigma$-algebras
     - Let $M^t,W^t:\Theta_{m,w}\times\mathcal{B}_{m,w}\rightarrow[0,1]$ be the endogenous mixed distributions over agents (male and female, respectively) in the platform defined as:
         
         $$
@@ -26,9 +27,10 @@
     - These are endogenously determined since the flow of agents into lower budget levels and eventually out of the market depends on their swiping decisions, determined endogenously through a search process
     - Define $M^t_\theta(\theta),W^t_\theta(\theta)$ as the marginal c.d.f’s over male and female attractiveness:
         
-$$
-M^t(\theta,b)=\mathbb{P}_m(\theta_m\leq\theta,b_m\leq b),\quad W^t(\theta,b)=\mathbb{P}_w(\theta_w\leq\theta,b_w\leq b)
-$$
+        $$
+        M^t(\theta,b)=\mathbb{P}_m(\theta_m\leq\theta,b_m\leq b),\quad W^t(\theta,b)=\mathbb{P}_w(\theta_w\leq\theta,b_w\leq b)
+        $$
+
     - Define $M^t_b(b),W^t_b(b)$ as the marginal c.d.f’s over male and female budgets:
         
 $$
@@ -37,7 +39,7 @@ $$
         
 - The Tinder market at $t$ is thus defined as $\Psi^t=(N^t_m,N^t_w,M^t,W^t)$ 
 
-## Budgeted Swiping
+### Budgeted Swiping
 - Left swiping is costly as the agent can die the next round, so why not swipe right on everyone?
 - Tinder makes right-swiping costly by placing a cap on the total number of right swipes for each user. We refer to this as the agent’s budget $b_t$
 - The budget is evolves dynamically according to the law of motion:
@@ -51,13 +53,13 @@ $$
 - We only consider stationary Markov strategies, defines for men as functions $\mu:\Theta_w \times\mathcal{B}_m\rightarrow \Delta\mathcal{A}_m$ and for women as $\omega:\Theta_m \times\mathcal{B}_w\rightarrow \Delta\mathcal{A}_w$
     
 
-# The Steady State Market
+## The Steady State Market
 
 - When talking steady state we omit time subscripts to denote stationarity
 - Denote by $M(\cdot\,;\mu,\omega)$, $W(\cdot\,;\mu,\omega)$ be the endogenous steady-state joint c.d.f’s for men and women that arise given the strategies $\mu$ and $\omega$
 - $N_m(\mu,\omega),N_w(\mu,\omega)$ are defined analogously
 
-### Theorem 1: Steady State Characterisation
+#### Theorem 1: Steady State Characterisation
 
 - Fix some strategies $\mu, \omega$ and let the expected probabilities of a right swipe be:
 
@@ -80,13 +82,13 @@ $$
 - Furthermore, for each sex, the agent’s budget and attractiveness are conditionally independent given both swiping strategies
 
 
-# The Love Search Problem
+## The Love Search Problem
 
 - We analyse the problem of allocating a man’s limited swipes in a steady state market $\Psi$ against a female strategy $\omega$, and consider these fixed in the remainder of this section
     - With an abuse of notation, this implies that the functions $U_m(\theta;\omega, \Psi),\,V_m(\theta,b;\omega,\Psi), \,\widetilde\mu(\theta, b;\omega,\Psi)$ are writen as $U_m(\theta),\,V_m(\theta,b), \,\widetilde\mu(\theta, b)$
     - Furthermore, arguments for the women's side of the market follow analogously
 
-## The Stage Game
+### The Stage Game
 
 - The *ex-interim* expected utility of swiping left is always zero
 - The *ex-interim* expected utility of swiping right is given by:
@@ -106,7 +108,7 @@ $$
 
 - Without swiping constraints, it is dominant to swipe right, unless, $\omega(\theta,b)=0,\quad \forall\theta,b\in\Theta_m \times\mathcal{B}_m$, in which case it is weakly dominant. Nevertheless, the agent playing a sequence of these has a superimposed inter-temporal swipe-budgeting problem to solve.
 
-## The Swipe Budgeting Problem
+### The Swipe Budgeting Problem
 
 - If there is a sex imbalance, not every agent gets a suggestion in every period
     - Assuming frictionless search, men get suggestions at a rate $\tau=\min\{\frac{N_w}{N_m} ,1\}$
@@ -154,9 +156,9 @@ $$
  u(\widetilde \mu_1) = \alpha  u(\widetilde\mu_1) F_w(\widetilde\mu_1) + \int^1_{\widetilde\mu_1} \alpha u(\theta')\,dF_w(\theta')
 $$
 
-# Tinder Equilibrium
+## Tinder Equilibrium
 
-## Defining a Stationary Markov Ex-Ante Equilibrium
+### Defining a Stationary Markov Ex-Ante Equilibrium
 
 - A pair of strategies $\mu^*,\omega^*$ parametrised by cutoffs $\mu^*_b,\, \forall b \in \mathcal{B}_m$ and $\omega^*_b,\;\forall b \in \mathcal{B}_w$, respectively, along with a steady-state market $\Psi^*$ is a Stationary Markov Equilibrium if:
     1. $\mu^*_b=\widetilde \mu(b;\omega^*, \Psi^*),\quad\forall b\in\mathcal{B}_m$
