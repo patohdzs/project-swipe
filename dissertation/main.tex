@@ -1,0 +1,53 @@
+\documentclass[pdftex,12pt,a4paper]{article} 
+\usepackage[margin=1in]{geometry}
+
+
+\usepackage{amsmath,amssymb,amsthm}  % For both in-line and equation mode
+\numberwithin{equation}{section} % Numbering of our equations per section
+\usepackage{algorithm}
+\usepackage{algorithmic} % Algorithm styles, need to be nested for the example shown
+
+\usepackage{fancyhdr} % For our headers
+\usepackage{graphicx} % Inserting images
+\usepackage{lipsum}  % Blank text fill, delete me when finished
+\usepackage{setspace} %Spacing on the front page for crest and titles
+\usepackage[]{fncychap} % Styles can be Sonny, Lenny, Glenn, Conny, Rejne, Bjarne and Bjornstrup
+\usepackage[hyphens]{url} %Deals with hyphens in urls to make them clickable
+\usepackage{xcolor} % Great if you want coloured text
+\usepackage{tabularx}
+\usepackage{natbib}
+\usepackage{appendix} % Take a wild guess slick
+
+
+
+%KEEP THIS ONE LAST it's quite buggy, it allows you to click on links within the pdf and web links without changing the colour. The mouse cursor simply changes its icon to indicate to the user. Great tool - still awkward
+\usepackage[hidelinks]{hyperref} 
+
+%This will tell the compiler to do the header style, page and spacing between the header and text 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT STARTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{document}
+
+\include{preamble/front-page}
+%\include{Report/preamble/Abstract}
+%\include{Report/preamble/Acknowledgements}
+%\include{Report/preamble/Abbreviations}
+\input{preamble/contents}
+\input{sections/1 - introduction}
+\input{sections/2 - model}
+\input{sections/3 - equilibrium}
+\input{sections/4 - simulations} 
+\input{sections/5 - conclusion}
+
+
+\pagebreak
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\include{appendices/appendix}
+%\include{Report/preamble/lists}
+%\include{Report/preamble/ChapterMods}
+
+\end{document}
