@@ -1,3 +1,116 @@
 \section{Solving For The Market Steady State}
 
 \label{appx: Flux Sketch} 
+\subsection{Steady State Flow Equations}
+\begin{itemize}
+    \item Fix some strategies $s_m,s_w$ and let:
+
+\begin{equation*}
+    \rho_m(\mu,b)=\mathbb{E}_{\theta_w}\Big[s_m(\theta,\mu,b)\Big]= \iint\limits_{[0,1]^2} s_m(\theta,\mu,b)\,dG(\theta|\omega)\,dW(\omega;s), 
+\end{equation*}
+
+    \item Let $R^m_b=\mathbb{P}(\mu \in(\mu',\mu''],b;s)$
+    \begin{itemize}
+        \item I.e. agents with pizzaz $\mu\in(\mu',\mu'']$ and budget $b$
+        \item Eg. $R^m_b=M(\mu'',b;s)-M(\mu'',b-1;s)-M(\mu',b;s)+M(\mu',b-1;s)$
+        \item and $R^m_1=M(\mu'',1)-M(\mu',1)$
+
+    \end{itemize}
+    
+    \item Fix any $\mu',\mu''\in [0,1]$. For all $\mu\in(\mu',\mu'']$ the steady state male market must satisfy the following flow equations: 
+    \end{itemize} 
+    \begin{align}
+        \underbrace{\frac{\lambda_m}{N_w}\Big(F_m(\mu'')-F_m(\mu')\Big)}_{\text{Enters platform}}&\;=\;\underbrace{(1-\delta)\sum^B_{b=1} R^m_b}_{\text{Exogenous death}}+\underbrace{\delta R^m_1 \int^{\mu''}_{\mu'}\rho_m(\mu,1)\,dM(\mu;s)}_{\text{Expended budget}} \label{flow1} \\[15pt]
+        \underbrace{\delta R^m_{b+1} \int^{\mu''}_{\mu'}\rho_m(\mu,b+1)\,dM(\mu;s)}_{\text{Enters b}}&\;=\;\underbrace{(1-\delta) R^m_{b}+\delta R^m_{b} \int^{\mu''}_{\mu'}\rho_m(\mu,b)\,dM(\mu;s) }_{\text{Leaves b}} \label{flow2} \\[15pt]
+        \underbrace{\frac{\lambda_m }{N_m}\Big(F_m(\mu'')-F_m(\mu')\Big)}_{\text{Enters platform}}&\;=\;\underbrace{(1-\delta)R^m_{B} + \delta R^m_{B} \int^{\mu''}_{\mu'}\rho_m(\mu,B)\,dM(\mu;s)}_{\text{Leaves @ B}} \label{flow3} \\[15pt]\nonumber
+    \end{align}
+    
+\subsection{Solving for the Endogenous Type Distribution}
+\begin{itemize}
+    \item With an abuse of notation, let the probability of someone in $R^m_b$ swiping right be:
+    \begin{equation*}
+        \bar\rho_m(b)=\int^{\mu''}_{\mu'}\rho_m(u,b)\,dM(u;s) 
+    \end{equation*}
+    \item Solve for $R^m_B$ from \eqref{flow3}
+    \begin{equation*}
+        R^m_B= \frac{\lambda_m \Big(F_m(\mu'')-F_m(\mu')\Big)}{N_m\Big((1-\delta)+\delta \bar\rho_m(B)\Big)}
+    \end{equation*}
+    \item Rearrange for $R^m_b$ using \eqref{flow2}
+    \begin{equation*}
+        R^m_b=\underbrace{\frac{\delta \bar\rho_m(b+1)}{\Big((1-\delta)+\delta \bar\rho_m(b)\Big)}}_{k_{b}}R^m_{b+1}
+    \end{equation*}
+    \item By the above recurrence relation:
+    \begin{align*}
+        R^m_{B-1}&= k_{B-1}R^m_{B}\\
+        R^m_{B-2}&= k_{B-2}R^m_{B-1}\\
+        &=k_{B-2}(k_{B-1}R^m_{B})\\
+         &\;\vdots \\ 
+         R^m_{b}&=R^m_{B}\prod^{B-b}_{i=1} k_{B-i}
+    \end{align*}
+    \item Let $\mu''=1$ and $\mu'=0$. Then $R^m_b = \mathbb{P}_m(b_m=b; s)$
+    \item Given that $b$ is discrete and the above defines a PMF, we also have:
+\end{itemize}
+
+
+
+$$
+\mathbb{P}_m(b_m=b;s)=R^m_{B}\prod^{B-b}_{i=1} k_{B-i}
+$$
+
+
+
+$$
+\implies M_b(b;s)=R^m_{B}\sum^b_{j=1}\prod^{B-j}_{i=1} k_{B-i}
+$$
+
+- Let $\mu''=\mu$ and $\mu'=0$. Then:
+
+$$
+R^m_b=M(\theta,b;s)-M(\theta,b-1;s)=\mathbb{P}_m(\theta_m<\theta \,\cap \, b_m=b;s)
+$$
+
+- By substituting the extended form for the above two cases and rearranging:
+
+$$
+M_{\theta}(\theta|b_m=b;\mu,\omega)=\frac{\mathbb{P}_m(\theta_m<\theta \,\cap \, b_m=b;\mu,\omega)}{\mathbb{P}(b_m=b;\mu,\omega)}=F_m(\theta)
+$$
+
+- To solve for $M(\theta,b;\mu,\omega)$
+
+$$
+\begin{aligned}M(\theta,b;\mu,\omega)&=\sum^b_{j=1} M_{\theta}(\theta|b_m=j;\mu,\omega)\mathbb{P}_m(b_m=j;\mu,\omega)\\&=F_m(\theta)R^m_{B}\sum^b_{j=1}\prod^{B-j}_{i=1} k_{B-i}\\&=F_m(\theta)M_b(b;\mu,\omega)\end{aligned}
+$$
+
+- Letting $b=B$, we get the marginal distribution for $\theta_m$:
+
+$$
+M(\theta,B;\mu,\omega)=F_m(\theta)M_b(B;\mu,\omega)=F_m(\theta)=M_\theta(\theta;\mu,\omega)
+$$
+
+- Hence, we have:
+
+$$
+\begin{aligned} \mathbb{P}_m(b_m=b;\mu,\omega)&=\frac{\lambda_m  }{N_m\Big(1-\delta (1-\rho^m_B) \Big)}\prod^{B-b}_{i=1}\frac{\delta\rho^m_{B-i+1}}{\Big(1-\delta (1-\rho^m_{B-i}) \Big)}\\M_b(b;\mu,\omega)&=\sum^b_{i=1}\mathbb{P}_m(b_m=i;\mu,\omega)\\M_{\theta}(\theta;\mu,\omega)&=F_m(\theta)\\M(\theta,b;\mu,\omega)&=M_{\theta}(\theta;\mu,\omega)M_b(b;\mu,\omega)\end{aligned}
+$$
+
+ Tying up The Steady State
+
+- Consider the above arguments for the analogous case for women
+    - Since we know the marginal attractiveness distribution for women in the steady state is equal to $F_w(\theta)$ then the expected probability of a right-swipe for men $\rho^m_b$ is expressed as below, with an analogous expression for women
+
+$$
+\rho^m_b=\int_{\Theta_w} \mu(\theta',b)\,dW_\theta(\theta';\mu,\omega)=\int_{\Theta_w} \mu(\theta',b)\,dF_w(\theta')
+$$
+
+- Substitute into the first set of flow equations to solve for
+- Furthermore, let:
+
+$$
+\begin{aligned} z^m_b &=\prod^{B-b}_{i=1}\frac{\delta\rho^m_{B-i+1}}{\Big(1-\delta (1-\rho^m_{B-i}) \Big)}, \quad \forall b=1,...,B_m-1\\z^w_b&=\prod^{B-b}_{i=1}\frac{\delta\rho^w_{B-i+1}}{\Big(1-\delta (1-\rho^w_{B-i}) \Big)} , \quad \forall b=1,...,B_w-1\\\\ z^m_B&=\Big(1-\delta (1-\rho^m_B) \Big) \\\\ z^w_B&=\Big(1-\delta (1-\rho^w_B) \Big) \end{aligned}
+$$
+
+- Then the steady state is given by:
+
+$$
+\begin{aligned}N_m(\mu,\omega)&=\lambda_m\left(\frac{z^m_B-\delta z^m_1\rho^m_1}{(1-\delta)z^m_B}\right)\\\\N_w(\mu,\omega)&=\lambda_w\left(\frac{z^w_B-\delta z^w_1\rho^w_1}{(1-\delta)z^w_B}\right)\\\\M(\theta,b;\mu,\omega)&=F_m(\theta) \left(\frac{(1-\delta)}{z^m_B-\delta z^m_1\rho^m_1}\right)\sum^b_{i=1} z^m_i\\\\W(\theta,b;\mu,\omega)&=F_w(\theta)\left(\frac{(1-\delta)}{z^w_B-\delta z^w_1\rho^w_1}\right)\sum^b_{i=1} z^w_i \end{aligned}
+$$
