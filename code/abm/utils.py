@@ -1,3 +1,8 @@
+import numpy as np 
+from scipy.stats import cumfreq, beta, bernoulli
+import random 
+
+
 class Agent():
     def __init__(self, id, t, sex, θ, B, rule):
         self.id = id
@@ -42,12 +47,41 @@ class Agent():
                 'true_rate' : self.true_ρ,  
                 'matches' : self.matches, 
                 'rs_given' : self.rs_given, 
-                'rs_received' : self.rs_received}
-
-def kill(agent, platform, t):
-    agent.death = t
-    platform.remove(agent)
+                'rs_received' : self.rs_received}   
 
 
+def simulate_game(T, μ_star, ω_star, exog_params, batch=0):
+    Bm, Bw, bm_vals, bw_vals, δ, um, uw, Fm, Fw, λm, λw = exog_params 
+    simulation = [] 
+    men = []
+    women = []  
+    for t in range(0,T): 
+        # Add new agents 
+        for i, θ in enumerate(Fm.rvs(size=λm)): 
+            men.append(Agent(t*λm + i, t, 'Male', θ, Bm, μ_star))
         
+        for i, θ in enumerate(Fw.rvs(size=λw)): 
+            women.append(Agent(t*λw + i, t, 'Female', θ, Bw, ω_star))  
+        
+        # Gameplay 
+        random.shuffle(men)
+        random.shuffle(women) 
+        for m, w in zip(men, women): 
+            am = m.swipe(w, t)
+            aw = w.swipe(m, t)
+            m.update(am, aw, t)
+            w.update(aw, am, t) 
+        # Logging    
+        for a in (men + women): 
+            simulation.append(a.info(batch, t))  
+                
+        # Departures
+        m_dpts = bernoulli.rvs((1-δ), size=len(men)) 
+        w_dpts = bernoulli.rvs((1-δ), size=len(women))
+            
+        men[:] = [m for i, m in enumerate(men) 
+                  if (m.b != 0) and (m_dpts[i] == 0)]
+        women[:] = [w for i, w in enumerate(women) 
+                    if (w.b != 0) and (w_dpts[i] == 0)] 
 
+    return simulation

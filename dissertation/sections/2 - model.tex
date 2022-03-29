@@ -1,17 +1,18 @@
-\section{Model}
+\section{Theoretical Model}
 \label{sec: figs tables algos}
 \subsection{Setup} 
 \begin{itemize}
     \item Who are the players?
     \begin{itemize}
         \item Disjoint sets of men and women in the platform
-        \item They have pizzaz type $\mu,\omega \in [0,1]$
+        \item They have attractiveness type $\mu,\omega \in [0,1]$
+        \item They do not know (or care) about their own attractiveness.
     \end{itemize} 
     \item What do they do?
     \begin{itemize}
-        \item They get anonymously and sequentially partnered up
+        \item They get anonymously and sequentially partnered up.
         \item To their knowledge, this happens in a random manner.
-        \item They observe the suggestion's attractiveness $\theta\in [0,1]$
+        \item They observe the suggestion's attractiveness 
         \item They can choose to swipe left or right, thus $\mathcal{A}=\{0,1\}$.
         \item If they both swipe right on each other, they match. Note this doesn't mean they leave.
     \end{itemize}
@@ -22,11 +23,29 @@
         \item $B_m$ for men and 
     \end{itemize}
     \item What are their preferences?
+    \begin{itemize}
+        \item Players get no payoffs from not matching, and $u(\mu)$ or $u(\omega)$, where $u(\cdot)$ is increasing, concave, and crosses through the origin.
+        \item This is evident since users can unmatch with each other, making all matches weakly preffered to non-matching.  
+    \end{itemize}
 \end{itemize}
 \subsection{The Dating Market}
 \begin{itemize}
     \item Entry flows
     \item Leaves (including geometric lifetime)
+    \item Masses
     \item Distribution
+    \item Steady State
 \end{itemize}
 \subsection{The Search Problem} 
+\begin{itemize}
+    \item Present case for women, then say case for men follows
+    \item Condition on male strategy and steady state
+    \item Present Ex-interim utility maximization
+    \begin{itemize}
+        \item Show it reduces to a constant
+    \end{itemize} 
+    \item Present sequence problem
+    \item Derive Bellman equation
+    \item Prove uniqueness of value function and solution
+    \item Derive solution
+\end{itemize}
