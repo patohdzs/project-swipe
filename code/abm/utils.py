@@ -48,9 +48,9 @@ class Agent():
                 'matches' : self.matches, 
                 'rs_given' : self.rs_given, 
                 'rs_received' : self.rs_received}   
+                
 
-
-def simulate_game(T, μ_star, ω_star, exog_params, batch=0):
+def simulate_game(T, μ_star, ω_star, exog_params, batch=0, matches='random'):
     Bm, Bw, bm_vals, bw_vals, δ, um, uw, Fm, Fw, λm, λw = exog_params 
     simulation = [] 
     men = []
@@ -65,12 +65,21 @@ def simulate_game(T, μ_star, ω_star, exog_params, batch=0):
         
         # Gameplay 
         random.shuffle(men)
-        random.shuffle(women) 
-        for m, w in zip(men, women): 
+        random.shuffle(women)  
+        pairs = zip(men, women)
+
+        if (matches == 'gale-shapley') or (matches == 'gs'):
+            s_men, s_women =  zip(*pairs)
+            s_men = sorted(s_men, key = lambda m:m.θ)
+            s_women = sorted(s_women, key = lambda w:w.θ)
+            pairs  = zip(s_men, s_women)
+
+        for m, w in pairs: 
             am = m.swipe(w, t)
             aw = w.swipe(m, t)
             m.update(am, aw, t)
             w.update(aw, am, t) 
+
         # Logging    
         for a in (men + women): 
             simulation.append(a.info(batch, t))  
@@ -85,3 +94,6 @@ def simulate_game(T, μ_star, ω_star, exog_params, batch=0):
                     if (w.b != 0) and (w_dpts[i] == 0)] 
 
     return simulation
+
+
+
