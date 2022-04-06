@@ -1,33 +1,49 @@
 \section{Theoretical Model}
 \label{sec: figs tables algos}
 \subsection{Setup} 
-\begin{itemize}
-    \item Who are the players?
-    \begin{itemize}
-        \item Disjoint sets of men and women in the platform
-        \item They have attractiveness type $\mu,\omega \in [0,1]$
-        \item They do not know (or care) about their own attractiveness.
-    \end{itemize} 
-    \item What do they do?
-    \begin{itemize}
-        \item They get anonymously and sequentially partnered up.
-        \item To their knowledge, this happens in a random manner.
-        \item They observe the suggestion's attractiveness 
-        \item They can choose to swipe left or right, thus $\mathcal{A}=\{0,1\}$.
-        \item If they both swipe right on each other, they match. Note this doesn't mean they leave.
-    \end{itemize}
-    \item What do they know?
-    \begin{itemize}
-        
-        \item Equally agents face a cap on the number of right swipes they have
-        \item $B_m$ for men and 
-    \end{itemize}
-    \item What are their preferences?
-    \begin{itemize}
-        \item Players get no payoffs from not matching, and $u(\mu)$ or $u(\omega)$, where $u(\cdot)$ is increasing, concave, and crosses through the origin.
-        \item This is evident since users can unmatch with each other, making all matches weakly preffered to non-matching.  
-    \end{itemize}
-\end{itemize}
+Consider the two-sided search market formed by the Tinder platform with both male and female agents looking for potential partners. For ease of exposition, we assume that this market is heteronormative such that male agents search exclusively for female agents only and vice-versa. Time is discrete and indexed $t=0,1,...$ over an infinite horizon. At every time period, agents from each sex are paired up and presented a suggested partner from the opposite side of the market. To their knowledge, this happens randomly in an unknown manner. Agents can then choose whether to swipe left (dislike) or right (like) on their suggestion, yielding an action space of $\mathcal{A}_m=\mathcal{A}_w=\{ \text{left},\; \text{right}\}$. If both agents swipe right on one another, they are said to have \textit{matched} and both receive a matching payoff, however, if either agent swipes left, they both receive a payoff of zero. Importantly, the suggested partner’s action is only \textit{observable} if one swipes right.
+
+Each agent has an attractiveness type $\theta \in \Theta := [0,1]$ which is unknown to them but observable to their suggestion, and it is common knowledge that this is the case. Contingent on matching with a suggestion of attractiveness $\theta$, a user earns a matching payoff of $u(\theta)$, where $u(\cdot)$ is a strictly increasing, concave function that satisfies $u(0) = 0$. This last property stems from the fact that, in Tinder, users are allowed to unmatch with each other, thus implying that matching with the least attractive individual on the other side of the market is weakly preferred to the payoff from not matching. Given the above, Tinder makes right-swiping costly by placing a cap on the total number of right swipes for each user. We refer to the total number of right-swipes a user has left as its \textit{budget}, $b_t$, which evolves dynamically according to the law of motion:
+$$
+  b_{t+1}= b_{t}- a_{t}
+$$
+where the starting budgets for each sex, $B_{m}$ and $B_{w}$, are determined exogenously. The budget sets for men and women are thus defined by $\mathcal{B}_{i}=\{b \in \mathbb{Z} : 0\leq b \geq B_i\}$, with $i=m,w$ respectively. 
+
+Each period, $\lambda_m$ new men and $\lambda_w$ new women enter the platform, with their attractiveness drawn i.i.d from distributions with c.d.f’s $F_m$ and $F_w$, respectively. Importantly, agents depart from the platform in one of two ways: they can leave \textit{endogenously}, if they expend their swiping budget, or \textit{exogenously} with probability $(1-\delta)$. This admits to the interpretation of a geometrically distributed lifetime parametrized by $\delta$, and implies that users use this as a discounting factor for future payments. At any given time $t$, the masses of men and women on Tinder are denoted by $N^t_{m}$ and $N^t_{w}$, respectively. Given sample spaces $\Theta \times \mathcal{B}_{m}$ and $\Theta \times \mathcal{B}_{w}$, let $\mathbb{P}_{m}$ and $\mathbb{P}_{w}$ be the probability measures over the corresponding $\sigma$-algebras. Furthermore, let $M^t,W^t:\Theta\times\mathcal{B}_{i}\rightarrow[0,1], \quad i=m,w$ be the endogenous mixed distributions over agents (male and female, respectively) in the platform. These are endogenously determined since the flow of agents into lower budget levels and eventually out of the platform depends on their swiping decisions, determined endogenously through a search process. Finally, since gender imbalances mean that not everyone might receive a suggestion, the question remains of how to decide which agents on the long side of the market get paired up. Since Tinder is fair and efficient platform, we model a frictionless matching technology and denote market tightness, ie. the probability of receiving a suggestion on either side, by:
+$$
+\tau^t_m=\min\{\frac{N^t_w}{N^t_m} ,1\}, \ \tau_w= \frac{N^t_m}{N^t_w}\tau^t_m
+$$
+
+
+Given the above, a number of simplifications to the explored setting are possible. 
+
+- 1. An agent’s decision on any given time period depends fundamentally on the attractiveness of the suggested partner and their own budget
+
+I restrict attention to stationary Markov strategies, defined by $\sigma_m: \Theta \times\mathcal{B}_m\rightarrow \Delta\mathcal{A}_m$ for men and $\sigma_w:\Theta \times\mathcal{B}_w\rightarrow \Delta\mathcal{A}_w$ for women, where $\Delta S$ is used to denote the probability simplex over set S. 
+
+\begin{figure}[h]
+    \centering
+        \begin{tikzpicture}
+            % draw horizontal line   
+        \draw[thick, -Triangle] (0,0) -- (\ImageWidth,0) node[font=\scriptsize,below left=3pt and -8pt]{$t$};
+
+        % draw vertical lines
+        \foreach \x in {0,1,...,13}
+        \draw (\x cm,3pt) -- (\x cm,-3pt);
+
+        \foreach \x/\descr in {4/t-2,5/t-1,6/t,7/t+1}
+        \node[font=\scriptsize, text height=1.75ex,
+        text depth=.5ex] at (\x,-.3) {$\descr$}; 
+
+        % braces
+        \draw [thick ,decorate,decoration={brace,amplitude=5pt}] (4,0.7)  -- +(2,0) 
+            node [black,midway,above=4pt, font=\scriptsize] {Training period};
+        \draw [thick,decorate,decoration={brace,amplitude=5pt}] (6,-.9) -- +(-1,0)
+            node [black,midway,font=\scriptsize, below=4pt] {Testing period};  
+    \end{tikzpicture}
+    \caption{Timeline of events within each time period} \label{fig:timeline}
+\end{figure}    
+
 \subsection{The Dating Market}
 \begin{itemize}
     \item Entry flows
