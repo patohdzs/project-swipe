@@ -2,27 +2,88 @@
 \label{sec:Introduction} 
 %To make a call to the introduction, put \ref{sec:Introduction} 
 
-It is widely considered that the search for love is an intricate and complex social phenomenon, and in today's world, swipe-based dating applications seem to only make it trickier. 
-These platforms, best exemplified by Tinder or Bumbble, provide a gameified way of browsing through potential romantic partners by swiping through a stack of suggestions to indicate likes or dislikes, one profile at a time. 
-In the search and matching literature, these fall under the category of decentralized two-sided matching markets with online search \citep{kanoria2021facilitating}, emphasising the fact that \textit{a)} both sides of the market are comprised of rational agents, \textit{b)} matches only occur given a double coincidence of wants, and \textit{c)} romantic suggestions are presented in a \textit{sequential} manner to users. 
-These apps thus differ widely from traditional dating sites where users are centrally and statically matched (such as ...), but have come to dominate the modern love market, with Tinder boasting XXX million users as of 2021 and YYY million paid subscribers.
+It is widely acknowledged that the search for love is a deeply relevant, personal, and complex social phenomenon, but in today's world, swipe-based dating applications (SBDA's) seem to only make it trickier. 
+These platforms, exemplified by Tinder, Bumble, or Hinge, provide a gamified way of browsing through potential romantic partners by swiping through a stack of suggestions to indicate likes or dislikes, one profile at a time. 
+In the search and matching literature, settings like these fall under the category of decentralized two-sided matching markets with online search \citep{kanoria2021facilitating}, emphasising three main characteristics. 
+Firstly, that both sides of the market are comprised of decision-making agents undertaking a process of search. 
+Secondly, that matches occur as outcomes of independently-determined search decisions, rather than as outcomes of a centralised procedure. Thirdly, that romantic suggestions are presented in an online, or \textit{sequential}, manner to users, stressing the importance of sequential rationality within the search process. 
+These apps differ widely from traditional dating sites where users are centrally and statically matched (such as OkCupid), but have come to dominate the modern love market, with Tinder alone boasting 75 million monthly active users and 9.6 million paid subscribers as of 2021 \citep{web:tinder_stats}.
 
 
-From a theoretical standpoint, these platforms introduce many additional complexities that, due to their novelty, have been sparsely studied in the economics literature, with these falling into two categories: those arising from platform features and those arising from the intrinsic nature of the problem. 
-The first of these refers to platform-specific factors such as suggestion algorithms, matching technologies, swiping caps, and asynchronicity, which are often determined exogenously and pose significant constraints to the way utility-maximizing agents strategise their search process. 
-On the other hand, the generalized problem of search is inherently complex as it involves a dynamic game of incomplete information where, even though the stage interaction is simple, its repetition demands consideration of 
+From a theoretical standpoint, search within SBDA's encompasses many complexities that, due to the novelty of the platforms, have been sparsely studied in the economics literature. 
+On one hand, platform-specific characteristics, such as swiping caps, asynchronicity, and the suggestion algorithms used, matching technologies, pose significant constraints to the way utility-maximising agents strategise their search process.
+On the other hand, the general problem of search in a two-sided setting is non-trivial in and of itself, as a simple stage interaction (to swipe or not to swipe on a romantic suggestion) can become increasingly complex when repeated over an infinite horizon, admitting to problems such as intractable strategy spaces. 
+Overall, the prevalent role of SBDA's in shaping modern romantic interactions, the theoretical complexities they induce, and their largely understudied nature motivate many different questions. 
+Nevertheless, answering these requires a fundamental understanding of how users make decisions in these platforms: to put it simply, \textit{when should a utility-maximising user swipe right?} 
+
+This paper will explore the above within the setting of a swipe-based dating platform where agents on both formulating a game-theoretic model of two-sided search within these platforms along with a corresponding definition of equilibrium. 
+Using numerical methods, I approximate the steady-state equilibria and perform comparative statics 
+
+This work presents three main contributions to existing literature on the topic. 
+Firstly, it constitutes one of a handful of attempts to model market configurations arising within SBDA's, which is unsurprising due to the novelty of these platforms, but important given their current social relevance. 
+Furthermore, this work distinguishes itself from other works by 
+Finally, this work provides a marginal side-contribution as a methodological example for the use of computational methods within game theory, a field that has traditionally emphasised pure mathematical analysis. 
+In order to explore the above questions, this paper relies on a rigorously-formulated model, but also on numerical approximation algorithms and agent-based simulations, which can be used to provide quick solutions and perform visually-intuitive comparative statics. 
+As such, it shows that the two approaches, rather than being mutually exclusive, can be used jointly to explore complicated questions, as computational methods can enable quick intuitive explorations before formalising maths arguments
+
+- Why is it different?
+    - We focus on asymmetric pickiness
+    - This is different from what others focus on eg. the algorithm utility or this or that 
+    - Only Kanoria focuses on this, but we explain it differently
+    - Emphasis on budgets as a solution factor
+    - Similar conclusions to other papers, but different solution
+- Side contribution on computational methods within game theory
+    - agent-based simulations \& numerical solving
+    - Can be used as a tool rather than an alternative to rigorous analysis 
 
 
-Overall, the prevalence of these swipe-based dating apps in modern social interactions, the theoretical complexities they induce, and the largely understudied nature motivated this dissertation. 
-Although many different questions can be asked regarding these platforms, answering these requires a fundamental understanding of how users make decisions in these platforms: to put it simply, \textit{when should a user swipe right?}. 
-This paper will explore the above question in the setting of a swipe-based dating platform where agents on both 
 
-formulating a game-theoretic model of two-sided search within these platforms along with a corresponding definition of equilibrium. 
-Using numerical methods, I approximate the steady-state equilibria and perform comparative statics  
+\subsection{Related Work}
+The present work draws inspiration from two key branches of economics literature: that of search and matching, which studies the decision-making process of agents who seek, for example, a job, a business partner, or a spouse, and also that of mean field game theory, which has been employed to study complex dynamic games involving a large number of players. I discuss each of these in turn, and then contrast this work with the handful of papers that have focused on specifically analysing SBDA market configurations.
+
+Within the search and matching literature there is an abundance of different theoretical models, amply summarised by \cite{chade2017sorting}, with several extensions considered to study a variety of different settings. As previously noted, three defining features of SBDA markets are decentralised matching, two-sidedness, and sequential interaction, and one of the most prominent works on matching markets at this intersection is that of \cite{burdett1997marriage}, which studies the marriage market with heterogeneous agents and non-transferable utility (NTU). The seminal paper models a context of uniform random search where agents receive marriage proposals from the other side of the market according to a continuous-time process, and must choose whether or not to accept these given the observable `pizazz' of the proposing agent. Several extensions followed this work, considering cases such as noisy observations of `pizazz' \citep{chade2006matching}, idiosyncratic preferences \cite{burdett1998two}, directed search, and so on. Even though, this work proves how positive-assortative matching can arise as a steady-state equilibrium, extending the result of \cite{becker1973theory} to a NTU context. S
+
+Most crucially, this paper outlines a frequently used approach for unifying both sides of the market via endogenous
+
+On the other hand, mean field game theory focuses on dynamic games with a large number of agents, for which curses of dimensionality often arise thus making solution concepts such as Markov Perfect Equilibria intractable \cite{maskin2001markov}. To deal with this, mean field models consider individual interactions with the \textit{aggregate system state}, ie the distributions over states and strategies within the game, rather than interactions with all other players. This abstraction is coupled with the notion of a \textit{consistency check}, such that equilibrium arises when rational play given an aggregate state maintains this same state as a fixed point. The approach, first considered in the works of \cite{jovanovic1988anonymous} and \cite{hopenhayn1992entry}, greatly simplifies strategic settings with the aforementioned problem and has been successfully applied to settings such as network routing \cite{calderone2017markov}, auctions with learning \cite{iyer2014mean}. In this paper, we rely on mean-field considerations to abstract from considerations on observability; within SBDA's, the market-wide history and opponent state are unobservable to players, and thus traditional equilibrium concepts would demand beliefs over uncountable history spaces, and even beliefs over the beliefs other players may hold (a problem known in the literature as nested beliefs \cite{brandenburger1993hierarchies}). This yields two central problems: first, that equilibria become impossible to compute, and, by extension, that the model assumes an unreasonable level of rationality on behalf of agents, especially given that these rarely interact with the same individual twice amongst millions of other users. Thus, by considering interactions with the aggregate state of the platform, the model presented is able to better characterize an equilibrium that is both insightful and representative of real-life dynamics.
+
+Among the select few papers that have specifically considered SBDA matching markets, one that stands out is the recent work by \cite{kanoria2021facilitating}, which models.
 
 
 
-\textbf{Points to discuss on introduction}
+- Main differences
+
+
+
+- Trait: Decentralised
+- What it means: Matches result from the decision-making process of searching agents, with textbook examples involving agents who seek a job, a university, or a spouse. This differs from centralised matching context where matches are computed by a centralised authority who is fully informed of the preferences of all agents on both side of the market. Search models allow for, and characterize imperfect matches, but stable matches are still a nice theoretical benchmark
+- Top works: \cite{gale_shapley_1962}
+    - How they differ
+
+- Trait: Two-sided
+- What it means: Outcomes depend on the search process undertaken by both sides of the market; model aggregates tons of decision and information.
+
+- Top works
+    - What they found
+    - How they differ
+
+- Trait: Non-transferable utility
+- What it means: Payoffs are not transferable amongst agents. This contrasts with PTU where a bargaining process must be undertaken to divide the within-match surplus.
+- Top works: Roth and Sotomayor (1990).
+    - What they found
+    - How they differ
+
+- Trait: heterogeneous preferences versus common ordinal preferences.
+
+
+
+- Trait
+- What it means
+- Top works
+    - What they found
+    - How they differ
+
+
 \begin{itemize}
     \item What is Tinder? (brief)
     \begin{itemize}
@@ -47,10 +108,7 @@ Using numerical methods, I approximate the steady-state equilibria and perform c
         \item First model to address budgeted search in Tinder?
         \item First model to combine idiosyncracy and pizzaz
         \item Case study for the use of computational techniques in 
-    \end{itemize}
-\end{itemize}
-\subsection{Related Work}
-\begin{itemize}
+    \end{itemize} 
     \item Searching and Matching
     \begin{itemize}
         \item \cite{gale_shapley_1962}, \cite{roth_sotomayor_1992}

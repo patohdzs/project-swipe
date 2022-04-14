@@ -1,11 +1,13 @@
 \documentclass[pdftex,12pt,a4paper]{article} 
 \usepackage[margin=1in]{geometry}
-
+\usepackage{comment}
 
 \usepackage{amsmath,amssymb,amsthm,esint}  % For both in-line and equation mode
-\numberwithin{equation}{section} % Numbering of our equations per section
 \usepackage{algorithm}
 \usepackage{algorithmic} % Algorithm styles, need to be nested for the example shown
+%\numberwithin{equation}{section} % Numbering of our equations per section
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
 
 \usepackage{fancyhdr} % For our headers
 \usepackage{graphicx} % Inserting images
@@ -21,8 +23,7 @@
 \newcommand{\ImageWidth}{14cm} 
 \usetikzlibrary{decorations.pathreplacing,positioning, arrows.meta}
 
-\usepackage{appendix} % Take a wild guess slick
-
+\usepackage{appendix} % Take a wild guess slick 
 
 
 %KEEP THIS ONE LAST it's quite buggy, it allows you to click on links within the pdf and web links without changing the colour. The mouse cursor simply changes its icon to indicate to the user. Great tool - still awkward
@@ -33,8 +34,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT STARTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{document}
-
+\begin{document}  
 \include{preamble/front-page} 
 %\include{Report/preamble/Acknowledgements}
 %\include{Report/preamble/Abbreviations}
