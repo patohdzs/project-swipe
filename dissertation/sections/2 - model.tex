@@ -3,7 +3,7 @@
 \subsection{Setup} 
 Throughout this section, I establish the theoretical framework for the model considered in this paper. Fix a non-atomic continuum of male and female agents \footnote{More specifically, let  $(I, \mathcal{I}, \alpha)$ be the non-atomic measurable space of agents.} and consider the dynamic two-sided market formed by the Tinder platform, where agents can join in to search for potential romantic partners. 
 For ease of exposition, I assume that this market is heteronormative such that male agents search exclusively for female agents and vice-versa. 
-Time is discrete and indexed $t=0,1,...$ over an infinite horizon. 
+Time is discrete and indexed $t=..., -1, 0, 1,...$ over an infinite horizon. 
 At every time period, agents from each sex are paired and presented a candidate partner from the opposite side of the market. 
 % Homogeneous preferences
 \begin{comment}
@@ -13,7 +13,7 @@ We model agents with heterogeneous preferences (capturing the conventional notio
 After observing their candidate's attractiveness, agents then choose whether to swipe left (dislike) or right (like) on them, yielding an action space of $\mathcal{A}=\{ \text{left},\; \text{right}\}$. 
 If both agents swipe right on one another, they are said to have \textit{matched} and both receive a matching payoff, however, if either agent swipes left, they both receive a payoff of zero. Contingent on swiping right on a candidate with attractiveness $\theta$, a user earns a matching payoff $u(\theta)$, where $u(\cdot)$ is a strictly increasing, concave function that satisfies $u(0) = 0$. 
 This last property stems from the fact that, in Tinder, users are allowed to unmatch with each other, thus implying that matching with the least attractive individual on the other side of the market is weakly preferred to not matching. 
-After payoffs have been received, players are then paired with a different candidate and the above stage interaction is repeated. Given the continuum of agents, I assume that pairings are done \textit{anonymously} in the style of \cite{jovanovic1988anonymous}, thus abstracting from history-related complexities.
+After payoffs have been received, players are then paired with a different candidate and the above stage interaction is repeated. Given the continuum of agents, I assume that interactions take place \textit{anonymously} in the style of \cite{jovanovic1988anonymous}, thus abstracting from history-related complexities.
 Furthermore, to the agents' knowledge, pairings are determined in an unknown manner (since SBDA's are generally secretive regarding the algorithms used), effectively making their problem one of uniform random search.
 
 Considering the above, it is evident that swiping right in the stage interaction is both weakly dominant for all agents and yields a Pareto-optimal outcome, thus implying that, in a repeated interaction, the market equilibrium would have all agents exclusively swiping right. Since that the main selling point of SBDA's is a reduction in searching costs, which is accomplished when matches have a high likelihood of resulting in real-life romantic attraction, Tinder places a cap on the total number of right swipes for each user, thus making it a form of costly signalling. I refer to the total number of right-swipes a user has left as its \textit{budget}, $b_t$, which evolves dynamically according to the law of motion:
@@ -50,7 +50,7 @@ Importantly, agents depart from the platform in one of two ways: they can leave 
     \caption{Sequence of events within each time period} \label{fig:timeline}
 \end{figure}
 
-Given the above, it can be shown that an agent’s decision on any given time period depends fundamentally on the attractiveness of the candidate and their own budget. The paper's focus is therefore restricted to stationary Markov strategies, defined by $\sigma_m: \Theta \times\mathcal{B}_m\rightarrow \Delta\mathcal{A}_m$ for men and $\sigma_w:\Theta \times\mathcal{B}_w\rightarrow \Delta\mathcal{A}_w$ for women, where $\Delta S$ denotes the probability simplex over set S. 
+It can be shown that an agent’s decision on any given time period depends fundamentally on the attractiveness of the candidate and their own budget. The paper's focus is therefore restricted to stationary Markov strategies, defined by $\mu: \Theta \times\mathcal{B}_m\rightarrow \Delta\mathcal{A}_m$ for men and $\omega:\Theta \times\mathcal{B}_w\rightarrow \Delta\mathcal{A}_w$ for women, where $\Delta S$ denotes the probability simplex over set S. 
 
 \subsection{The Dating Market}
 Given the sequence of events described in the stage interaction above, I now outline the system state variables that make up the Tinder market, as these must be considered within the model given their endogenous relation with strategic search behaviour. At any given time $t$, the masses of men and women on Tinder are denoted by $N_{mt}$ and $N_{wt}$, respectively. Furthermore, let $\pi_{mt}, \pi_{wt}$ be the measures over agent budgets on either side, thus $\pi_{mt}$ denotes the mass of male agents with budgets in $B \subseteq \mathcal{B}_m$; in a slight abuse of notation, we denote by $\pi_{mt}^b$ the masses over singleton elements $b\in \mathcal{B}_m$. These are endogenously determined since the flow of agents into lower budget levels and eventually out of the platform depends on their swiping decisions. All in all, by considering aggregate variables on both sides of the platform, the Tinder market at time period $t$ is defined as $\Psi_t=(N_{mt},N_{wt},\pi_{mt},\pi_{wt})$. Finally, since gender imbalances can exist, resulting with unpaired agents in the long side of the market, a pairings process must be fixed. Given fairness considerations as well the automated nature of SBDA platforms, I assume an efficient matching technology and model pairings as a Bernoulli process parametrized by market tightness, defining the probability of being paired with a candidate on each side:
@@ -59,29 +59,27 @@ $$
 \tau_{mt}=\min \Big\{\frac{N_{wt}}{N_{mt}} ,1 \Big\}, \quad \tau_{wt}= \frac{N_{mt}}{N_{wt}} \tau_{mt}
 $$
 
-For most of this paper, I focus on characterizing user behaviour and its resulting implications in a stationary setting, although some discussion of coupled strategy and market dynamics is provided in \textbf{Section 4}. Given this, it is firstly important to first define the market steady state, which again arises as a result of exogenous pairing and departure processes as well as endogenous search behaviour. When doing so, time subscripts are omitted, thus denoting the steady state as the Tinder market $\Psi(\sigma)=(N_m(\sigma),N_w(\sigma),\pi_m(\cdot \,|\, \sigma),\pi_w(\cdot \,|\, \sigma))$ such that $\Psi_t(\sigma)=\Psi_{t+1}(\sigma)=...=\Psi(\sigma)$. As a necessary requirement, the market steady state must satisfy balanced flow conditions for our continuum model. These are presented for the female agents in what follows, but they should be satisfied by both sides of the market. Firstly, the entry flow of agents into the platform must equal the departure flow: 
+For most of this paper, I focus on characterizing user behaviour and its resulting implications in a stationary setting, although some discussion of coupled strategy and market dynamics is provided in \textbf{Section 4}. As a necessary requirement, the market steady state $\Psi_t=\Psi_{t+1}=...=\Psi$ must satisfy the balanced flow conditions for our continuum model; these are presented below for the female agents, but they apply analogously to the male side of the market. Firstly, the entry flow of agents into the platform must equal the departure flow: 
 
 % Budget dist equations
 \begin{equation} 
-    \lambda_w\;=\; \underbrace{N_w (1-\delta)}_{\text{Exogenous Deaths}} + \underbrace{\pi_w^1 \delta \tau_w\int_{\Theta}\sigma_w(\theta,1)\,dF_{m}(\theta)}_{\text{Expended Budgets}} 
+    \lambda_w\;=\; \underbrace{N_w (1-\delta)}_{\text{Exogenous Deaths}} + \underbrace{\pi_w^1 \delta \tau_w\int_{\Theta}\omega(\theta,1)\,dF_{m}(\theta)}_{\text{Expended Budgets}} 
 \end{equation} 
 
 Secondly, for both sides, the flow of agents into any particular budget level must equal the outflow of agents from that same level: 
 
 \begin{equation}
-    \underbrace{\pi_w^{b+1} \delta \tau_w \int_{\Theta} \sigma_w(\theta,b+1)\,dF_{m}(\theta)}_{\text{Inflow into $b$}} \;=\; \underbrace{\pi_w^{b} (1-\delta) + \pi_w^{b} \delta \tau_w\int_{\Theta} \sigma_w(\theta,b)\,dF_{m}(\theta)}_{\text{Outflow from $b$}}
+    \underbrace{\pi_w^{b+1} \delta \tau_w \int_{\Theta} \omega(\theta,b+1)\,dF_{m}(\theta)}_{\text{Inflow into $b$}} \;=\; \underbrace{\pi_w^{b} (1-\delta) + \pi_w^{b} \delta \tau_w\int_{\Theta} \omega(\theta,b)\,dF_{m}(\theta)}_{\text{Outflow from $b$}}
 \end{equation}
 
 Finally, the entry flow of agents into the platform must equal the outflow from the top budget level:
 
 \begin{equation}
-    \lambda_w \;=\; \underbrace{\pi_w^{B}(1-\delta)} \;+\; \underbrace{\pi_w^{B} \tau_w \delta \int_{\Theta} \sigma_w(\theta,b)\,dF_{m}(\theta)}_{\text{Endogenous outflow from B}}
+    \lambda_w \;=\; \underbrace{\pi_w^{B}(1-\delta)} \;+\; \underbrace{\pi_w^{B} \tau_w \delta \int_{\Theta} \omega(\theta,b)\,dF_{m}(\theta)}_{\text{Endogenous outflow from B}}
 \end{equation}
 
 %_{\text{Exogenous outflow from B}} 
-% 
-
-The above three conditions ensure that the masses of agents in the platform remain stationary on both sides and for all budget levels. Given this, we now state our first result, which provides a closed-form expression for the steady-state market.  
+%  
 
 
 % Original eqs
@@ -97,96 +95,86 @@ The above three conditions ensure that the masses of agents in the platform rema
 \begin{equation}
     \underbrace{\lambda_m \Big(F_m(\theta'')-F_m(\theta')\Big)}_{\text{Transitions into budget level B}}\;=\;\underbrace{\left((1-\delta)+\delta \int_{\Theta} \mu(\theta,b)\,dw_\theta(\theta \,|\, \sigma)\right)N_mR^m_{B}}_{\text{Transitions out of budget level B}}
 \end{equation} 
-\end{comment}
-
-\begin{theorem}
-    Fix a profile $\sigma$ of measurable strategies. Furthermore, let:
-
-$$
-\begin{aligned} z^m_b &=\prod^{B-b}_{i=1}\frac{\delta\rho^m_{B-i+1}}{\Big(1-\delta (1-\rho^m_{B-i}) \Big)}, \quad \forall b=1,...,B_m-1\\z^w_b&=\prod^{B-b}_{i=1}\frac{\delta\rho^w_{B-i+1}}{\Big(1-\delta (1-\rho^w_{B-i}) \Big)} , \quad \forall b=1,...,B_w-1\\\\ z^m_B&=\Big(1-\delta (1-\rho^m_B) \Big),\quad z^w_B=\Big(1-\delta (1-\rho^w_B) \Big) \end{aligned}
-$$
-
-Then the steady state is given by:
-
-$$
-\begin{aligned}N_m(\mu,\omega)&=\lambda_m\left(\frac{z^m_B-\delta z^m_1\rho^m_1}{(1-\delta)z^m_B}\right)\\\\N_w(\mu,\omega)&=\lambda_w\left(\frac{z^w_B-\delta z^w_1\rho^w_1}{(1-\delta)z^w_B}\right)\\\\M(\theta,b\,|\,\mu,\omega)&=F_m(\theta) \left(\frac{(1-\delta)}{z^m_B-\delta z^m_1\rho^m_1}\right)\sum^b_{i=1} z^m_i\\\\W(\theta,b\,|\,\mu,\omega)&=F_w(\theta)\left(\frac{(1-\delta)}{z^w_B-\delta z^w_1\rho^w_1}\right)\sum^b_{i=1} z^w_i \end{aligned}
-$$ 
-\end{theorem} 
-
+\end{comment} 
 
 
 \subsection{The Search Problem}
-Average swipe-receiving rate:
-\begin{equation}
-    \overline{\sigma_j} = \sum_{b\in \mathcal{B}_j}\int_{\Theta} \sigma_j(\theta,b)\,{P}_j(b)\,dF_i(\theta)
-\end{equation} 
+With the model framework and market dynamics outlined above, I now explore the decision problem faced by female agents in the market, with results carrying analogously for the male side. In the discussion below, I derive the female best-response function given a fixed, stationary market state $\Psi$ and male strategy $\mu$. To begin this analysis, consider a woman $i$ who is paired with a man $j$ in Tinder. The expected ex-interim payoff for this women, given that she observes attractiveness $\theta$ for $j$ and chooses action $a$ is the following:
 
-\begin{equation}
-    U(\theta, a)=\overline{\sigma_j}au(\theta)
-\end{equation}
+\begin{equation*}
+    U(\theta, a)=(\mathbbm{1}\{a=\text{right}\}\,\overline{\mu})\,u(\theta) \\
+    \overline{\mu} = \sum_{b\in \mathcal{B}_m}\int_{\Theta} \mu(\theta',b')\,{P}_m(b')\,dF_w(\theta')
+\end{equation*}
 
-Agent's problem:
+Where $\overline\mu$ is $j$'s strategy averaged over the possible attractiveness that he may observe for $i$ and the his budget level, both of which are unknown to woman $i$ at the time. Let $\mathcal{K}=\{t : \}$Given that, at the time of pairing, this women has a budget of $b$ right swipes left, then she solves the constrained inter-temporal maximization problem below, capture by the value function $V_w(\theta,b)$:
+
 \begin{equation}
     \begin{aligned} 
-        \max_{\{a_t\}^\infty_{t=0}} \quad & \mathbb{E}_{\theta}\left[\sum^\infty_{t=0} \delta^{t} \overline\sigma_m u(\theta_t)\right]\\\\ 
+        V_w(\theta,b)=\max_{\{a_t\}^\infty_{t=0}} \quad & \mathbb{E}_{\theta}\left[\sum^\infty_{t=0} \delta^{t} U(\theta_t, a_t) \;|\; \theta_0=\theta, b_0=b\right]\\ 
         \textrm{s.t.} \quad & b_{t+1}  = b_t -a_t \\
-        & b_t\in \mathcal{B}_i \\
-        & a_t\in \{0,1\}  
+        & b_t\in \mathcal{B}_w \\
+        & a_t\in \mathcal{A}  
     \end{aligned}
 \end{equation}
 
-Bellman equation when paired:
+Importantly, the first two constraints within this problem make it non-trivial; by limiting woman $i$'s right-swiping budget, Tinder poses a trade-off where swiping right on man $j$ implies foregoing a potential match with another more attractive man in the future, but the exogenous departure process also means that she is not patient enough to wait around for only the top $B_w$ most attractive men. By standard dynamic programming arguments, the above problem can be captured by two Bellman equations; one for when $j$ is paired and another for when she isn't:
 
 \begin{equation}
     \begin{split}
-    V^{P}_i(\theta,b) = \max \Big\{\, & \overline{\sigma_j}\, u(\theta) \;+\; \delta \tau \,\mathbb{E}\Big[V^P_i(\theta', b-1)\Big] \;+\; \delta (1-\tau)V^{NP}_i(b-1)\,,\\  & \delta \tau \,\mathbb{E}\Big[ V^P_i(\theta', b)\Big] \;+\; \delta (1-\tau) V^{NP}_i(b)\, \Big\}  
+    V^{P}_w(\theta,b) = \max \Big\{\, & \overline{\mu}\, u(\theta) \;+\; \delta \tau \,\mathbb{E}\Big[V^P_w(\theta', b-1)\Big] \;+\; \delta (1-\tau)V^{NP}_w(b-1)\,,\\  & \delta \tau \,\mathbb{E}\Big[ V^P_w(\theta', b)\Big] \;+\; \delta (1-\tau) V^{NP}_w(b)\, \Big\}  
     \end{split}
-\end{equation}
-
-Bellman equation when not paired
+\end{equation} 
 
 \begin{equation} 
-        V^{NP}_i(b) = \delta \tau \,\mathbb{E}\Big[ V^P_i(\theta', b)\Big] \,+\, \delta (1-\tau) V^{NP}_i(b) 
+        V^{NP}_w(b) = \delta \tau \,\mathbb{E}\Big[ V^P_w(\theta', b)\Big] \,+\, \delta (1-\tau) V^{NP}_w(b) 
 \end{equation}
 
-With some straightforward algebra, we can combine the above two equations into the cohesive Bellman equation. Define the effective discount rate $\alpha$: 
+With some straightforward algebra, we can combine the above two equations into the full Bellman equation: 
+
+\begin{equation}
+    \begin{aligned} 
+        V_w(\theta,b) \;=\;&\max\left\{\,\overline{\mu} \, u(\theta) +\alpha \,\mathbb{E}\Big[V_w(\theta', b-1)\Big]\,,\; \alpha\,\mathbb{E}\Big[ V_w(\theta', b)\Big]\,\right\} 
+    \end{aligned}
+\end{equation}
+
+Where $\alpha$ is the effective discount rate accounting for both departures and pairings processes: 
 
 $$
 \alpha:=\frac{\tau\delta}{1-\delta(1-\tau)}
 $$
 
-Through $\alpha$, the agent discounts with consideration for both the departure and pairings processes, yielding the cohesive Bellman equation bellow:
+By inspection, it is clear that the value function is piecewise in $\theta$, meaning that the optimal policy can be parametrised by a set of reservation attractiveness levels, $\{\tilde\omega\}_{b\in \mathcal{B}_w}$, where women $j$ swipes right for partners with attractiveness above the reservation level for her budget.:
 
-\begin{equation}
-    \begin{aligned} 
-        V_i(\theta,b) \;=\;&\max\left\{\,\overline{\sigma_j} \, u(\theta) +\alpha \,\mathbb{E}\Big[V_i(\theta', b-1)\Big]\,,\; \alpha\,\mathbb{E}\Big[ V_i(\theta', b)\Big]\,\right\} 
-    \end{aligned}
-\end{equation}
+\begin{equation*}
+    \omega(\theta,b)=\begin{cases}
+        1,\quad \theta\geq \widetilde{\omega}_b \\ 
+        0, \quad\theta< \widetilde\omega _b  
+    \end{cases} 
+\end{equation*}
 
-Optimal policy can be parametrised by a reservation attractiveness due to the piecewise nature of the value function: Agent swipes right when current period reward is greater than the discounted loss in expected value from a unit decrease in budget.
+Where the reservation attractiveness levels satisfy: 
+\begin{equation*}
+    \overline\mu u(\widetilde\omega_b) = \alpha \, \mathbb{E}_\theta\Big[\,V(\theta',b)-V(\theta',b-1)\,\Big]  
+\end{equation*}
 
-\begin{equation}
-    \sigma_i(\theta,b)=\begin{cases}
-        1,\quad \theta\geq \widetilde{\sigma}^i_b \\ 
-        0, \quad\theta< \widetilde\sigma^i_b  
-    \end{cases}
-\end{equation}
+These reservation attractiveness levels can be computed using the result presented below (with a proof contained in \ref{appx: b}), effectively allowing use to characterize the female best-response function.
 
-\begin{equation}
-    u(\widetilde\sigma^i_b) = \alpha \, \mathbb{E}\Big[\,V(\theta',b)-V(\theta',b-1)\,\Big]  
-\end{equation}
+\begin{proposition}
+The set of reservation attractiveness levels for women, $\{\tilde\omega\}_{b\in \mathcal{B}_w}$ , satisfies the recurrence relation defined by: 
 
-\begin{equation}
-    V(\theta, b)=\begin{cases} 
-        u(\theta) +\alpha \,\mathbb{E}_{\Psi}\Big[V(\theta', b-1)\Big],\quad \theta> \widetilde \mu_b \\\\ 
-        \alpha \,\mathbb{E}_{\Psi}\Big[V(\theta', b)\Big],\quad \theta\leq\widetilde \mu_b
-    \end{cases}  
-\end{equation}
+\begin{equation*}
+    u(\widetilde \omega_b) = \alpha u(\widetilde \omega_b) F_m(\widetilde \omega_b) + \alpha u(\widetilde \omega_{b-1})\Big(1- F_m(\widetilde \omega_{b-1})\Big)+\int^{\widetilde \omega_{b-1}}_{\widetilde \omega_b} \alpha u(\theta')\,dF_m(\theta')
+\end{equation*}
 
-\begin{equation}
-    u(\widetilde \sigma^i_b) = \alpha u(\widetilde \sigma^i_b) F_j(\widetilde \sigma^i_b) + \alpha u(\widetilde \sigma^i_{b-1})\Big(1- F_j(\widetilde \mu_{b-1})\Big)+\int^{\widetilde \mu_{b-1}}_{\widetilde \sigma^i_b} \alpha u(\theta')\,dF_j(\theta')
-\end{equation} 
+along with the initial condition:
 
+\begin{equation*}
+    u(\widetilde\omega_1) =\delta u(\widetilde\omega_1)F(\widetilde\omega_1) + \delta \int^1_{\widetilde\omega_1}u(\theta')dF(\theta')
+\end{equation*}
+\end{proposition}
+
+
+\begin{comment}
 
 \begin{itemize}
     \item Present case for women, then say case for men follows
@@ -200,3 +188,4 @@ Optimal policy can be parametrised by a reservation attractiveness due to the pi
     \item Prove uniqueness of value function and solution
     \item Derive solution
 \end{itemize}
+\end{comment}

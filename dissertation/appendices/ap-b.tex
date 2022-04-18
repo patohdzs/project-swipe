@@ -1,2 +1,64 @@
-\section{Uniqueness and Existence of Search Problem}
-\label{appx: b Sketch} 
+\section{Search Problem}
+\label{appx: b} 
+To show the above proposition, we rely the following two equations; the first of which describes the agent's value function in piecewise form, and the second of which describes the necessary condition for all reservation attractiveness values:
+
+\begin{equation}
+    V(\theta, b)=\begin{cases} 
+        u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b-1)\Big],& \theta> \widetilde \mu_b \\
+        \alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b)\Big],& \theta\leq\widetilde \mu_b
+    \end{cases}  
+\end{equation}
+
+
+\begin{equation}
+    \overline\mu u(\widetilde\omega_b) = \alpha \, \mathbb{E}_\theta\Big[\,V(\theta',b)-V(\theta',b-1)\,\Big]  
+\end{equation}
+ 
+Now define the continuation value at budget $b$:
+
+\begin{equation*}
+    \begin{aligned}
+        &K_{b}:=\alpha \,\mathbb{E}_{\theta'}\left[V(\theta', b)\right] \\
+        &\implies V(\theta, b)=\begin{cases} 
+            u(\theta) + K_{b-1},\quad \theta > \widetilde \omega_b \\  
+            K_{b},\quad \theta \leq \widetilde \omega_b
+        \end{cases}
+    \end{aligned} 
+\end{equation*}
+ 
+Starting out with equation (A.2) and expanding out the expectation, we can use (A.1) to substitute in the piecewise definitions of $V(\theta,b)$ over the appropriate intervals:
+
+\begin{equation*}
+    \begin{aligned}
+        \overline\mu u(\widetilde\omega_b) &= \alpha \,\int^1_0\,V(\theta',b)-V(\theta',b-1)\,dF_m(\theta')\\
+        &=\alpha \int^{\widetilde\omega_b}_0\,K_b\,dF_m(\theta') \,+\, \alpha \int^1_{\widetilde\omega_b}\,\overline\mu u(\theta) + K_{b-1}\,dF_m(\theta')\\ 
+        & -\,\alpha \int^{\widetilde\omega_{b-1}}_0 K_{b-1}\,dF_m(\theta') \,-\, \alpha \int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta) + K_{b-2}\,dF_m(\theta')\end{aligned}
+\end{equation*}
+
+Equation (A.2) implies that:
+
+$$
+\overline\mu u(\widetilde\omega_b) +K_{b-1}= K_b
+$$
+
+$$
+\overline\mu u(\widetilde\omega_{b-1}) +K_{b-2}=K_{b-1}
+$$
+
+So by substituting these values into the expression above, cancelling out terms, and dividing across by $\overline\mu$:
+
+\begin{equation*}
+    \begin{aligned}
+        =\;&\alpha \int^{\widetilde\omega_b}_0\,\overline\mu u(\widetilde\omega_b) +K_{b-1}\,dF_m(\theta') \,+\, \alpha \int^1_{\widetilde\omega_b}\,\overline\mu u(\theta) + K_{b-1}\,dF_m(\theta')\\ 
+        & -\,\alpha \int^{\widetilde\omega_{b-1}}_0 K_{b-1}\,dF_m(\theta')  \,-\,\alpha \int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta) + K_{b-1}-\overline\mu u(\widetilde\omega_{b-1})\,dF_m(\theta')\\ 
+        =\; &\alpha\left(\overline\mu u(\widetilde\omega_b) \,+\, K_{b-1}\right)F_m(\widetilde\omega_b) \,+\, \alpha K_{b-1}\Big(1-F_m(\widetilde\omega_b)\Big) \,+\, \alpha \int^1_{\widetilde\omega_b}\,\overline\mu u(\theta)\,dF_m(\theta')\\ 
+        & -\,\alpha K_{b-1} F_m(\widetilde\omega_{b-1})  \,-\, \alpha \Big(K_{b-1}-\overline\mu u(\widetilde\omega_{b-1})\Big)\Big(1-F_m(\widetilde\omega_{b-1})\Big) - \alpha\int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta) \,dF_m(\theta')\\ 
+        =\; &\alpha u(\widetilde\omega_b)F_m(\widetilde\omega_b) \, + \,\alpha \int^1_{\widetilde\omega_b}\, u(\theta)\,dF_m(\theta') \,+\,\alpha u(\widetilde\omega_{b-1})\Big(1  - F_m(\widetilde\omega_{b-1})\Big) \,-\, \alpha\int^1_{\widetilde\omega_{b-1}} u(\theta) \,dF_m(\theta')
+    \end{aligned}
+\end{equation*}
+
+- Merging the two integrals:
+
+$$
+\therefore \quad u(\widetilde\omega_b)=\alpha   u(\widetilde\omega_b)F_m(\widetilde\omega_b) \,  \,+\,\alpha  u(\widetilde\omega_{b-1})\Big(1  - F_m(\widetilde\omega_{b-1})\Big) \,+\, \alpha\int^{\widetilde\omega_{b-1}}_{\widetilde\omega_b} u(\theta) \,dF_m(\theta') 
+$$
