@@ -7,6 +7,7 @@
 \usepackage{bm}
 \usepackage{algorithm}
 \usepackage{algorithmic} % Algorithm styles, need to be nested for the example shown
+\usepackage{aliascnt}
 \numberwithin{equation}{section} % Numbering of our equations per section
 \newtheorem{theorem}{Theorem}
 \newtheorem{definition}{Definition}
@@ -14,6 +15,8 @@
 
 \usepackage{fancyhdr} % For our headers
 \usepackage{graphicx} % Inserting images
+\graphicspath{ {../figures/} }
+
 \usepackage{lipsum}  % Blank text fill, delete me when finished
 \usepackage{setspace} %Spacing on the front page for crest and titles
 \usepackage[]{fncychap} % Styles can be Sonny, Lenny, Glenn, Conny, Rejne, Bjarne and Bjornstrup
@@ -31,6 +34,8 @@
 
 %KEEP THIS ONE LAST it's quite buggy, it allows you to click on links within the pdf and web links without changing the colour. The mouse cursor simply changes its icon to indicate to the user. Great tool - still awkward
 \usepackage[hidelinks]{hyperref} 
+\def\sectionautorefname{Section}
+\def\appendixname{Appendix}
 
 %This will tell the compiler to do the header style, page and spacing between the header and text 
 

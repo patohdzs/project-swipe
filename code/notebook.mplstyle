@@ -1,5 +1,7 @@
 xtick.color: 323034
-ytick.color: 323034
+xtick.labelsize: 8
+ytick.color: 323034 
+ytick.labelsize: 8
 text.color: 323034
 lines.markeredgecolor: black
 patch.facecolor        : bc80bd
@@ -7,9 +9,7 @@ patch.force_edgecolor  : True
 patch.linewidth: 0.8
 scatter.edgecolors: black
 grid.color: b1afb5 
-legend.title_fontsize: 12
-xtick.labelsize: 12
-ytick.labelsize: 12 
+legend.title_fontsize: 12 
 font.size: 10
 axes.prop_cycle : (cycler('color', ['bc80bd' ,'fb8072', 'b3de69','fdb462','fccde5','8dd3c7','ffed6f','bebada','80b1d3', 'ccebc5', 'd9d9d9']))
 mathtext.fontset: stix
@@ -18,20 +18,20 @@ lines.linewidth: 1.2
 
 legend.frameon: True
 legend.framealpha: 0.8
-legend.fontsize: 10
+legend.fontsize: 8
 legend.edgecolor: 0.9
 legend.borderpad: 0.2
 legend.columnspacing: 1.5
 legend.labelspacing:  0.4
 
 axes.titlelocation: center
-axes.titlesize: 14
+axes.titlesize: 10
 axes.formatter.use_mathtext: True
 axes.autolimit_mode: round_numbers
 axes.labelpad: 3
 axes.formatter.limits: -4, 4
 axes.labelcolor: black
-axes.labelsize: 12
+axes.labelsize: 10
 axes.edgecolor: black
 axes.linewidth: 0.6
 axes.spines.right : True
@@ -39,10 +39,9 @@ axes.spines.top : True
 axes.grid: False
 
 figure.titlesize: 18 
-figure.figsize : 6.4, 4.8
+figure.figsize : 6.267704441677044, 3.8736543763950966
 # Use DPI>300 for publications
-figure.dpi : 250
-
+figure.dpi : 250 
 # Use LaTeX for math formatting
 text.usetex : True
 text.latex.preamble : \usepackage{amsmath} \usepackage{amssymb}

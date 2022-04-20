@@ -1,41 +1,38 @@
-\section{Search Problem}
+\section{Proof for Proposition 1}
 \label{appx: b} 
-To show the above proposition, we rely the following two equations; the first of which describes the agent's value function in piecewise form, and the second of which describes the necessary condition for all reservation attractiveness values:
+To prove Proposition 1, we rely the following two equations; the first of which expresses the agent's value function in piecewise form, and the second of which describes the necessary condition for all reservation attractiveness values:
 
-\begin{equation}
+\begin{equation}\label{eq:A.1}
     V(\theta, b)=\begin{cases} 
-        u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b-1)\Big],& \theta> \widetilde \mu_b \\
+        \overline\mu u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b-1)\Big],& \theta> \widetilde \mu_b \\[10pt]
         \alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b)\Big],& \theta\leq\widetilde \mu_b
     \end{cases}  
-\end{equation}
+\end{equation}\\
 
 
-\begin{equation}
+\begin{equation}\label{eq:A.2}
     \overline\mu u(\widetilde\omega_b) = \alpha \, \mathbb{E}_\theta\Big[\,V(\theta',b)-V(\theta',b-1)\,\Big]  
 \end{equation}
  
-Now define the continuation value at budget $b$:
+To simplify notation, denote the continuation value at budget $b$ by:
 
 \begin{equation*}
     \begin{aligned}
-        &K_{b}:=\alpha \,\mathbb{E}_{\theta'}\left[V(\theta', b)\right] \\
-        &\implies V(\theta, b)=\begin{cases} 
-            u(\theta) + K_{b-1},\quad \theta > \widetilde \omega_b \\  
-            K_{b},\quad \theta \leq \widetilde \omega_b
-        \end{cases}
+        &K_{b}:=\alpha \,\mathbb{E}_{\theta}\left[V(\theta', b)\right] 
     \end{aligned} 
 \end{equation*}
- 
-Starting out with equation (A.2) and expanding out the expectation, we can use (A.1) to substitute in the piecewise definitions of $V(\theta,b)$ over the appropriate intervals:
 
-\begin{equation*}
-    \begin{aligned}
+Starting out with \autoref{eq:A.2} and expanding out the expectation operator, we can use \ref{eq:A.1} to substitute in the piecewise definitions of $V(\theta,b)$ over the appropriate intervals:
+
+\begin{equation}\label{eq:A.3}
+    \begin{split}
         \overline\mu u(\widetilde\omega_b) &= \alpha \,\int^1_0\,V(\theta',b)-V(\theta',b-1)\,dF_m(\theta')\\
-        &=\alpha \int^{\widetilde\omega_b}_0\,K_b\,dF_m(\theta') \,+\, \alpha \int^1_{\widetilde\omega_b}\,\overline\mu u(\theta) + K_{b-1}\,dF_m(\theta')\\ 
-        & -\,\alpha \int^{\widetilde\omega_{b-1}}_0 K_{b-1}\,dF_m(\theta') \,-\, \alpha \int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta) + K_{b-2}\,dF_m(\theta')\end{aligned}
-\end{equation*}
+                                           &=\alpha \int^{\widetilde\omega_b}_0\,K_b\,dF_m(\theta') \,+\, \alpha \int^1_{\widetilde\omega_b}\,\overline\mu u(\theta') + K_{b-1}\,dF_m(\theta')\\ 
+                                           & \quad -\,\alpha \int^{\widetilde\omega_{b-1}}_0 K_{b-1}\,dF_m(\theta') \,-\, \alpha \int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta') + K_{b-2}\,dF_m(\theta')
+    \end{split}
+\end{equation}
 
-Equation (A.2) implies that:
+Furthermore, Equation \ref{eq:A.2} implies that:
 
 $$
 \overline\mu u(\widetilde\omega_b) +K_{b-1}= K_b
@@ -45,20 +42,44 @@ $$
 \overline\mu u(\widetilde\omega_{b-1}) +K_{b-2}=K_{b-1}
 $$
 
-So by substituting these values into the expression above, cancelling out terms, and dividing across by $\overline\mu$:
+Then, by substituting these expressions into \ref{eq:A.3}, we arrive at \ref{eq:A.4}:
 
-\begin{equation*}
-    \begin{aligned}
-        =\;&\alpha \int^{\widetilde\omega_b}_0\,\overline\mu u(\widetilde\omega_b) +K_{b-1}\,dF_m(\theta') \,+\, \alpha \int^1_{\widetilde\omega_b}\,\overline\mu u(\theta) + K_{b-1}\,dF_m(\theta')\\ 
-        & -\,\alpha \int^{\widetilde\omega_{b-1}}_0 K_{b-1}\,dF_m(\theta')  \,-\,\alpha \int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta) + K_{b-1}-\overline\mu u(\widetilde\omega_{b-1})\,dF_m(\theta')\\ 
-        =\; &\alpha\left(\overline\mu u(\widetilde\omega_b) \,+\, K_{b-1}\right)F_m(\widetilde\omega_b) \,+\, \alpha K_{b-1}\Big(1-F_m(\widetilde\omega_b)\Big) \,+\, \alpha \int^1_{\widetilde\omega_b}\,\overline\mu u(\theta)\,dF_m(\theta')\\ 
-        & -\,\alpha K_{b-1} F_m(\widetilde\omega_{b-1})  \,-\, \alpha \Big(K_{b-1}-\overline\mu u(\widetilde\omega_{b-1})\Big)\Big(1-F_m(\widetilde\omega_{b-1})\Big) - \alpha\int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta) \,dF_m(\theta')\\ 
-        =\; &\alpha u(\widetilde\omega_b)F_m(\widetilde\omega_b) \, + \,\alpha \int^1_{\widetilde\omega_b}\, u(\theta)\,dF_m(\theta') \,+\,\alpha u(\widetilde\omega_{b-1})\Big(1  - F_m(\widetilde\omega_{b-1})\Big) \,-\, \alpha\int^1_{\widetilde\omega_{b-1}} u(\theta) \,dF_m(\theta')
-    \end{aligned}
-\end{equation*}
+\begin{equation}\label{eq:A.4}
+    \begin{split}
+        \overline\mu u(\widetilde\omega_b) &=\alpha \int^{\widetilde\omega_b}_0\,\overline\mu u(\widetilde\omega_b) +K_{b-1}\,dF_m(\theta') \,+\, \alpha \int^1_{\widetilde\omega_b} \,\overline\mu u(\theta') + K_{b-1}\,dF_m(\theta')\\ 
+                                           & \quad -\,\alpha \int^{\widetilde\omega_{b-1}}_0 K_{b-1}\,dF_m(\theta') \,-\, \alpha \int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta') + K_{b-1}-\overline\mu u(\widetilde\omega_{b-1})\,dF_m(\theta')
+    \end{split}
+\end{equation}
 
-- Merging the two integrals:
+With some algebra, this simplifies down to the recurrence relation in \autoref{eq:recurrence relation}: 
 
-$$
-\therefore \quad u(\widetilde\omega_b)=\alpha   u(\widetilde\omega_b)F_m(\widetilde\omega_b) \,  \,+\,\alpha  u(\widetilde\omega_{b-1})\Big(1  - F_m(\widetilde\omega_{b-1})\Big) \,+\, \alpha\int^{\widetilde\omega_{b-1}}_{\widetilde\omega_b} u(\theta) \,dF_m(\theta') 
-$$
+\begin{equation}
+    u(\widetilde\omega_b)=\alpha   u(\widetilde\omega_b)F_m(\widetilde\omega_b) \,  \,+\,\alpha  u(\widetilde\omega_{b-1})\Big(1  - F_m(\widetilde\omega_{b-1})\Big) \,+\, \alpha\int^{\widetilde\omega_{b-1}}_{\widetilde\omega_b} u(\theta') \,dF_m(\theta') 
+\end{equation}
+
+Furthermore, to obtain the initial condition for the above, we impose the right-swiping budget constraint where $V(\theta,0)=0, \forall b\in \mathcal{B}_w$. Then, \ref{eq:A.1} and \ref{eq:A.2} simplify to:
+
+\begin{equation}\label{eq:A.5}
+    V(\theta, 1)=\begin{cases} 
+        \overline\mu u(\theta),& \theta> \widetilde \omega_1 \\ 
+        \alpha \,\mathbb{E}_{\theta}\Big[V(\theta', 1)\Big],& \theta\leq\widetilde \omega_1
+    \end{cases}  
+\end{equation}\\ 
+
+\begin{equation}\label{eq:A.6}
+    \overline\mu u(\widetilde\omega_1) = \alpha \, \mathbb{E}_\theta\Big[\,V(\theta',1)\,\Big]  
+\end{equation}
+
+Beginning with \ref{eq:A.6}, we simplify until arriving at \autoref{eq:initial condition}:
+
+\begin{equation*} 
+    \begin{split}
+        \overline\mu u(\widetilde\omega_1) &= \alpha \, \mathbb{E}_\theta\Big[\,V(\theta',1)\,\Big]\\
+        &= \alpha \,\int^{\widetilde\omega_1}_0\,K_1\,dF_m(\theta') + \alpha \,\int_{\widetilde\omega_1}^1 \overline\mu u(\theta')\,dF_m(\theta')\\
+        &= \alpha \,\int^{\widetilde\omega_1}_0\,\overline\mu u(\widetilde\omega_1)\,dF_m(\theta') + \alpha \,\int_{\widetilde\omega_1}^1 \overline\mu u(\theta')\,dF_m(\theta')\\
+        &= \alpha \overline\mu u(\widetilde\omega_1)F_m(\widetilde\omega_1) + \alpha \,\int_{\widetilde\omega_1}^1 \overline\mu u(\theta')\,dF_m(\theta')\\
+        \implies u(\widetilde\omega_1) &= \alpha u(\widetilde\omega_1)F_m(\widetilde\omega_1) + \alpha \,\int_{\widetilde\omega_1}^1 u(\theta')\,dF_m(\theta') 
+    \end{split}
+\end{equation*}  
+
+To conclude the proof, note that existence and uniqueness of $\widetilde\omega_b$ satisfying \ref{eq:A.2} are guaranteed given the assumptions on $u(\theta)$ being continuous and strictly increasing. Since continuation values must be strictly bounded between 0 and $u(1)$, then, by the Intermediate Value Theorem, there is only one root $\widetilde\omega_b$ satisfying \ref{eq:A.2}.

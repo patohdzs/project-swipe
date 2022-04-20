@@ -1,4 +1,4 @@
-# How Strong Is Your Tinder Game? <br/> Two-Sided Search in Swipe-Based Dating Applications
+# Should You Swipe Right? <br/> Two-Sided Search in Swipe-Based Dating Applications
 [![Language](https://img.shields.io/badge/language-Python_3-54a4ff.svg?style=flat-square)](https://www.python.org)
 [![License](https://img.shields.io/github/license/patohdzs/project-tinder?style=flat-square)](https://opensource.org/licenses/MIT)
 
