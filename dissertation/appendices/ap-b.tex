@@ -1,12 +1,13 @@
 \section{Proof for Proposition 1}
 \label{appx: b} 
+\begin{proof}
 To prove Proposition 1, we rely the following two equations; the first of which expresses the agent's value function in piecewise form, and the second of which describes the necessary condition for all reservation attractiveness values:
 
 \begin{align}
     \begin{split}\label{eq:A.1}
         V(\theta, b)=\begin{cases} 
-            \overline\mu u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b-1)\Big],& \theta> \widetilde \mu_b \\[10pt]
-            \alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b)\Big],& \theta\leq\widetilde \mu_b
+            \overline\mu u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b-1)\Big],& \theta> \widetilde \omega_b \\[10pt]
+            \alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b)\Big],& \theta\leq\widetilde \omega_b
         \end{cases}
     \end{split}\\[10pt]
     \begin{split}\label{eq:A.2}
@@ -84,4 +85,5 @@ Beginning with \ref{eq:A.6}, we simplify until arriving at \autoref{eq:initial c
     \end{split}
 \end{equation*}  
 
-To conclude the proof, note that the existence and uniqueness of some $\widetilde\omega_b$ that satisfies \ref{eq:A.2} is guaranteed given the assumptions on $u(\theta)$ being continuous and strictly increasing. Since continuation values must be strictly bounded between 0 and $u(1)$, then, by the Intermediate Value Theorem, there is only one root $\widetilde\omega_b$ satisfying \ref{eq:A.2}.  $\square$
+To conclude the proof, note that the existence and uniqueness of some $\widetilde\omega_b$ that satisfies \ref{eq:A.2} is guaranteed given the assumptions on $u(\theta)$ being continuous and strictly increasing. Since the difference between any two consecutive continuation values must lie strictly between 0 and $u(1)$, then, by the Intermediate Value Theorem, there exists one and only one root $\widetilde\omega_b$ satisfying \ref{eq:A.2} and, by extension the above reoccurrence relation. 
+\end{proof}
