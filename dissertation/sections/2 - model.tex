@@ -4,11 +4,9 @@
 Throughout this section, I establish the theoretical framework for the model considered in this paper. Fix a non-atomic continuum of male and female agents and consider the dynamic two-sided market formed by the SBDA platform, which agents can join to search for potential romantic partners. 
 For ease of exposition, I assume that this market is heteronormative such that male agents search exclusively for female agents and vice-versa. 
 Time is discrete and indexed $t=0, 1, 2, ...$ over an infinite horizon. 
-At every time period, agents from each sex are paired and presented a candidate partner from the opposite side of the market.  
-\begin{comment}
-    Each agent has an attractiveness type $\theta \in \Theta := [0,1]$ which is unknown to them but observable to their candidate, and it is common knowledge that this is the case.
-\end{comment}
-We model agents with heterogeneous preferences (capturing the notion that `beauty lies in the eye of the beholder') and thus, after being paired, each agent observes an \textit{idiosyncratic attractiveness value} $\theta \in \Theta := [0,1]$ for their candidate. These values are drawn i.i.d from distributions with CDF's $F_m, F_w$, with female agents drawing male candidate values from $F_m$ and vice versa. Importantly, the value men $i$ draws for women $j$ does not necessarily equal the value that $j$ draws for $i$, and, for simplicity, these are modelled these as independent from one another.
+At every time period, agents from each sex are paired and presented a candidate partner from the opposite side of the market. 
+
+We model agents with heterogeneous preferences (capturing the notion that `beauty lies in the eye of the beholder') and thus, after being paired, each agent observes an \textit{idiosyncratic attractiveness value} $\theta \in \Theta := [0,1]$ for their candidate. These values are i.i.d according to a pair of absolutely continuous CDF's $F_m, F_w$, with corresponding PDF's $f_m,f_w$; female agents drawing male candidate values from $F_m$ and vice versa. Importantly, the value men $i$ draws for women $j$ does not necessarily equal the value that $j$ draws for $i$, and, for simplicity, these are modelled these as independent from one another.
 
 After observing their candidate's attractiveness, agents then choose whether to swipe left (dislike) or right (like) on them, yielding an action space of $\mathcal{A}=\{ \text{left},\; \text{right}\}$. 
 If both agents swipe right on one another, they are said to have \textit{matched} and both receive a matching payoff, however, if either agent swipes left, they both receive a payoff of zero. Contingent on swiping right on a candidate with attractiveness $\theta$, a user earns a matching payoff $u(\theta)$, where $u(\cdot)$ is a continuous, strictly increasing function that satisfies $u(0) = 0$. 
@@ -47,10 +45,10 @@ where the budget caps for each sex, $B_m$ and $B_w$, are determined exogenously.
 \end{comment}
 Importantly, agents depart from the platform in one of two ways: they can leave \textit{endogenously}, if they expend their swiping budget, or \textit{exogenously} with probability $(1-\delta)$. This admits to the interpretation of a geometrically distributed lifetime within the platform, parametrised by $\delta$, and implies that users use this as a discounting factor for future payments.
 
-Due to the anonymity assumption above, agents can relax history-related considerations, essentially simplifying their stage problem to one that depends on the candidate attractiveness and their own budget only. Due to this, I restrict focus to stationary Markovian strategies, denoted by $\mu: \Theta \times\mathcal{B}_m\rightarrow \Delta\mathcal{A}_m$ for men and $\omega:\Theta \times\mathcal{B}_w\rightarrow \Delta\mathcal{A}_w$ for women, where $\Delta S$ denotes the probability simplex over set S. 
+Due to the anonymity assumption above, agents can assume that they seldom interact with the same agent more than once throughout their lifetime. This, along with the mean-field assumption established in \autoref{sec:section2.2}, abstracts away from history-related considerations, essentially simplifying the agent's gameplay by establishing dependency on the candidate attractiveness and their own budget only. I therefore restrict focus to stationary strategies, which are both time and history-independent, denoted by $\mu: \Theta \times\mathcal{B}_m\rightarrow \Delta\mathcal{A}_m$ for men and $\omega:\Theta \times\mathcal{B}_w\rightarrow \Delta\mathcal{A}_w$ for women, where $\Delta S$ denotes the probability simplex over set S. 
 
 \subsection{The Dating Market}\label{sec:section2.2}
-Given the sequence of events taking place in the stage interaction, I now outline the system state variables that make up the Tinder market. Let $N_{mt}(b), N_{wt}(b)$ denote the mass of male and female agents (respectively) with a budget of $b\in\mathcal{B}$ in a given time period $t$. Furthermore, since gender imbalances can leave some agents in the long side of the market unpaired, a pairings process must be fixed. Given fairness considerations as well the automated nature of SBDA platforms, I assume an efficient matching technology and model pairings as a Bernoulli process parametrised by market tightness; thus, the probability of being paired with a candidate is defined for both sides as:
+Given the above framework, I now outline the platform state variables that make up the SBDA market. Let $N_{mt}(b), N_{wt}(b)$ denote the mass of male and female agents (respectively) with a budget of $b\in\mathcal{B}$ in a given time period $t$. Furthermore, since gender imbalances can leave some agents in the long side of the market unpaired, a pairings process must be fixed. Given fairness considerations as well the automated nature of SBDA platforms, I assume an efficient matching technology and model pairings as a Bernoulli process parametrised by market tightness; thus, the probability of being paired with a candidate is defined for both sides as:
 
 %These are endogenously determined since the flow of agents into lower budget levels and eventually out of the platform depends on their swiping decisions.
 
@@ -83,18 +81,18 @@ With the model framework and market dynamics outlined above, I now explore the d
 
 \begin{equation*}
     \begin{aligned}
-        U(\theta, a)&=\Big(\overline{\mu}\,\mathbbm{1}\{a=\text{right}\}\Big)\,u(\theta), \quad \text{where}\quad \overline{\mu} &= \sum_{b\in \mathcal{B}_m}\int_{\Theta} \mu(\theta',b)\,{N}_m(b)\,dF_w(\theta')
+        U(\theta, a)&=\Big(\overline{\mu}\,\mathbbm{1}\{a=\text{right}\}\Big)\,u(\theta), \quad \text{where}\quad \overline{\mu} &= \sum_{b\in \mathcal{B}_m}\int_{\Theta}\frac{{N}_m(b)}{N_m}  \, \mu(\theta',b)\,dF_w(\theta')
     \end{aligned} 
 \end{equation*}
 
-Here, $\overline\mu$ denotes candidate $j$'s strategy averaged over the possible attractiveness values that he may observe for $i$ and his possible budget level, both of which are unknown to woman $i$. The payoff function above imposes a mean-field assumption where, conditional on the fixed platform state $Psi$, woman $i$ averages out her opponent's strategy, rather than considering candidate $j$'s specific behaviour and beliefs over his possible budget level. This modelling choice has been employed by \cite{immorlica2021designing} and \cite{iyer2014mean} among others, as it simplifies the full-fledged dynamic game by collapsing it onto a pair of Markov Decision Processes (MDP's), where strategy $\omega$ is a best response for female agents if and only if it is an optimal policy for the corresponding MDP. Consider the arrival times of the realized pairing process for woman $i$ and index these by $k$. Given that, at the time of pairing, this women has a budget of $b$ right swipes left, she then solves the constrained MDP presented below, captured by the value function $V_w(\theta,b)$:
+Here, $\overline\mu$ denotes candidate $j$'s strategy averaged over the possible attractiveness that he may observe for $i$ and his possible budget level, both of which are unknown to woman $i$. While traditional equilibrium concepts would consider candidate $j$'s individual behaviour and, necesarily, beliefs over his possible budget level, the payoff function above imposes a mean-field assumption such that, conditional on the platform state $\Psi$, woman $i$ considers only the empirical frequency with which she receives a right-swipe. This modelling choice has been employed by \cite{immorlica2021designing} and \cite{iyer2014mean} among others, as it simplifies the full-fledged dynamic game by collapsing it onto a pair of Markov Decision Processes (MDP's), where strategy $\omega$ is a best response for female agents if and only if it is an optimal policy for the corresponding MDP. Let the jump times of the realized pairing process for woman $i$ be index by $k$. Given that, at the time of pairing, this women has a budget of $b$ right swipes left, she then solves the constrained MDP presented below, captured by the value function $V_w(\theta,b)$:
 
 \begin{equation*}
     \begin{aligned} 
-        V_w(\theta,b)=\max_{\{a_t\}^\infty_{t=0}} \quad & \mathbb{E}_{\theta}\left[\sum^\infty_{t=0} \delta^{t} U(\theta_t, a_t) \;|\; \theta_0=\theta, b_0=b\right]\\ 
-        \textrm{s.t.} \quad & b_{t+1} = b_t -a_t \\
-        & b_t\in \mathcal{B}_w \cup \{0\} \\
-        & a_t\in \mathcal{A}  
+        V_w(\theta,b)=\max_{\{a_k\}^\infty_{k=0}} \quad & \mathbb{E}_{\theta}\left[\sum^\infty_{k=0} \delta^{k} U(\theta_k, a_k) \;|\; \theta_0=\theta, b_0=b\right]\\ 
+        \textrm{s.t.} \quad & b_{k+1} = b_k -a_k \\
+        & b_k\in \mathcal{B}_w \cup \{0\} \\
+        & a_k\in \mathcal{A}  
     \end{aligned}
 \end{equation*}
 

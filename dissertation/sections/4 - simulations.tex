@@ -11,23 +11,22 @@ When applied in combination with a micro-founded theoretical model, ABM can prov
     \label{fig:abm-conv} 
 \end{figure}
 
-To start, I explored the convergence and stability of the SBDA market under various arbitrary exogenous configurations. In particular, \autoref{fig:abm-conv} shows the simulated evolution of both male and female agent masses over 300 time periods, with a 2:1 ratio between male and female arrival flows. As evident from these results, the computational procedures above are able to correctly predict the steady state market masses; furthermore, the ABM simulations show that the long side of the market (males) takes considerably longer to converge onto its steady-state level. One technical point worth noting is that, due to the limited capacity for computational simulations in handling non-discrete structures, the above simulations depict \textit{agent stocks} as opposed to \textit{agent masses}, as per our continuum model. Because of this, as well as the fact that agent departures and pairings follow random processes, the above equilibrium acts as a \textit{stochastic steady state}, with convergence occurring in the stationary sense rather than in typical deterministic fashion. Nevertheless, we examine the limiting case of these dynamics, with \autoref{fig:abm-conv-ssize} depicting how, by the law of large numbers, stationary deviations around the steady state equilibrium level become negligible as the agent stocks tend to infinity, further confirming the stable nature of our equilibrium concept. 
+To start, I explored the convergence and stability of the SBDA market using various arbitrary exogenous settings. In particular, \autoref{fig:abm-conv} shows the simulated evolution of (sex-specific) agent masses over 300 time periods, with a 2:1 ratio between male and female arrival flows. This simulation was conducted under PREE conditions; that is, with agents playing according to the optimal policies for some fixed steady state even when this is not equal to the current platform state. As evident from these results, the computational procedures in \autoref{sec:section3.1} are able to correctly predict the steady state market masses; furthermore, the ABM simulations show that the long side of the market (males) takes considerably longer to converge onto its steady-state level. One technical point worth noting is that, due to the inability of computational simulations in handling non-discrete structures, the above simulations depict \textit{agent stocks} as opposed to \textit{agent masses}, as per our continuum model. Thus, because agent departures and pairings follow random processes, the above equilibrium acts as a \textit{stochastic steady state}, with convergence occurring in the stationary sense rather than in typical deterministic fashion. Nevertheless, I examine the limiting case of these dynamics, with \autoref{fig:abm-conv-ssize} depicting how, by the law of large numbers, stationary deviations around the steady state equilibrium level become negligible as the agent stocks tend to infinity. 
 
 \begin{figure}[ht] 
     \centering
     \caption{Agent-Based Simulation Convergence with Varying Sample Sizes}
     \includegraphics{abm-conv-ssize.png}
     \label{fig:abm-conv-ssize}
-\end{figure}
+\end{figure} 
 
-\begin{comment}
-\begin{itemize}
-    \item Check Mass convergence
-    \item Check distribution convergence
-    \item Relate to ESS
-    \item What about Dynamics??? BR
-\end{itemize} 
-\end{comment}
+
+\begin{figure}[ht] 
+    \centering
+    \caption{Agent-Based Simulation Best Response Dynamics}
+    \includegraphics{abm-br-balanced.png}
+    \label{fig:abm-br-balanced}
+\end{figure} 
 \subsection{Social Efficiency}
 
 
