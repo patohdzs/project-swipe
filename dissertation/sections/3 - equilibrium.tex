@@ -1,9 +1,9 @@
 \section{Equilibrium \& Comparative Statics}
 \label{sec:section3} 
-\subsection{Steady State Equilibrium and Approximation}\label{sec:section3.1} 
+\subsection{Steady State Equilibrium and Computation}\label{sec:section3.1} 
 Using the framework and results above, I now present a refined definition for the steady state equilibrium of the market: 
 \begin{definition}
-    A Steady State Equilibrium is defined by a triplet $(\mu^*, \omega^*, \Psi^*)$ such that:
+    A Steady State Equilibrium (SSE) is a triplet $(\mu^*, \omega^*, \Psi^*)$ such that:
     \begin{enumerate}
         \item $ \mu^*(\theta,b) \text{ attains } V_m(\theta,b), \; \forall\, \theta, b \in \Theta \times \mathcal{B}_m$, given $\omega^*,\Psi^*$
         \item $ \omega^*(\theta,b) \text{ attains } V_w(\theta,b), \; \forall\, \theta, b \in \Theta \times \mathcal{B}_w$, given $\mu^*,\Psi^*$
@@ -11,12 +11,12 @@ Using the framework and results above, I now present a refined definition for th
     \end{enumerate} 
 \end{definition}
 
-Intuitively, the above definition establishes two conditions that must be satisfied by an equilibrium market configuration. 
+Intuitively, the above definition establishes two requirements that must be satisfied by an equilibrium market configuration. 
 Firstly, it must be the case that $\mu^*$ and $\omega^*$ are mutual best responses given the platform state $\Psi^*$ for which, as previously outlined, a necessary and sufficient condition would have them each solve the sex-specific MDP. 
-These two conditions alone correspond to \textit{partially rational expectations equilibria} (PREE), as per \cite{burdett1997marriage}, since they require agents to play optimally for some fixed steady state, imposing rationality on all game aspects other than the platform state dynamics.  
+These two conditions alone correspond to \textit{partially rational expectations equilibria} (PREE), as per \cite{burdett1997marriage}, since they require agents to play optimally for some fixed steady state $\Psi^*$, imposing rationality on all game aspects other than the platform state dynamics.  
 Furthermore, in line with mean-field game theory literature, a \textit{consistency check} is imposed by the third condition, which requires that the platform steady state to which agents are best-responding with $(\mu^*,\omega^*)$ is sustained as a fixed point, thus constraining the set of PREE to define full steady state equilibria. 
 
-Although formal proofs for the existence and uniqueness of steady-state equilibria are outside the scope of this paper, I instead rely on numerical computation procedures\footnote{The code required to reproduce all analysis presented in this paper is fully accessible under the GitHub repository \texttt{patohdzs/project-tinder}} to approximate equilibria under various exogenous settings to shed some light on the insights provided by the above theoretical model. To compute model equilibria, I frame the recurrence relation presented in Proposition 1, as well as Equations \ref{eq:ss1}, \ref{eq:ss2}, and \ref{eq:ss3}, as a system of $2(|\mathcal{B}_m|+|\mathcal{B}_w|+1)$ non-linear equations, and solve this using a modified version of the hybrid Powell method, as implemented by the MINPACK 1 routine \citep{more1980user}  
+Although formal proofs for the existence and uniqueness of steady-state equilibria are outside the scope of this paper, I rely on numerical procedures\footnote{The code required to reproduce all analysis presented in this paper is fully accessible under the GitHub repository \texttt{patohdzs/project-swipe}} to approximate equilibria under various exogenous settings. This approach has been frequently employed by related works \citep[see][]{iyer2014mean, gummadi2011optimal} as it can help uncover insights provided by mean-field models. To compute model equilibria, I frame the recurrence relation presented in \autoref{prop:recurrence relation}, as well as Equations \ref{eq:ss1}, \ref{eq:ss2}, and \ref{eq:ss3}, as a system of $2(|\mathcal{B}_m|+|\mathcal{B}_w|+1)$ non-linear equations, and solve this using a modified version of the hybrid Powell method, as implemented by the MINPACK 1 routine \citep{more1980user}  
 
 \subsection{Best Response Analysis}\label{sec:section3.2} 
 Using the computational procedures outlined above, a number of insights can be uncovered related to how exogenous parameters affect an agent's best-response swiping strategy. The first parameter I analyse is the discount factor, which represents the probability of remaining inside the platform for an additional time period, but is often interpreted as the representative agent's patience level. To determine the effects of changes in the discount factor, I computed the best-response policy over a range of different values for $\delta$ (using an arbitrary set of exogenous parameters), with results shown in \autoref{fig:discount-cs}. Evidently, as the agent becomes less patient, they `lower their standards' for potential matches in the platform, shifting their swiping curve downwards. 

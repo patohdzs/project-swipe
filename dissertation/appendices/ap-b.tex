@@ -1,33 +1,76 @@
-\section{Proof for Proposition 1}
-\label{appx: b} 
-\begin{proof}
-To prove Proposition 1, we rely the following two equations; the first of which expresses the agent's value function in piecewise form, and the second of which describes the necessary condition for all reservation attractiveness values:
-
-\begin{align}
-    \begin{split}\label{eq:A.1}
-        V(\theta, b)=\begin{cases} 
-            \overline\mu u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b-1)\Big],& \theta> \widetilde \omega_b \\[10pt]
-            \alpha \,\mathbb{E}_{\theta}\Big[V(\theta', b)\Big],& \theta\leq\widetilde \omega_b
-        \end{cases}
-    \end{split}\\[10pt]
-    \begin{split}\label{eq:A.2}
-        \overline\mu u(\widetilde\omega_b) = \alpha \, \mathbb{E}_\theta\Big[\,V(\theta',b)-V(\theta',b-1)\,\Big] 
-    \end{split} 
-\end{align} 
- 
-To simplify notation, denote the continuation value at budget $b$ by:
-
+\section{Proofs for \autoref{sec:section2.3}}\label{appx: b} 
+To simplify notation for \autoref{appx: b}, I denote the continuation value at budget $b$ by: 
 \begin{equation*}
     \begin{aligned}
-        &K_{b}:=\alpha \,\mathbb{E}_{\theta}\left[V(\theta', b)\right] 
+        &K_{b}:=\alpha \,\mathbb{E}_{\theta}\left[V_w(\theta', b)\right] 
     \end{aligned} 
 \end{equation*}
 
-Starting out with \autoref{eq:A.2} and expanding out the expectation operator, we can use \ref{eq:A.1} to substitute in the piecewise definitions of $V(\theta,b)$ over the appropriate intervals:
+\subsection{Proof for \autoref{prop:piecewiseV} and \autoref{cor:optpolicy}} 
+\begin{proof}
+    To prove \autoref{prop:piecewiseV}, fix any $b\in\mathcal{B}_w$. First, note that the difference between any two consecutive continuation values $K_b$ and $K_{b-1}$ must lie between 0 and $\overline{\mu}u(1)$. This is true since the value function denotes the expected lifetime sum of payoffs, and an additional right-swipe can provide an agent with, at most, an additional payoff of $\overline{\mu}u(1)$ and, at least, a payoff of $0$. Now consider:
+    \begin{equation*}
+        \begin{aligned} 
+            V_w(\theta,b) \;&=\;\max\left\{\,\overline{\mu} \, u(\theta) +\alpha \,\mathbb{E}_\theta \Big[V_w(\theta', b-1)\Big]\,,\; \alpha\,\mathbb{E}_\theta \Big[ V_w(\theta', b)\Big]\,\right\}\\
+            &=\; \max\left\{\,\overline{\mu} \, u(\theta) + K_{b-1} \,,\; K_b \,\right\}\\
+            &=\; K_{b-1} + \max\left\{\,\overline{\mu} \, u(\theta) \,,\; K_b - K_{b-1}\,\right\}
+        \end{aligned}
+    \end{equation*}
+    Since $u(\theta)$ is, by assumption, continuous and increasing over $\Theta$, then it must be that the second term on the RHS of the line above equals $K_b - K_{b-1}$ over $[0, \widetilde\omega_b]$, and $\overline{\mu} \, u(\theta)$ over $[\widetilde\omega_b, 1]$, where $\widetilde\omega_b$ satisfies: 
+    \begin{equation*}
+        \begin{aligned} 
+            \overline\mu u(\widetilde\omega_b) &= K_b-K_{b-1} \\
+            &=\alpha \, \mathbb{E}_\theta\Big[\,V_w(\theta',b)-V_w(\theta',b-1)\,\Big]
+        \end{aligned} 
+    \end{equation*}
+    Thus, by considering the above function over the intervals $[0, \widetilde\omega_b]$ and $[\widetilde\omega_b, 1]$ separately, and substituting back the expressions for $K_b, K_{b-1}$, we conclude that:
+    \begin{equation*}
+    \begin{split}
+        V_w(\theta,b)=\begin{cases}
+            \overline\mu u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b-1)\Big],& \theta> \widetilde \omega_b \\[10pt]
+            \alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b)\Big],& \theta\leq\widetilde \omega_b
+        \end{cases} 
+    \end{split}
+    \end{equation*} 
 
+    Furthermore, \autoref{cor:optpolicy} follows trivially from the above. 
+\begin{comment} 
+    When a woman with budget $b$ is presented a candidate with attractiveness $\theta \geq \widetilde\omega_b$ and she swipes right, her expected lifetime sum of discounted payoffs is:
+    \begin{equation*}
+        \begin{split}
+            \overline\mu u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b-1)\Big]\\
+            = V_w(\theta,b)
+        \end{split}
+    \end{equation*}
+    Alternatively, when presented a candidate with attractiveness $\theta<\widetilde\omega_b$ and she swipes left:
+    \begin{equation*}
+        \begin{split}
+            \alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b)\Big]\\
+            = V_w(\theta,b)
+        \end{split}
+    \end{equation*} 
+\end{comment}
+\end{proof}
+
+\subsection{Proof for \autoref{prop:recurrence relation}} 
+\begin{proof}
+To prove \autoref{prop:recurrence relation}, we rely on the two equations established by \autoref{prop:piecewiseV}; the first of which expresses the agent's value function in piecewise form, and the second of which describes the necessary condition for all reservation attractiveness values: 
+\begin{align}
+    \begin{split}\label{eq:A.1}
+        V_w(\theta, b)=\begin{cases} 
+            \overline\mu u(\theta) + \alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b-1)\Big],& \theta> \widetilde \omega_b \\[10pt]
+            \alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b)\Big],& \theta\leq\widetilde \omega_b
+        \end{cases}
+    \end{split}\\[10pt]
+    \begin{split}\label{eq:A.2}
+        \overline\mu u(\widetilde\omega_b) = \alpha \, \mathbb{E}_\theta\Big[\,V_w(\theta',b)-V_w(\theta',b-1)\,\Big] 
+    \end{split} 
+\end{align}  
+
+Starting out with \autoref{eq:A.2} and expanding out the expectation operator, we can use \ref{eq:A.1} to substitute in the piecewise definitions of $V_w(\theta,b)$ over the appropriate intervals: 
 \begin{equation}\label{eq:A.3}
     \begin{split}
-        \overline\mu u(\widetilde\omega_b) &= \alpha \,\int^1_0 V(\theta',b)-V(\theta',b-1)\,dF_m(\theta')\\
+        \overline\mu u(\widetilde\omega_b) &= \alpha \,\int^1_0 V_w(\theta',b)-V_w(\theta',b-1)\,dF_m(\theta')\\
                                            &=\alpha \int^{\widetilde\omega_b}_0 K_b\,dF_m(\theta') \;+\; \alpha \int^1_{\widetilde\omega_b}\,\overline\mu u(\theta') + K_{b-1}\,dF_m(\theta')\\ 
                                            & \quad -\,\alpha \int^{\widetilde\omega_{b-1}}_0 K_{b-1}\,dF_m(\theta') \;-\; \alpha \int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta') + K_{b-2}\,dF_m(\theta')
     \end{split}
@@ -43,8 +86,7 @@ $$
 \overline\mu u(\widetilde\omega_{b-1}) +K_{b-2}=K_{b-1}
 $$
 
-Then, by substituting these expressions into \ref{eq:A.3}, we arrive at \ref{eq:A.4}:
-
+Then, by substituting these expressions into \ref{eq:A.3}, we arrive at \ref{eq:A.4}: 
 \begin{equation}\label{eq:A.4}
     \begin{split}
         \overline\mu u(\widetilde\omega_b) &=\alpha \int^{\widetilde\omega_b}_0 \overline\mu u(\widetilde\omega_b) +K_{b-1}\,dF_m(\theta') \;+\; \alpha \int^1_{\widetilde\omega_b} \,\overline\mu u(\theta') + K_{b-1}\,dF_m(\theta')\\ 
@@ -52,32 +94,28 @@ Then, by substituting these expressions into \ref{eq:A.3}, we arrive at \ref{eq:
     \end{split}
 \end{equation}
 
-With some algebra, this simplifies down to the recurrence relation in \autoref{eq:recurrence relation}: 
-
+With some algebra, this simplifies down to the recurrence relation in \autoref{eq:recurrence relation}:  
 \begin{equation}
     u(\widetilde\omega_b)=\alpha   u(\widetilde\omega_b)F_m(\widetilde\omega_b) \;+\; \alpha  u(\widetilde\omega_{b-1})\Big[1  - F_m(\widetilde\omega_{b-1})\Big] \;+\; \alpha\int^{\widetilde\omega_{b-1}}_{\widetilde\omega_b} u(\theta') \,dF_m(\theta') 
 \end{equation}
 
-Furthermore, to obtain the initial condition for the above, note that the right-swiping budget constraint imposes $V(\theta,0)=0, \forall b\in \mathcal{B}_w$. Then, \ref{eq:A.1} and \ref{eq:A.2} simplify to:
-
-
+Furthermore, to obtain the initial condition for the above, note that the right-swiping budget constraint imposes $V_w(\theta,0)=0, \forall b\in \mathcal{B}_w$. Then, \ref{eq:A.1} and \ref{eq:A.2} simplify to: 
 \begin{align}
     \begin{split}\label{eq:A.5} 
-        V(\theta, 1)=\begin{cases} 
+        V_w(\theta, 1)=\begin{cases} 
             \overline\mu u(\theta),& \theta> \widetilde \omega_1 \\[6pt] 
-            \alpha \,\mathbb{E}_{\theta}\Big[V(\theta', 1)\Big],& \theta\leq\widetilde \omega_1
+            \alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', 1)\Big],& \theta\leq\widetilde \omega_1
         \end{cases}
     \end{split}\\[10pt]
     \begin{split}\label{eq:A.6}
-        \overline\mu u(\widetilde\omega_1) = \alpha \, \mathbb{E}_\theta\Big[\,V(\theta',1)\,\Big] 
+        \overline\mu u(\widetilde\omega_1) = \alpha \, \mathbb{E}_\theta\Big[\,V_w(\theta',1)\,\Big] 
     \end{split} 
 \end{align}
 
-Beginning with \ref{eq:A.6}, we simplify until arriving at \autoref{eq:initial condition}:
-
+Beginning with \ref{eq:A.6}, we simplify until arriving at \autoref{eq:initial condition}: 
 \begin{equation*} 
     \begin{split}
-        \overline\mu u(\widetilde\omega_1) &= \alpha \, \mathbb{E}_\theta\Big[\,V(\theta',1)\,\Big]\\
+        \overline\mu u(\widetilde\omega_1) &= \alpha \, \mathbb{E}_\theta\Big[\,V_w(\theta',1)\,\Big]\\
         &= \alpha \,\int^{\widetilde\omega_1}_0\,K_1\,dF_m(\theta') + \alpha \,\int_{\widetilde\omega_1}^1 \overline\mu u(\theta')\,dF_m(\theta')\\
         &= \alpha \,\int^{\widetilde\omega_1}_0 \overline\mu u(\widetilde\omega_1)\,dF_m(\theta') + \alpha \,\int_{\widetilde\omega_1}^1 \overline\mu u(\theta')\,dF_m(\theta')\\
         &= \alpha \overline\mu u(\widetilde\omega_1)F_m(\widetilde\omega_1) + \alpha \,\int_{\widetilde\omega_1}^1 \overline\mu u(\theta')\,dF_m(\theta')\\
@@ -85,5 +123,5 @@ Beginning with \ref{eq:A.6}, we simplify until arriving at \autoref{eq:initial c
     \end{split}
 \end{equation*}  
 
-To conclude the proof, note that the existence and uniqueness of some $\widetilde\omega_b$ that satisfies \ref{eq:A.2} is guaranteed given the assumptions on $u(\theta)$ being continuous and strictly increasing. Since the difference between any two consecutive continuation values must lie strictly between 0 and $u(1)$, then, by the Intermediate Value Theorem, there exists one and only one root $\widetilde\omega_b$ satisfying \ref{eq:A.2} and, by extension the above reoccurrence relation. 
+To conclude the proof, note that the existence and uniqueness of some $\widetilde\omega_b$ that satisfies \ref{eq:A.2} is guaranteed given the assumptions on $u(\theta)$ being continuous and strictly increasing. Since the difference between any two consecutive continuation values must lie strictly between 0 and $\overline{\mu}u(1)$, then, by the Intermediate Value Theorem, there exists one and only one root $\widetilde\omega_b$ satisfying \ref{eq:A.2} and, by extension the above reoccurrence relation. 
 \end{proof}
