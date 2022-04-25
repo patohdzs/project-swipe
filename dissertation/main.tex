@@ -1,7 +1,8 @@
 \documentclass[pdftex,12pt,a4paper]{article} 
+% margin size
 \usepackage[margin=1in]{geometry}
-\usepackage{comment}
 
+% Math and algorithms
 \usepackage{amsmath,amssymb,amsthm,esint}  % For both in-line and equation mode
 \usepackage{bbm}
 \usepackage{bm}
@@ -14,47 +15,48 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{corollary}{Corollary}
 
-\usepackage{fancyhdr} % For our headers
-\usepackage{graphicx} % Inserting images
-\graphicspath{ {../figures/} }
-
-\usepackage{lipsum}  % Blank text fill, delete me when finished
 \usepackage{setspace} %Spacing on the front page for crest and titles
 \usepackage[]{fncychap} % Styles can be Sonny, Lenny, Glenn, Conny, Rejne, Bjarne and Bjornstrup
-\usepackage[hyphens]{url} %Deals with hyphens in urls to make them clickable
+\usepackage[hyphens]{url} % Deals with hyphens in urls to make them clickable
 \usepackage{xcolor} % Great if you want coloured text
-\usepackage{tabularx}
-\usepackage{natbib}
 
+% Figures
+\usepackage{graphicx} % Inserting images
+\graphicspath{ {../figures/} } 
+
+% Tables
+\usepackage{tabularx}
+\usepackage{multirow} 
+\renewcommand{\arraystretch}{1.5}
+
+% Appendix
+\usepackage{appendix} 
+
+\usepackage{natbib}
+\usepackage{comment}
+
+% Tikz figures
 \usepackage{tikz}
 \newcommand{\ImageWidth}{14cm} 
-\usetikzlibrary{decorations.pathreplacing,positioning, arrows.meta}
+\usetikzlibrary{decorations.pathreplacing,positioning, arrows.meta} 
 
-\usepackage{appendix}  %...
-
-\usepackage[symbol]{footmisc} % Fancy footnotes
+ % Fancy headers and footnotes
+ \usepackage{fancyhdr}
+\usepackage[symbol]{footmisc}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}} 
 
-%KEEP THIS ONE LAST it's quite buggy, it allows you to click on links within the pdf and web links without changing the colour. The mouse cursor simply changes its icon to indicate to the user. Great tool - still awkward
-\usepackage[hidelinks]{hyperref} 
-
+% Hyperlinks and auto-references
+\usepackage[hidelinks]{hyperref}  
 \def\sectionautorefname{Section}
 \def\appendixname{Appendix}
 \newcommand{\propositionautorefname}{Proposition}
 \newcommand{\definitionautorefname}{Definition}
-\newcommand{\corollaryautorefname}{Corollary}
-
-\usepackage{setspace}
-
-%This will tell the compiler to do the header style, page and spacing between the header and text 
-
-
+\newcommand{\corollaryautorefname}{Corollary}  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT STARTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
 \begin{document}  
-\include{preamble/front-page} 
-%\include{Report/preamble/Acknowledgements}
-%\include{Report/preamble/Abbreviations}
+\include{preamble/front-page}  
 \input{preamble/contents}
 \input{sections/1 - introduction}
 \input{sections/2 - model}
@@ -62,13 +64,10 @@
 \input{sections/4 - simulations} 
 \input{sections/5 - conclusion}
 
-
 \pagebreak
+
 \bibliographystyle{apalike}
 \bibliography{references}
 
-\include{appendices/appendix}
-%\include{Report/preamble/lists}
-%\include{Report/preamble/ChapterMods}
-
+\include{appendices/appendix} 
 \end{document}
