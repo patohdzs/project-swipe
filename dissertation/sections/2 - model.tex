@@ -39,17 +39,18 @@ Perhaps trivially, swiping right in the above stage game is weakly dominant for 
   b_{t+1}= b_{t}- a_{t} 
 \end{equation*}
 
-The budget sets for men and women are thus defined by $\mathcal{B}_{s}=\{b \in \mathbb{Z} : 1\leq b \leq B_s\}$, for each sex $s=m,w$, with budget caps $B_m$ and $B_w$ determined exogenously. Importantly, agents depart from the platform in one of two ways: they can leave \textit{endogenously}, if they expend their swiping budget, or \textit{exogenously} with probability $(1-\delta)$ in each time period. This admits to the interpretation of a geometrically distributed lifetime, parametrised by $\delta$, and implies that agents use this as a discounting factor for future payments. 
+The budget sets for men and women are thus defined by $\mathcal{B}_{s}=\{b \in \mathbb{Z} : 1\leq b \leq B_s\}$, for each sex $s=m,w$, with budget caps $B_m$ and $B_w$ determined exogenously. Importantly, agents depart from the platform in one of two ways: they can leave \textit{endogenously}, if they expend their swiping budget, or \textit{exogenously} with probability $(1-\delta)\in(0,1)$ in each time period. This admits to the interpretation of a geometrically distributed lifetime, parametrised by $\delta$, and implies that agents use this as a discounting factor for future payments. 
 
-One final thing to note is that a continuum market with anonymous interactions, along with the mean-field assumption established in \autoref{sec:section2.3} effectively restricts the paper's focus onto the set of (pure) symmetric stationary strategies. This is argued in more detail in the following sections but, for now, denote these strategies by functions $\mu: \Theta \times\mathcal{B}_m\rightarrow \mathcal{A}_m$ for men and $\omega:\Theta \times\mathcal{B}_w\rightarrow \mathcal{A}_w$ for women.
+One final remark for this setup is that, in a continuum market with anonymous interactions, the mean-field assumption established in \autoref{sec:section2.3} effectively restricts focus onto the set of (pure) symmetric stationary strategies. This is argued in more detail in the following sections but, for now, denote these strategies by functions $\mu: \Theta \times\mathcal{B}_m\rightarrow \mathcal{A}_m$ for men and $\omega:\Theta \times\mathcal{B}_w\rightarrow \mathcal{A}_w$ for women.
 
 \subsection{The Dating Market}\label{sec:section2.2}
 Given the above framework, I now outline the platform state variables that make up the SBDP market. 
-Let $N_{mt}(b), N_{wt}(b)$ denote the mass of male and female agents (respectively) with a budget of $b\in\mathcal{B}$ in a given time period $t$. Additionally, with a slight abuse of notation, let $N_{mt}, N_{wt}$ denote the overall mass of male and female agents (respectively) in the platform, i.e. $\sum_{b\in\mathcal{B}_m}N_{mt}(b)$ and $\sum_{b\in\mathcal{B}_w}N_{wt}(b)$.
-Since gender imbalances can leave some agents in the long side of the market unpaired, a pairings process must also be determined. Given fairness considerations, as well the automated nature of SBDPs, I assume an efficient matching technology and model pairings as a Bernoulli process parametrised by market tightness; thus, the probability of being paired with a candidate is defined for both sides as:  
+Let $N_{mt}(b), N_{wt}(b)$ denote the mass of male and female agents (respectively) with a budget of $b\in\mathcal{B}$ in a given time period $t$. 
+%Additionally, with a slight abuse of notation, let $N_{mt}, N_{wt}$ denote the overall mass of male and female agents (respectively) in the platform, i.e. $\sum_{b\in\mathcal{B}_m}N_{mt}(b)$ and $\sum_{b\in\mathcal{B}_w}N_{wt}(b)$.
+Since gender imbalances can leave some agents in the long side of the market unpaired, a pairings process must also be determined. Given the automated nature of SBDPs, I assume an efficient matching technology and model pairings as a Bernoulli process parametrised by market tightness; thus, the probability of being paired with a candidate is defined for both sides as:  
 \begin{equation*}
-    \tau_{mt}:=\min \left\{\frac{N_{wt}}{N_{mt}} , 1 \right\}, 
-    \quad \tau_{wt}:= \left(\frac{N_{mt}}{N_{wt}} \right) \tau_{mt} 
+    \tau_{mt}:=\min \left\{\frac{\sum_{b\in\mathcal{B}_w}N_{wt}(b)}{\sum_{b\in\mathcal{B}_m}N_{mt}(b)} , 1 \right\}, 
+    \quad \tau_{wt}:= \left(\frac{\sum_{b\in\mathcal{B}_m}N_{mt}(b)}{\sum_{b\in\mathcal{B}_w}N_{wt}(b)} \right) \tau_{mt} 
 \end{equation*}
 
 From the above, the platform state in time period $t$ can be defined as $\Psi_t=(N_{mt},N_{wt})$. 
@@ -57,7 +58,7 @@ For most of this paper, I focus on characterising user behaviour and its resulti
 As a necessary requirement, the market steady state $\Psi_t=\Psi_{t+1}=...=\Psi$ must satisfy the balanced flow conditions \footnote{Formally, these conditions rely on the exact law of large numbers, which has been rigorously developed for discrete-time settings by \cite{duffie2018dynamic}, but a technical discussion of this lies outside the scope of this paper.} for our continuum model; these are presented below for the female agents, but they apply analogously to the male side of the market. 
 Firstly, the entry flow of agents into the platform must equal the departure flow: 
 \begin{equation}\label{eq:ss1} 
-    \lambda_w\;=\; \underbrace{ (1-\delta)\,N_w}_{\text{Exogenous Outflow}} \;+\; \underbrace{N_w(1) \delta \tau_w\int_{\Theta}\omega(\theta,1)\,dF_{m}(\theta)}_{\text{Endogenous Outflow}} 
+    \lambda_w\;=\; \underbrace{ (1-\delta)\sum_{b\in\mathcal{B}_w}N_{wt}(b)}_{\text{Exogenous Outflow}} \;+\; \underbrace{N_w(1) \delta \tau_w\int_{\Theta}\omega(\theta,1)\,dF_{m}(\theta)}_{\text{Endogenous Outflow}} 
 \end{equation} 
 
 Secondly, for both sides, the flow of agents into any particular budget level must equal the outflow of agents from that same level. Thus, for all $b\in\mathcal{B}_w$: 
@@ -65,36 +66,37 @@ Secondly, for both sides, the flow of agents into any particular budget level mu
     \underbrace{N_w(b+1) \delta \tau_w \int_{\Theta} \omega(\theta,b+1)\,dF_{m}(\theta)}_{\text{Inflow into $b$}} \;=\; \underbrace{N_w(b) \Big[ (1-\delta) \;+\; \delta \tau_w\int_{\Theta} \omega(\theta,b)\,dF_{m}(\theta)\Big]}_{\text{Outflow from $b$}}
 \end{equation}
 
-Finally, the entry flow of agents into the platform must equal the outflow from the top budget level, hence: \begin{equation}\label{eq:ss3} 
+Finally, the entry flow of agents into the platform must equal the outflow from the top budget level, hence: 
+\begin{equation}\label{eq:ss3} 
     \lambda_w \;=\; \underbrace{N_w(B_w) \Big[ (1-\delta) \;+\; \tau_w \delta \int_{\Theta} \omega(\theta,B_w)\,dF_{m}(\theta) \Big]}_{\text{Outflow from $B_w$}}
 \end{equation} 
 
 Importantly, the above conditions take the strategy profile $(\mu,\omega)$ as exogenously fixed. Over the next section, these are endogenously derived from the agents’ best-responses, which themselves depend on the market steady-state.
 
 \subsection{The Search Problem}\label{sec:section2.3}
-With the model framework outlined above, I now present the decision problem faced by female agents in the market, with analogous results and implications for the male side. 
-In the discussion below, I derive the female best-response function given some platform steady-state $\Psi$. 
-Consider now a woman $i$ who is paired with a man $j$ in the platform. 
-Given that $j$'s swiping behaviour will depend on his own budget, which is unknown to woman $i$, then (under strict rationality) woman $i$ would have to compute her expected payoff conditional on her beliefs for the market history. 
-This behaviour is both unreasonable and intractable in an SBDP setting, as explained in \autoref{sec:section1.1}; instead, given a continuum of agents who interact anonymously, it is reasonable to conjecture that the average swiping rate for men in the platform steady-state is also stationary, and that any individual agent's actions has a negligible effect on the platform state dynamics.
-As such, the expected ex-interim payoff for woman $i$, given that she observes attractiveness $\theta$ for candidate $j$ and chooses action $a$, is the following:
+With the model framework outlined above, I now present the decision problem faced by female agents in the market given some platform steady-state $\Psi$, with analogous results and implications for the male side. 
+Consider now a woman $i$ who is paired with a man $j$ in the platform. Since $j$'s swiping behaviour will depend on his own budget, which is unknown to woman $i$, then (under strict rationality) she would have to compute her expected payoff conditional on her beliefs for the market history. 
+
+This behaviour is both unreasonable and intractable in an SBDP setting, as explained in \autoref{sec:section1.1}; instead, given a stationary platform and a continuum of anonymous agents, it is reasonable to conjecture that the average swiping rate for men, $\overline\mu$, is also stationary, and that any individual agent's actions have a negligible effect on the platform state dynamics.
+As such, the expected ex-interim payoff for woman $i$ is the following:
 \begin{equation*}
     \begin{aligned}
-        U(\theta, a)&=\Big(\overline{\mu}\,\mathbbm{1}\{a=\text{Swipe Right}\}\Big)\,u(\theta)%, \\[8pt] \quad \text{where}\quad \overline{\mu} &= \sum_{b\in \mathcal{B}_m}\int_{\Theta}\frac{{N}_m(b)}{N_m}  \, \mu(\theta',b)\,dF_w(\theta')
+        U(\theta, a)&=\Big(\mathbbm{1}\{a=\text{Swipe Right}\}\Big)\,\overline{\mu}u(\theta)%, \\[8pt] \quad \text{where}\quad \overline{\mu} &= \sum_{b\in \mathcal{B}_m}\int_{\Theta}\frac{{N}_m(b)}{N_m}  \, \mu(\theta',b)\,dF_w(\theta')
     \end{aligned} 
 \end{equation*} 
 
-Here, $\overline\mu$ denotes the average swiping rate for men, thus imposing a mean-field assumption such that woman $i$ considers \textit{only} this average swiping rate conditional on the steady-state market $\Psi$. 
-This modelling choice, which has been employed by \cite{immorlica2021designing} and \cite{iyer2014mean} among others, simplifies the full dynamic game by collapsing it onto a pair of Markov Decision Processes (MDPs), one for each side of the market, where strategy $\omega$ is a best response for female agents if, and only if, it is an optimal policy for the corresponding MDP. 
-Furthermore, this also condenses the state of payoff-dependent variables for $i$ to include only the value $\theta$ that she observes for $j$ and her own budget $b$. 
-Therefore, since all agents in the same side solve the same MDP, which depends only on their individual state, this effectively justifies the restricted focus on symmetric stationary, as established in \autoref{sec:section2.1}.
+The above imposes a mean-field assumption, such that woman $i$ accounts for $j$'s behaviour only through $\overline\mu$ conditioned on the steady-state $\Psi$.
+This modelling choice, which has been employed by \cite{immorlica2021designing} and \cite{iyer2014mean} among others, simplifies the full dynamic game by collapsing it onto a pair of Markov Decision Processes (MDPs), one for each side of the market, such that strategy $\omega$ is a best-response for women iff it is an optimal policy for the corresponding MDP. 
+Additionally, this also condenses $i$'s state of payoff-dependent variables to include only the value $\theta$ that she observes for $j$ and her own budget $b$. 
+Therefore, since all agents in the same side solve the same MDP, which depends only on their individual state, this effectively justifies the restricted focus on symmetric stationary strategies, as established in \autoref{sec:section2.1}.
 
-Let the jump times of the realised pairing process for woman $i$ be index by $k$. Given that, at the time of pairing, this women has a budget of $b$ right swipes left, she then solves the constrained MDP presented below, captured by the value function $V_w(\theta,b)$: 
+Let the jump times of the realised pairing process for woman $i$ be index by $k$. 
+Given that, at the time of pairing, this women has a budget of $b$ right swipes left, she then solves the constrained MDP presented below, captured by the value function $V_w(\theta,b)$: 
 \begin{equation*}
     \begin{aligned} 
         V_w(\theta,b)=\max_{\{a_k\}^\infty_{k=0}} \quad & \mathbb{E}_{\theta}\left[\sum^\infty_{k=0} \delta^{k} U(\theta_k, a_k) \;|\; \theta_0=\theta, b_0=b\right]\\ 
         \textrm{s.t.} \quad & b_{k+1} = b_k -a_k \\
-        & b_k\in \mathcal{B}_w \cup \{0\} \\
+        & b_k\in \mathcal{B}_w \cup \{0\},\\
         & a_k\in \mathcal{A}  
     \end{aligned}
 \end{equation*}
@@ -118,18 +120,18 @@ With some straightforward algebra, the above two equations can be merged into th
     \end{aligned}
 \end{equation}
 
-Where $\alpha$ is the effective discount rate accounting for the exogenous possibilities of both departures and pairings, defined as:  
+Here, $\alpha$ is the effective discount rate accounting for the exogenous possibilities of both departures and pairings, defined as:  
 \begin{equation*}
-\alpha:=\frac{\tau_w\delta}{1-\delta(1-\tau_w)}
+\alpha:=\frac{\tau_w\delta}{1-\delta(1-\tau_w)}.
 \end{equation*}
 
-Upon inspection, it is clear that the value function is of a piecewise nature over $\Theta$, in a similar manner to \cite{mccall1970economics}. This is formally stated below (with the corresponding derivation included in \autoref{appx: b}): 
+Upon inspection, it is clear that the value function is of a piecewise nature over $\Theta$. This is formally stated below (with the corresponding derivation included in \autoref{appx: b}): 
 \begin{proposition}\label{prop:piecewiseV}
 Fix some $b\in\mathcal{B}_w$. Then the value function $V_w(\theta,b)$ for women admits the following piecewise form over $\Theta$:  
 \begin{equation*}
     \begin{split}
         V_w(\theta,b)=\begin{cases}
-            \overline\mu u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b-1)\Big],& \theta> \widetilde \omega_b \\[10pt]
+            \overline\mu u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b-1)\Big],& \theta \geq \widetilde \omega_b \\[10pt]
             \alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b)\Big],& \theta\leq\widetilde \omega_b
         \end{cases}\\[8pt]  
     \end{split}
@@ -137,7 +139,7 @@ Fix some $b\in\mathcal{B}_w$. Then the value function $V_w(\theta,b)$ for women 
 where $\widetilde{\omega}_b$ satisfies:$ \quad \, \overline\mu u(\widetilde\omega_b) = \alpha \, \mathbb{E}_\theta\Big[\,V_w(\theta',b)-V_w(\theta',b-1)\,\Big]$
 \end{proposition}  
 
-In the above, the reservation attractiveness levels $\{\widetilde\omega\}_{b\in \mathcal{B}_w}$ must be such that woman $i$ is indifferent between swiping left or right, thus creating the piecewise split in $V_w$. The above result therefore helps determine a functional form for the optimal policy, in which women $j$ swipes right for partners who exceed the reservation level for her current budget:  
+Here, the reservation values $\{\widetilde\omega\}_{b\in \mathcal{B}_w}$ are such that woman $i$ is indifferent between swiping left or right. Therefore, an optimal policy for woman $i$'s MDP could involve swiping right for partners who exceed the reservation value for her current budget:  
 \begin{corollary}\label{cor:optpolicy}
     The following policy $\widetilde\omega$, parametrised by $\{\widetilde\omega\}_{b\in \mathcal{B}_w}$, attains $V_w(\theta,b)$:
     \begin{equation*}
@@ -150,9 +152,9 @@ In the above, the reservation attractiveness levels $\{\widetilde\omega\}_{b\in 
     \end{equation*} 
 \end{corollary} 
 
-Using both of these results, I derive the following explicit characterisation for $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$ (with a corresponding proof included in \autoref{appx: b}):  
+Strictly speaking, there is an infinite number of optimal policies for this MDP that involve any action mix at the indifference point $\widetilde\omega_b$, but I refrain from further discussion of this technicality given that there is a measure zero of agents for which $i$ observes such reservation value. Using both of these results, I derive the following explicit characterisation for $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$ (with a corresponding proof included in \autoref{appx: b}):  
 \begin{proposition}\label{prop:recurrence relation}
-The set of reservation attractiveness levels for women, $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$, uniquely satisfies the recurrence relation and initial condition below, over the budget set $\mathcal{B}_w$: 
+The set of reservation values for women, $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$, uniquely satisfies the recurrence relation and initial condition below, over the budget set $\mathcal{B}_w$: 
 \begin{equation}\label{eq:recurrence relation}
     \begin{aligned}
         u(\widetilde \omega_b) \;=\; \alpha u(\widetilde \omega_b) F_m(\widetilde \omega_b) \;+\; \alpha u(\widetilde \omega_{b-1}) \Big[1- F_m(\widetilde \omega_{b-1})\Big] \;+\; \int^{\widetilde \omega_{b-1}}_{\widetilde \omega_b} \alpha u(\theta')\,dF_m(\theta')
