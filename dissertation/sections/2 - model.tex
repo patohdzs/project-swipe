@@ -34,7 +34,7 @@ After payoffs have been received, agents are paired with different candidates an
     \label{fig:timeline}
 \end{figure}
 
-Since swiping right in the above stage game is weakly dominant for all agents, one would not expect the above repeated interaction to be massively revealing of real-life preferences, where initiating a romanic encounter is often perceived by humans as a costly endeavour \citep{dawkins2017selfish}. This becomes problematic since the main selling point of SBDPs is a reduction in searching costs for individuals seeking romantic encounters, and this is only accomplished if matches have a high likelihood of resulting in real-life romantic attraction. Because of this, SBDPs like Tinder place a cap on the total number of right swipes for each user, thus enabling this as a form of costly signalling. I refer to the total number of right-swipes a user has left as its \textit{budget}, $b$, which evolves dynamically according to the law of motion: 
+Since swiping right in the above stage game is weakly dominant for all agents, one would not expect the repeated interaction to be massively revealing of real-life preferences, where initiating a romanic encounter is often perceived by humans as a costly endeavour \citep{dawkins2017selfish}. This becomes problematic since the main selling point of SBDPs is a reduction in searching costs for individuals seeking romantic encounters, and this is only accomplished if matches have a high likelihood of resulting in real-life romantic attraction. Because of this, SBDPs like Tinder place a cap on the total number of right swipes for each user, thus enabling this as a form of costly signalling. I refer to the total number of right-swipes a user has left as its \textit{budget}, $b$, which evolves dynamically according to the law of motion: 
 \begin{equation*} 
   b_{t+1}= b_{t}- a_{t} 
 \end{equation*}
@@ -76,7 +76,7 @@ Importantly, the above conditions take the strategy profile $(\mu,\omega)$ as ex
 
 \subsection{The Search Problem}\label{sec:section2.3}
 With the model framework outlined above, I now present the decision problem faced by female agents in the market given some platform steady-state $\Psi$, with analogous results and implications for the male side. 
-Consider now a woman $i$ who is paired with a man $j$ in the platform. Since $j$'s swiping behaviour will depend on his own budget, which is unknown to woman $i$, then (under strict rationality) she would have to compute her expected payoff conditional on her beliefs for the market history. 
+Consider now a woman $i$ who is paired with a man $j$ in the platform. Since $j$'s swiping behaviour will depend on his own budget, which is unknown to woman $i$, then (under strict rationality) she would have to compute her expected payoff conditional on her beliefs for the market history.
 
 This behaviour is both unreasonable and intractable in an SBDP setting, as explained in \autoref{sec:section1.1}; instead, given a stationary platform and a continuum of anonymous agents, it is reasonable to conjecture that the average swiping rate for men, $\overline\mu$, is also stationary, and that any individual agent's actions have a negligible effect on the platform state dynamics\footnote{I also assume that $\overline\mu>0$ to prune out degenerate equilibria where one side never swipes right.}.
 As such, the expected ex-interim payoff for woman $i$ is the following:
@@ -86,12 +86,12 @@ As such, the expected ex-interim payoff for woman $i$ is the following:
     \end{aligned} 
 \end{equation*} 
 
-The above imposes a mean-field assumption, such that woman $i$ accounts for $j$'s behaviour only through $\overline\mu$ conditioned on the platform state $\Psi$.
+The above imposes a mean-field assumption, such that woman $i$ accounts for $j$'s behaviour only through $\overline\mu$ conditional on the platform state $\Psi$.
 This modelling choice, which has been employed by \cite{immorlica2021designing} and \cite{iyer2014mean} among others, simplifies the full dynamic game by collapsing it onto a pair of Markov Decision Processes (MDPs), one for each side of the market, such that strategy $\omega$ is a best-response for women iff it is an optimal policy for the corresponding MDP. 
 Additionally, this also condenses $i$'s state of payoff-dependent variables to include only the value $\theta$ that she observes for $j$ and her own budget $b$. 
 Therefore, since all agents in the same side solve the same MDP, which depends only on their individual state, this effectively justifies the restricted focus on symmetric stationary strategies, as established in \autoref{sec:section2.1}.
 
-Let the jump times of the pairing process for woman $i$ be indexed by $k$. 
+Let the unrealized jump times of the pairing process for woman $i$ be indexed by $k$. 
 Given that, at the time of pairing, this women has a budget of $b$ right swipes left, she then solves the constrained MDP presented below, captured by the value function $V_w(\theta,b)$: 
 \begin{equation*}
     \begin{aligned} 
@@ -165,7 +165,7 @@ The set of reservation values for women, $\{\widetilde\omega_b\}_{b\in \mathcal{
 \end{equation}
 \end{proposition}  
 
-This explicit characterisation allows for an improved computation of $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$ over traditional numerical methods such as value or policy iteration, which have a runtime complexity of $\mathcal{O}(|\mathcal{B}_w\times\Theta|^2|\mathcal{A}|)$ and can become expensive for large budget sets or fine discretisations of $\Theta$. Using the recurrence relation in \autoref{prop:recurrence relation}, the optimal policy was computed for an arbitrary set of exogenous parameters, with results in \autoref{fig:swiping-rule} showing a clear cut-off rule for swiping right. 
+This explicit characterisation allows for an improved computation of $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$ over traditional numerical methods such as value iteration \cite{bellman2015applied}, which has a runtime complexity of $\mathcal{O}(|\mathcal{B}_w\times\Theta|^2|\mathcal{A}|)$ and can become expensive for large budget sets or fine discretisations of $\Theta$. Using the recurrence relation in \autoref{prop:recurrence relation}, the optimal policy was computed for an arbitrary set of exogenous parameters, with results in \autoref{fig:swiping-rule} showing a clear cut-off rule for swiping right. 
 These cut-off values are decreasing in the agent's budget, which captures the notion that an agent's current swipe is more valuable than all preceding ones given the increasing opportunity cost.
 
 \begin{figure}[ht]
