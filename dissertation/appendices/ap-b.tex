@@ -17,9 +17,9 @@ To simplify notation for \autoref{appx: b}, I denote the continuation value at b
         \end{aligned}
     \end{equation*}
     
-    First, note that the difference between any two consecutive continuation values $K_b$ and $K_{b-1}$ must lie between 0 and $\overline{\mu}u(1)$. 
-    This is true since the value function denotes the expected lifetime sum of payoffs, and an additional right-swipe can provide an agent with, at most, an additional expected payoff of $\overline{\mu}u(1)$ and, at least, an additional payoff of $0$.
-    Furthermore, since $u(\theta)$ is, by assumption, continuous and increasing over $\Theta$, then, by the Intermediate Value Theorem, there exists a unique root, $\widetilde\omega_b$, satisfying:
+    First, note that the difference between any two consecutive continuation values $K_b$ and $K_{b-1}$ must necesarily lie between 0 and $\overline{\mu}u(1)$. 
+    This is true since the value function denotes the expected lifetime sum of discounted payoffs, and an additional right-swipe can provide an agent with, at most, an additional expected payoff of $\overline{\mu}u(1)$ and, at least, an additional payoff of $0$.
+    Furthermore, since $u(\theta)$ is, by assumption, continuous and increasing over $\Theta$ (and we assume $\overline\mu>0$ to prune out degenerate equilibria), then, by the Intermediate Value Theorem, there exists a unique root, $\widetilde\omega_b$, satisfying:
     \begin{equation*} 
             \overline\mu u(\widetilde\omega_b) = K_b-K_{b-1}   
     \end{equation*}
@@ -46,7 +46,7 @@ To simplify notation for \autoref{appx: b}, I denote the continuation value at b
     \end{split}
     \end{equation*} 
 
-    Furthermore, \autoref{cor:optpolicy} follows trivially from the above. 
+    Furthermore, \autoref{cor:optpolicy} follows trivially from the above by considering a cutoff policy over the above intervals such that $V_w(\theta,b)$ is attained. 
 \begin{comment} 
     When a woman with budget $b$ is presented a candidate with attractiveness $\theta \geq \widetilde\omega_b$ and she swipes right, her expected lifetime sum of discounted payoffs is:
     \begin{equation*}
@@ -83,7 +83,8 @@ Fix some $b\in\mathcal{B}_w$ and consider the result presented by \autoref{prop:
 Starting out with \autoref{eq:A.2} and expanding out the expectation operator, we can use \eqref{eq:A.1} to substitute in the piecewise definitions of $V_w(\theta,b)$ over the appropriate intervals: 
 \begin{equation}\label{eq:A.3}
     \begin{split}
-        \overline\mu u(\widetilde\omega_b) &= \alpha \,\int^1_0 V_w(\theta',b)-V_w(\theta',b-1)\,dF_m(\theta')\\
+        \overline\mu u(\widetilde\omega_b) &= K_b-K_{b-1}\\
+                                           &= \alpha \,\int^1_0 V_w(\theta',b)-V_w(\theta',b-1)\,dF_m(\theta')\\
                                            &=\alpha \int^{\widetilde\omega_b}_0 K_b\,dF_m(\theta') \;+\; \alpha \int^1_{\widetilde\omega_b}\,\overline\mu u(\theta') + K_{b-1}\,dF_m(\theta')\\ 
                                            & \quad -\,\alpha \int^{\widetilde\omega_{b-1}}_0 K_{b-1}\,dF_m(\theta') \;-\; \alpha \int^1_{\widetilde\omega_{b-1}} \overline\mu u(\theta') + K_{b-2}\,dF_m(\theta')
     \end{split}

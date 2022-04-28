@@ -13,12 +13,14 @@ Using the framework and results above, I now present a refined definition for th
 
 Intuitively, the above definition establishes two requirements that must be satisfied by an equilibrium market configuration. 
 Firstly, it must be the case that $\mu^*$ and $\omega^*$ are mutual best responses given the platform state $\Psi^*$ for which, as previously outlined, a necessary and sufficient condition would have them each solve the sex-specific MDP. 
-These two conditions alone demand \textit{partially rational expectations}, as per \cite{burdett1997marriage}, since they require agents to play optimally for some fixed steady-state $\Psi^*$, imposing rationality on all game aspects other than the platform state dynamics.  
-Furthermore, in line with mean-field game theory literature, a \textit{consistency check} is imposed by the third condition, which requires that the platform steady-state to which agents are best-responding with $(\mu^*,\omega^*)$ is sustained as a fixed point, thus defining a full SSE. 
+These two conditions alone demand \textit{partially rational expectations}, as per \cite{burdett1997marriage}, since they require agents to play optimally for some fixed steady-state $\Psi^*$, imposing rationality on all game aspects other than the platform state dynamics. 
+Furthermore, in line with other works in mean-field game theory, a consistency check is imposed by the third condition, such that the platform state to which agents are best-responding with $(\mu^*,\omega^*)$ is sustained as a fixed point under that same strategy profile.
 
 Although formal proofs for the existence and uniqueness of SSE are outside the scope of this paper, I rely on numerical procedures\footnote{The code required to reproduce all presented analysis is accessible under the GitHub repository \texttt{patohdzs/project-swipe}, with most dependencies covered by the SciPy Stack packages.} to approximate equilibria under various exogenous settings. 
 This approach has been frequently employed by related works \citep[see][]{iyer2014mean, gummadi2011optimal} as it can help uncover insights provided by mean-field models. 
-To compute model equilibria, I frame the recurrence relation presented in \autoref{prop:recurrence relation}, as well as Equations \ref{eq:ss1}, \ref{eq:ss2}, and \ref{eq:ss3}, as a system of $2(|\mathcal{B}_m|+|\mathcal{B}_w|+1)$ non-linear equations, and solve this using a modified version of the hybrid Powell method, as implemented by the MINPACK 1 routine \citep{more1980user}. In what follows, I present the results for a number of experiments involving the computation of SSE. For all of these experiments, the computation convergence was assured by computing the squared loss of the above system under the resultant 
+To compute model equilibria, I frame the recurrence relation presented in \autoref{prop:recurrence relation}, as well as Equations \ref{eq:ss1}, \ref{eq:ss2}, and \ref{eq:ss3}, as a system of $2(|\mathcal{B}_m|+|\mathcal{B}_w|+1)$ non-linear equations, and solve this using a modified version of the hybrid Powell method, as implemented by the MINPACK 1 routine \citep{more1980user}. 
+In what follows, I present SSE results for a number of comparative statics experiments. 
+For all of these, the exogenous settings used to calibrate the model are provided in \autoref{appx: c}, and convergence of numerical procedures was assured by computing the squared loss of the above system, which was exactly equal to zero in all cases; although the runtime required for convergence varied slightly across experiments.
 
 \subsection{Best Response Analysis}\label{sec:section3.2} 
 Using the computational procedures outlined above, a number of insights can be uncovered related to how exogenous parameters affect an agent's optimal swiping behaviour. 
@@ -48,13 +50,12 @@ From here, it is evident that as absolute risk aversion rises, agents become `mo
 
 \subsection{Market Configuration Analysis}\label{sec:section3.3} 
 Finally, I perform comparative statics at the platform level to explore how different exogenous factors affect market configurations. 
-This is especially important as it considers not only the effects on best-responses for one sex, but also how these propagate across the market through its aggregate state. 
-More specifically, I focus the aforementioned `Fast-Swiping Males' puzzle, investigating the discrepancies in swiping rates and matching outcomes between men and women, and I present a possible explanation for which the above model can replicate these outcomes. 
-% Both of these explanations attribute this phenomenon to gender imbalances within the platform (which estimates place between a 2:1 and a 10:1 male-to-female ratio), but, crucially, the way this imbalance arises can change other platform aspects significantly in equilibrium. 
-%The first of these involves differences in attractiveness between men and women, a conjecture motivated by research undertaken by OkCupid, which shows
-
-Fundamentally, the main scenario that could explain the `Fast-Swiping Males' puzzle under my model involves differential arrival flows between men and women, which can occur exogenously for several reasons, but are in line with empirical findings, which place. 
-To asses the market configurations arising from of this situation, I compute the model equilibria under a 6:1 ratio between arrival rates $\lambda_m$ and $\lambda_w$. The results for this are shown in \autoref{fig:mkt-cs}, highlighting three main insights for this scenario. 
+This is especially important as it considers not only the effects on best-responses for one sex, but also how these propagate across the market, ultimately affecting the other side's swiping behaviour as well. 
+More specifically, I focus on the aforementioned `Fast-Swiping Men' puzzle, investigating the discrepancies in swiping rates and matching outcomes between men and women. 
+There are a number of potential explanations for this behaviour, most of which concern sex-specific differential preferences which are compatible with my model. 
+Indeed, it is reported that women spend around 20\% more time then men on a single Tinder session \citep{web:nytimes_patience}, potentially indicating a higher level of patience which would induce `higher standards' and a lower swiping rate, as explained above.
+Departing from these, I consider below a scenario that could explain the `Fast-Swiping Men' puzzle purely as a result of tightness-induced search frictions, for which I analyse the market SSE computed under a 6:1 ratio between exogenous arrival rates $\lambda_m$ and $\lambda_w$.  
+This ratio was calibrated such that the steady-state mass of men in the platform is around ten times greater than that of women, in line with demographic estimates for the UK \citep{web:tinder_stats}, and results for such an SSE are shown in \autoref{fig:mkt-cs}. 
 
 \begin{figure}[ht]
     \centering
@@ -63,7 +64,6 @@ To asses the market configurations arising from of this situation, I compute the
     \label{fig:mkt-cs} 
 \end{figure} 
 
-Firstly, under the above scenario, the steady-state mass of men in the platform is around ten times greater than that of women (in line with empirical estimates), implying that male agents face a tight market and struggle to get paired with female candidates. 
-This is further evidenced by the top-center plot within \autoref{fig:mkt-cs}, which shows that male agents are highly concentrated in the top budget levels. 
-Due to the effect of market tightness on the effective discount rate, male agents become more impatient than women on the platform, and this effect is absorbed by their optimal swiping policy, which sits considerably lower than the female swiping curve, effectively showing how a tight market lowers male patience and by extension, their standards, leading them to swipe right on most women. 
-Ultimately, this explains the `Fast-Swiping Males' puzzle given that, under this particular SSE, men give out right-swipes with probability $\overline\mu=0.988$, compared to $\overline\omega=0.491$ for women, thus replicating the observed phenomenon.
+Under the above scenario, men overcrowd the market and struggle to get paired with female candidates, evidenced by the top-center plot in \autoref{fig:mkt-cs}, which shows that male agents are highly concentrated in the top budget levels. 
+Due to the effect of market tightness on the effective discount rate, male agents become more impatient than women, and this shock is absorbed by their optimal swiping policy, which sits considerably lower than the female swiping curve, effectively showing how a tight market lowers male patience and by extension, their standards, leading them to swipe right on most women. 
+Ultimately, this explains the `Fast-Swiping Men' puzzle given that, under this particular SSE, men swipe right with probability $\overline\mu=0.988$, compared to $\overline\omega=0.491$ for women, thus replicating the observed phenomenon.

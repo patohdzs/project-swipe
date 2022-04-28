@@ -10,7 +10,7 @@ These values are i.i.d according to a pair of absolutely continuous CDF's, $F_m$
 Female agents draw male candidate values from $F_m$ and vice versa but, importantly, the value man $i$ draws for woman $j$ does not necessarily equal the value that $j$ draws for $i$ and, for simplicity, these are modelled as independent from one another.
 
 After observing their candidate's attractiveness, agents then choose to swipe left (dislike) or right (like) on them, yielding an action space $\mathcal{A}=\{ \text{Swipe Left}, \text{Swipe Right}\}$. 
-If both agents swipe right on one another, they are said to have \textit{matched} and both receive a matching payoff, however, if either agent swipes left, they both receive a payoff of zero. Contingent on swiping right on a candidate with attractiveness $\theta$, a user earns a matching payoff $u(\theta)$, where $u(\cdot)$ is a continuous, strictly increasing function that satisfies $u(0) = 0$. 
+If either agent swipes left, then they both receive a payoff of zero; however, if both agents swipe right, they are said to have \textit{matched} and both receive a matching payoff $u(\theta)$, where $u(\cdot)$ is a continuous, strictly increasing function that satisfies $u(0) = 0$. 
 This last property stems from the fact that, in most SBDPs, users are allowed to unmatch with each other, and therefore matching with even the least attractive individual on the other side of the market is weakly preferred to not matching. 
 
 After payoffs have been received, agents are paired with different candidates and the stage interaction is repeated. Given the continuum of agents, I assume that interactions take place \textit{anonymously} in the style of \cite{jovanovic1988anonymous}. Furthermore, to the agents' knowledge, pairings are determined in an unknown manner (since SBDPs are generally secretive regarding the algorithms they use), effectively making their problem one of uniform random search.
@@ -34,20 +34,21 @@ After payoffs have been received, agents are paired with different candidates an
     \label{fig:timeline}
 \end{figure}
 
-Perhaps trivially, swiping right in the above stage game is weakly dominant for all agents and also yields a Pareto-optimal outcome, thus implying that, in a repeated interaction, the market equilibrium would have all agents exclusively swiping right. This becomes problematic since the main selling point of SBDPs is a reduction in searching costs for individuals seeking romantic encounters, and this is only accomplished if matches have a high likelihood of resulting in real-life romantic attraction. Because of this, SBDPs like Tinder place a cap on the total number of right swipes for each user, thus enabling this as a form of costly signalling. I refer to the total number of right-swipes a user has left as its \textit{budget}, $b$, which evolves dynamically according to the law of motion: 
+Since swiping right in the above stage game is weakly dominant for all agents, one would not expect the above repeated interaction to be massively revealing of real-life preferences, where initiating a romanic encounter is often perceived by humans as a costly endeavour \citep{dawkins2017selfish}. This becomes problematic since the main selling point of SBDPs is a reduction in searching costs for individuals seeking romantic encounters, and this is only accomplished if matches have a high likelihood of resulting in real-life romantic attraction. Because of this, SBDPs like Tinder place a cap on the total number of right swipes for each user, thus enabling this as a form of costly signalling. I refer to the total number of right-swipes a user has left as its \textit{budget}, $b$, which evolves dynamically according to the law of motion: 
 \begin{equation*} 
   b_{t+1}= b_{t}- a_{t} 
 \end{equation*}
 
-The budget sets for men and women are thus defined by $\mathcal{B}_{s}=\{b \in \mathbb{Z} : 1\leq b \leq B_s\}$, for each sex $s=m,w$, with budget caps $B_m$ and $B_w$ determined exogenously. Importantly, agents depart from the platform in one of two ways: they can leave \textit{endogenously}, if they expend their swiping budget, or \textit{exogenously} with probability $(1-\delta)\in(0,1)$ in each time period. This admits to the interpretation of a geometrically distributed lifetime, parametrised by $\delta$, and implies that agents use this as a discounting factor for future payments. 
+The budget sets for men and women are thus defined by $\mathcal{B}_{s}=\{b \in \mathbb{Z} : 1\leq b \leq B_s\}$, for each sex $s=m,w$, with budget caps $B_m$ and $B_w$ determined exogenously. Importantly, agents depart from the platform in one of two ways: they can leave \textit{endogenously}, if they expend their swiping budget, or \textit{exogenously} with probability $(1-\delta)$ in each time period. This admits to the interpretation of a geometrically distributed lifetime, such that agents discount future payments by a factor of $\delta\in(0,1)$. 
 
-One final remark for this setup is that, in a continuum market with anonymous interactions, the mean-field assumption established in \autoref{sec:section2.3} effectively restricts focus onto the set of (pure) symmetric stationary strategies. This is argued in more detail in the following sections but, for now, denote these strategies by functions $\mu: \Theta \times\mathcal{B}_m\rightarrow \mathcal{A}_m$ for men and $\omega:\Theta \times\mathcal{B}_w\rightarrow \mathcal{A}_w$ for women.
+One final remark for this setup is that, in a continuum market with anonymous interactions, the mean-field assumption established in \autoref{sec:section2.3} effectively restricts focus onto the set of (pure) symmetric stationary strategies. This is argued in more detail in the following sections but, for now, denote these strategies by functions $\mu: \Theta \times\mathcal{B}_m\rightarrow \mathcal{A}$ for men and $\omega:\Theta \times\mathcal{B}_w\rightarrow \mathcal{A}$ for women.
 
 \subsection{The Dating Market}\label{sec:section2.2}
-Given the above framework, I now outline the platform state variables that make up the SBDP market. 
+With the above framework in place, I now outline the platform state variables that make up the SBDP market. 
 Let $N_{mt}(b), N_{wt}(b)$ denote the mass of male and female agents (respectively) with a budget of $b\in\mathcal{B}$ in a given time period $t$. 
 %Additionally, with a slight abuse of notation, let $N_{mt}, N_{wt}$ denote the overall mass of male and female agents (respectively) in the platform, i.e. $\sum_{b\in\mathcal{B}_m}N_{mt}(b)$ and $\sum_{b\in\mathcal{B}_w}N_{wt}(b)$.
-Since gender imbalances can leave some agents in the long side of the market unpaired, a pairings process must also be determined. Given the automated nature of SBDPs, I assume an efficient matching technology and model pairings as a Bernoulli process parametrised by market tightness; thus, the probability of being paired with a candidate is defined for both sides as:  
+Since gender imbalances can leave some agents in the long side of the market unpaired, a pairings process must also be determined. 
+Given the automated nature of SBDPs, I assume an efficient matching technology and model pairings as a Bernoulli process parametrised by market tightness; thus, the probability of being paired with a candidate is defined for both sides as:  
 \begin{equation*}
     \tau_{mt}:=\min \left\{\frac{\sum_{b\in\mathcal{B}_w}N_{wt}(b)}{\sum_{b\in\mathcal{B}_m}N_{mt}(b)} , 1 \right\}, 
     \quad \tau_{wt}:= \left(\frac{\sum_{b\in\mathcal{B}_m}N_{mt}(b)}{\sum_{b\in\mathcal{B}_w}N_{wt}(b)} \right) \tau_{mt} 
@@ -55,7 +56,7 @@ Since gender imbalances can leave some agents in the long side of the market unp
 
 From the above, the platform state in time period $t$ can be defined as $\Psi_t=(N_{mt},N_{wt})$. 
 For most of this paper, I focus on characterising user behaviour and its resulting implications in a stationary setting (which is denoted by omitted time subscripts), although some discussion of coupled strategy and market dynamics is provided in \autoref{sec:section4}. 
-As a necessary requirement, the market steady state $\Psi_t=\Psi_{t+1}=...=\Psi$ must satisfy the balanced flow conditions \footnote{Formally, these conditions rely on the exact law of large numbers, which has been rigorously developed for discrete-time settings by \cite{duffie2018dynamic}, but a technical discussion of this lies outside the scope of this paper.} for our continuum model; these are presented below for the female agents, but they apply analogously to the male side of the market. 
+As a necessary requirement, the market steady state $\Psi_t=\Psi_{t+1}=...=\Psi$ must satisfy the balanced flow conditions \footnote{Formally, these conditions rely on the exact law of large numbers, which was rigorously developed in discrete-time settings by \cite{duffie2018dynamic}, but a technical discussion of this lies outside the scope of this paper.} for our continuum model; these are presented below for the female agents, but they apply analogously to the male side of the market. 
 Firstly, the entry flow of agents into the platform must equal the departure flow: 
 \begin{equation}\label{eq:ss1} 
     \lambda_w\;=\; \underbrace{ (1-\delta)\sum_{b\in\mathcal{B}_w}N_{wt}(b)}_{\text{Exogenous Outflow}} \;+\; \underbrace{N_w(1) \delta \tau_w\int_{\Theta}\omega(\theta,1)\,dF_{m}(\theta)}_{\text{Endogenous Outflow}} 
@@ -71,13 +72,13 @@ Finally, the entry flow of agents into the platform must equal the outflow from 
     \lambda_w \;=\; \underbrace{N_w(B_w) \Big[ (1-\delta) \;+\; \tau_w \delta \int_{\Theta} \omega(\theta,B_w)\,dF_{m}(\theta) \Big]}_{\text{Outflow from $B_w$}}
 \end{equation} 
 
-Importantly, the above conditions take the strategy profile $(\mu,\omega)$ as exogenously fixed. Over the next section, these are endogenously derived from the agents’ best-responses, which themselves depend on the market steady-state.
+Importantly, the above conditions take the strategy profile $(\mu,\omega)$ as exogenously fixed. Over the next section, these are endogenously derived by characterising the agents’ best-responses in an SDBP setting, which themselves depend on the market steady-state $\Psi$.
 
 \subsection{The Search Problem}\label{sec:section2.3}
 With the model framework outlined above, I now present the decision problem faced by female agents in the market given some platform steady-state $\Psi$, with analogous results and implications for the male side. 
 Consider now a woman $i$ who is paired with a man $j$ in the platform. Since $j$'s swiping behaviour will depend on his own budget, which is unknown to woman $i$, then (under strict rationality) she would have to compute her expected payoff conditional on her beliefs for the market history. 
 
-This behaviour is both unreasonable and intractable in an SBDP setting, as explained in \autoref{sec:section1.1}; instead, given a stationary platform and a continuum of anonymous agents, it is reasonable to conjecture that the average swiping rate for men, $\overline\mu$, is also stationary, and that any individual agent's actions have a negligible effect on the platform state dynamics.
+This behaviour is both unreasonable and intractable in an SBDP setting, as explained in \autoref{sec:section1.1}; instead, given a stationary platform and a continuum of anonymous agents, it is reasonable to conjecture that the average swiping rate for men, $\overline\mu$, is also stationary, and that any individual agent's actions have a negligible effect on the platform state dynamics\footnote{I also assume that $\overline\mu>0$ to prune out degenerate equilibria where one side never swipes right.}.
 As such, the expected ex-interim payoff for woman $i$ is the following:
 \begin{equation*}
     \begin{aligned}
@@ -85,12 +86,12 @@ As such, the expected ex-interim payoff for woman $i$ is the following:
     \end{aligned} 
 \end{equation*} 
 
-The above imposes a mean-field assumption, such that woman $i$ accounts for $j$'s behaviour only through $\overline\mu$ conditioned on the steady-state $\Psi$.
+The above imposes a mean-field assumption, such that woman $i$ accounts for $j$'s behaviour only through $\overline\mu$ conditioned on the platform state $\Psi$.
 This modelling choice, which has been employed by \cite{immorlica2021designing} and \cite{iyer2014mean} among others, simplifies the full dynamic game by collapsing it onto a pair of Markov Decision Processes (MDPs), one for each side of the market, such that strategy $\omega$ is a best-response for women iff it is an optimal policy for the corresponding MDP. 
 Additionally, this also condenses $i$'s state of payoff-dependent variables to include only the value $\theta$ that she observes for $j$ and her own budget $b$. 
 Therefore, since all agents in the same side solve the same MDP, which depends only on their individual state, this effectively justifies the restricted focus on symmetric stationary strategies, as established in \autoref{sec:section2.1}.
 
-Let the jump times of the realised pairing process for woman $i$ be index by $k$. 
+Let the jump times of the pairing process for woman $i$ be indexed by $k$. 
 Given that, at the time of pairing, this women has a budget of $b$ right swipes left, she then solves the constrained MDP presented below, captured by the value function $V_w(\theta,b)$: 
 \begin{equation*}
     \begin{aligned} 
@@ -127,7 +128,7 @@ Here, $\alpha$ is the effective discount rate accounting for the exogenous possi
 
 Upon inspection, it is clear that the value function is of a piecewise nature over $\Theta$. This is formally stated below (with the corresponding derivation included in \autoref{appx: b}): 
 \begin{proposition}\label{prop:piecewiseV}
-Fix some $b\in\mathcal{B}_w$. Then the value function $V_w(\theta,b)$ for women admits the following piecewise form over $\Theta$:  
+Fix some $b\in\mathcal{B}_w$. Then there exists some unique reservation value $\widetilde{\omega}_b\in \Theta$ such that $V_w(\theta,b)$ admits the following piecewise form over $\Theta$:  
 \begin{equation*}
     \begin{split}
         V_w(\theta,b)=\begin{cases}
@@ -135,13 +136,12 @@ Fix some $b\in\mathcal{B}_w$. Then the value function $V_w(\theta,b)$ for women 
             \alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b)\Big],& \theta\leq\widetilde \omega_b
         \end{cases}\\[8pt]  
     \end{split}
-\end{equation*}
-where $\widetilde{\omega}_b$ satisfies:$ \quad \, \overline\mu u(\widetilde\omega_b) = \alpha \, \mathbb{E}_\theta\Big[\,V_w(\theta',b)-V_w(\theta',b-1)\,\Big]$
+\end{equation*} 
 \end{proposition}  
 
-Here, the reservation values $\{\widetilde\omega\}_{b\in \mathcal{B}_w}$ are such that woman $i$ is indifferent between swiping left or right. Therefore, an optimal policy for woman $i$'s MDP could involve swiping right for partners who exceed the reservation value for her current budget:  
+In the result above, all reservation values $\{\widetilde\omega\}_{b\in \mathcal{B}_w}$ are such that woman $i$ is indifferent between swiping left or right. Therefore, an optimal policy for woman $i$'s MDP involves swiping right for partners who exceed the reservation value for her current budget:  
 \begin{corollary}\label{cor:optpolicy}
-    The following policy $\widetilde\omega$, parametrised by $\{\widetilde\omega\}_{b\in \mathcal{B}_w}$, attains $V_w(\theta,b)$:
+    The following threshold policy $\widetilde\omega$, parametrised by $\{\widetilde\omega\}_{b\in \mathcal{B}_w}$, attains $V_w(\theta,b)$:
     \begin{equation*}
         \begin{split}
             \widetilde\omega(\theta,b)&=\begin{cases}
@@ -152,7 +152,7 @@ Here, the reservation values $\{\widetilde\omega\}_{b\in \mathcal{B}_w}$ are suc
     \end{equation*} 
 \end{corollary} 
 
-Strictly speaking, there is an infinite number of optimal policies for this MDP that involve any action mix at the indifference point $\widetilde\omega_b$, but I refrain from further discussion of this technicality given that there is a measure zero of agents for which $i$ observes such reservation value. Using both of these results, I derive the following explicit characterisation for $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$ (with a corresponding proof included in \autoref{appx: b}):  
+Using both of these results, I now derive the following explicit characterisation for reservation values $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$ (with a corresponding proof included in \autoref{appx: b}). 
 \begin{proposition}\label{prop:recurrence relation}
 The set of reservation values for women, $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$, uniquely satisfies the recurrence relation and initial condition below, over the budget set $\mathcal{B}_w$: 
 \begin{equation}\label{eq:recurrence relation}
@@ -163,14 +163,14 @@ The set of reservation values for women, $\{\widetilde\omega_b\}_{b\in \mathcal{
 \begin{equation}\label{eq:initial condition}
     u(\widetilde\omega_1) \;=\; \alpha u(\widetilde\omega_1)F(\widetilde\omega_1) \;+\; \alpha \int^1_{\widetilde\omega_1}u(\theta')dF(\theta')
 \end{equation}
-\end{proposition} 
+\end{proposition}  
 
-By inspecting \autoref{prop:recurrence relation}, it is evident that the averaged behaviour of the opposite side of the market ($\overline\mu$) has no direct influence over female best responses. Instead, this influence happens indirectly through the steady-state masses and their effect on agents' inter-temporal preferences. Using the recurrence relation in \autoref{prop:recurrence relation}, the agent-best response was computed for an arbitrary set of exogenous parameters, with results shown in \autoref{fig:swiping-rule}. Here, the optimal policy for agents is marked by a clear cut-off rule for swiping right. These cut-off values are decreasing in the agent's budget, which captures the notion that an agent's current swipe is more valuable than all preceding ones given the increasing opportunity cost.  
+This explicit characterisation can allow for an improved computation of $\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}$ over traditional numerical methods such as value or policy iteration, which have a runtime complexity of $\mathcal{O}(|\mathcal{B}_w\times\Theta|^2|\mathcal{A}|)$ and can become expensive for large budget sets or fine discretisations of $\Theta$. Using the recurrence relation in \autoref{prop:recurrence relation}, the optimal policy was computed for an arbitrary set of exogenous parameters, with results in \autoref{fig:swiping-rule} showing a clear cut-off rule for swiping right. 
+These cut-off values are decreasing in the agent's budget, which captures the notion that an agent's current swipe is more valuable than all preceding ones given the increasing opportunity cost.
 
 \begin{figure}[ht]
     \centering
     \caption{The Optimal Swiping Rule}
     \includegraphics{swiping-rule.png}
     \label{fig:swiping-rule} 
-\end{figure}
-
+\end{figure} 
