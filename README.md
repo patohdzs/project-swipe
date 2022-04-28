@@ -17,13 +17,13 @@
 1. Clone repository and move into the corresponding directory.
 2. Initialise the Conda environment for the project by running:
 ```
-conda env create
+conda env create project-swipe-env
 ```
 3. Activate the environment by running:
 ```
-conda activate project-tinder-env
+conda activate project-swipe-env
 ```
 4. Add the environment to Jupyter by running:
 ```
-python -m ipykernel install --user --name project-tinder-env --display-name "project-tinder-env"
+python -m ipykernel install --user --name project-swipe-env --display-name "project-swipe-env"
 ```
