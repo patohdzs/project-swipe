@@ -13,14 +13,14 @@ Using the framework and results above, I now present a refined definition for st
 
 Intuitively, the above definition establishes two requirements that must be satisfied by an equilibrium market configuration. 
 Firstly, it must be the case that $\mu^*$ and $\omega^*$ are mutual best responses given the platform state $\Psi^*$ for which, as previously outlined, a necessary and sufficient condition would have them each solve the sex-specific MDP. 
-These two conditions alone demand \textit{partially rational expectations}, as per \cite{burdett1997marriage}, since they require agents to play optimally for some fixed steady-state $\Psi^*$, imposing rationality on all game aspects other than the platform state dynamics. 
+These two conditions alone demand \textit{partially rational expectations}, as per \cite{burdett1997marriage}, since they require agents to play optimally for some fixed steady state $\Psi^*$, imposing rationality on all game aspects other than the platform state dynamics. 
 Furthermore, in line with other works in mean-field game theory, a consistency check is imposed by the third condition, such that the platform state to which agents are best-responding with $(\mu^*,\omega^*)$ is sustained as a fixed point under that same strategy profile.
 
 Although formal proofs for the existence and uniqueness of SE are outside the scope of this paper, I rely on numerical procedures\footnote{The code required to reproduce all presented analysis is accessible under the GitHub repository \texttt{patohdzs/project-swipe}, with most dependencies covered by the SciPy Stack packages.} to approximate equilibria under various exogenous settings. 
 This approach has been frequently employed by related works \citep[see][]{iyer2014mean, gummadi2011optimal} as it can help uncover insights provided by mean-field models. 
 To compute model equilibria, I frame the recurrence relation presented in \autoref{prop:recurrence relation}, as well as Equations \ref{eq:ss1}, \ref{eq:ss2}, and \ref{eq:ss3}, as a system of $2(|\mathcal{B}_m|+|\mathcal{B}_w|+1)$ non-linear equations, and solve this using a modified version of the hybrid Powell method, as implemented by the MINPACK 1 routine \citep{more1980user}. 
 In what follows, I present SE results for a number of comparative statics experiments. 
-For all of these, the exogenous settings used to calibrate the model are provided in \autoref{appx: c}, and convergence of numerical procedures was assured by computing the squared loss of the above system, which was exactly equal to zero in all cases; although the runtime required for convergence varied slightly across experiments.
+For all of these, the exogenous settings used to calibrate the model are provided in \autoref{appx: c}, and convergence of numerical procedures was assured by computing the squared loss of the above system, which was exactly equal to zero in all cases (although the runtime required for convergence varied slightly across experiments).
 
 \subsection{Best Response Analysis}\label{sec:section3.2} 
 Using the computational procedures outlined above, a number of insights can be uncovered related to how exogenous parameters affect an agent's optimal swiping behaviour. 
@@ -55,7 +55,7 @@ More specifically, I focus on the aforementioned `Fast-Swiping Men' puzzle, inve
 There are a number of potential explanations for this behaviour, most of which concern sex-specific differential preferences which are compatible with my model. 
 Indeed, it is reported that women spend around 20\% more time then men on a single Tinder session \citep{web:nytimes_patience}, potentially indicating a higher level of patience which would induce `higher standards' and a lower swiping rate, as explained above.
 Departing from these, I consider below a scenario that could explain the `Fast-Swiping Men' puzzle purely as a result of tightness-induced search frictions, for which I analyse the market SE computed under a 6:1 ratio between exogenous arrival rates $\lambda_m$ and $\lambda_w$.  
-This ratio was calibrated such that the steady-state mass of men in the platform is around ten times greater than that of women, in line with demographic estimates for the UK \citep{web:tinder_stats}, and results for such SE are shown in \autoref{fig:mkt-cs}. 
+This ratio was calibrated such that the steady state mass of men in the platform is around ten times greater than that of women, in line with demographic estimates for the UK \citep{web:tinder_stats}, and results for such SE are shown in \autoref{fig:mkt-cs}. 
 
 \begin{figure}[ht]
     \centering
@@ -70,7 +70,7 @@ Ultimately, this explains the `Fast-Swiping Men' puzzle given that, under this p
 
 One potential intervention to correct this phenomenon would involve relaxing the swiping cap for the shorter side of the market.
 To analyse such measure, the SE was computed under the same conditions as above but with a 4:1 swiping cap ratio between women and men; the results for this, shown in \autoref{fig:mkt-cs-bdiff}, indicate the presence of two separate effects that would help alleviate the above scenario. 
-First, a larger budget set would allow women to stay in the platform for longer by shrinking the number of endogenous departures to zero (at the limit), thus leading to a larger steady-state mass of female agents that would reduce market tightness for men. 
+First, a larger budget set would allow women to stay in the platform for longer by shrinking the number of endogenous departures to zero (at the limit), thus leading to a larger steady state mass of female agents that would reduce market tightness for men. 
 This is corroborated by the computed results, which show a 6:1 ratio between the male and female agent masses, down from 10:1. 
 Furthermore, because optimal reservation values are decreasing in the agent's budget, women in the top budget levels can now swipe right at considerably lower thresholds, thus improving matching outcomes for men. 
 This is highlighted in \autoref{fig:mkt-cs-bdiff}, which shows that female swiping policy quickly descends to a level comparable to its male counterpart since it is allowed to extend over a larger budget set. 

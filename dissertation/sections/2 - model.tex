@@ -56,7 +56,7 @@ Given the automated nature of SBDPs, I assume an efficient matching technology a
 
 From the above, the platform state in time period $t$ can be defined as $\Psi_t=(N_{mt},N_{wt})$. 
 For most of this paper, I focus on characterising user behaviour and its resulting implications in a stationary setting (which is denoted by omitted time subscripts), although some discussion of coupled strategy and market dynamics is provided in \autoref{sec:section4}. 
-As a necessary requirement, the market steady-state $\Psi_t=\Psi_{t+1}=...=\Psi$ must satisfy the balanced flow conditions \footnote{Formally, these conditions rely on the exact law of large numbers, which was rigorously developed in discrete-time settings by \cite{duffie2018dynamic}, but a technical discussion of this lies outside the scope of this paper.} for our continuum model; these are presented below for the female agents, but they apply analogously to the male side of the market. 
+As a necessary requirement, the market steady state $\Psi_t=\Psi_{t+1}=...=\Psi$ must satisfy the balanced flow conditions \footnote{Formally, these conditions rely on the exact law of large numbers, which was rigorously developed in discrete-time settings by \cite{duffie2018dynamic}, but a technical discussion of this lies outside the scope of this paper.} for our continuum model; these are presented below for the female agents, but they apply analogously to the male side of the market. 
 Firstly, the entry flow of agents into the platform must equal the departure flow: 
 \begin{equation}\label{eq:ss1} 
     \lambda_w\;=\; \underbrace{ (1-\delta)\sum_{b\in\mathcal{B}_w}N_{wt}(b)}_{\text{Exogenous Outflow}} \;+\; \underbrace{N_w(1) \delta \tau_w\int_{\Theta}\omega(\theta,1)\,dF_{m}(\theta)}_{\text{Endogenous Outflow}} 
@@ -72,10 +72,10 @@ Finally, the entry flow of agents into the platform must equal the outflow from 
     \lambda_w \;=\; \underbrace{N_w(B_w) \Big[ (1-\delta) \;+\; \tau_w \delta \int_{\Theta} \omega(\theta,B_w)\,dF_{m}(\theta) \Big]}_{\text{Outflow from $B_w$}}
 \end{equation} 
 
-Importantly, the above conditions take the strategy profile $(\mu,\omega)$ as exogenously fixed. Over the next section, these are endogenously derived by characterising the agents’ best-responses in an SDBP setting, which themselves depend on the market steady-state $\Psi$.
+Importantly, the above conditions take the strategy profile $(\mu,\omega)$ as exogenously fixed. Over the next section, these are endogenously derived by characterising the agents’ best-responses in an SDBP setting, which themselves depend on the market steady state $\Psi$.
 
 \subsection{The Search Problem}\label{sec:section2.3}
-With the model framework outlined above, I now present the decision problem faced by female agents in the market given some platform steady-state $\Psi$, with analogous results and implications for the male side. 
+With the model framework outlined above, I now present the decision problem faced by female agents in the market given some platform steady state $\Psi$, with analogous results and implications for the male side. 
 Consider now a woman $i$ who is paired with a man $j$ in the platform. Since $j$'s swiping behaviour will depend on his own budget, which is unknown to woman $i$, then (under strict rationality) she would have to compute her expected payoff conditional on her beliefs for the market history.
 
 This behaviour is both unreasonable and intractable in an SBDP setting, as explained in \autoref{sec:section1.1}; instead, given a stationary platform and a continuum of anonymous agents, it is reasonable to conjecture that the average swiping rate for men, $\overline\mu$, is also stationary, and that any individual agent's actions have a negligible effect on the platform state dynamics\footnote{I also assume that $\overline\mu>0$ to prune out degenerate equilibria where one side never swipes right.}.
