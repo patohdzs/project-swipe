@@ -36,7 +36,7 @@ After payoffs have been received, agents are paired with different candidates an
 
 Since swiping right in the above stage game is weakly dominant for all agents, one would not expect the repeated interaction to be massively revealing of real-life preferences, where initiating a romanic encounter is often perceived by humans as a costly endeavour \citep{dawkins2017selfish}. This becomes problematic since the main selling point of SBDPs is a reduction in searching costs for individuals seeking romantic encounters, and this is only accomplished if matches have a high likelihood of resulting in real-life romantic attraction. Because of this, SBDPs like Tinder place a cap on the total number of right swipes for each user, thus enabling this as a form of costly signalling. I refer to the total number of right-swipes a user has left as its \textit{budget}, $b$, which evolves dynamically according to the law of motion: 
 \begin{equation*} 
-  b_{t+1}= b_{t}- a_{t} 
+  b_{t+1}= b_{t} - \mathbbm{1}\{a_t=\text{Swipe Right}\}
 \end{equation*}
 
 The budget sets for men and women are thus defined by $\mathcal{B}_{s}=\{b \in \mathbb{Z} : 1\leq b \leq B_s\}$, for each sex $s=m,w$, with budget caps $B_m$ and $B_w$ determined exogenously. Importantly, agents depart from the platform in one of two ways: they can leave \textit{endogenously}, if they expend their swiping budget, or \textit{exogenously} with probability $(1-\delta)$ in each time period. This admits to the interpretation of a geometrically distributed lifetime, such that agents discount future payments by a factor of $\delta\in(0,1)$. 
@@ -96,7 +96,7 @@ Given that, at the time of pairing, this women has a budget of $b$ right swipes 
 \begin{equation*}
     \begin{aligned} 
         V_w(\theta,b)=\max_{\{a_k\}^\infty_{k=0}} \quad & \mathbb{E}_{\theta}\left[\sum^\infty_{k=0} \delta^{k} U(\theta_k, a_k) \;|\; \theta_0=\theta, b_0=b\right]\\ 
-        \textrm{s.t.} \quad & b_{k+1} = b_k -a_k \\
+        \textrm{s.t.} \quad & b_{k+1} = b_k - \mathbbm{1}\{a_k=\text{Swipe Right}\} \\
         & b_k\in \mathcal{B}_w \cup \{0\},\\
         & a_k\in \mathcal{A}  
     \end{aligned}
