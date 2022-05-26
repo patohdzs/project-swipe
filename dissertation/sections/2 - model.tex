@@ -5,12 +5,12 @@ In this section, I establish the theoretical framework for the model developed t
 For ease of exposition, I assume that this market is heteronormative such that male agents search exclusively for female agents and vice-versa. 
 Time is discrete and indexed by $t=0, 1, 2, ...$ over an infinite horizon. Each period, masses $\lambda_m, \lambda_w>0$ of new men and women enter the platform, where agents are then paired and presented a candidate partner from the opposite side of the market. 
 
-We model agents with heterogeneous preferences (capturing the notion that `beauty lies in the eye of the beholder') and thus, after being paired, each agent observes an \textit{idiosyncratic attractiveness value} $\theta \in \Theta := [0,1]$ for their candidate. 
+We model agents with heterogeneous preferences (capturing the notion that `beauty lies in the eye of the beholder') and thus, after being paired, each agent observes an \textit{idiosyncratic attractiveness value} $\theta_t \in \Theta := [0,1]$ for their candidate. 
 These values are i.i.d according to a pair of absolutely continuous CDF's, $F_m$ and $F_w$, with corresponding PDF's $f_m,f_w$. 
 Female agents draw male candidate values from $F_m$ and vice versa but, importantly, the value man $i$ draws for woman $j$ does not necessarily equal the value that $j$ draws for $i$ and, for simplicity, these are modelled as independent from one another.
 
 After observing their candidate's attractiveness, agents then choose to swipe left (dislike) or right (like) on them, yielding an action space $\mathcal{A}=\{ 1, 0\}$, where $a_t=1$ indicates a right swipe. 
-If either agent swipes left, then they both receive a payoff of zero; however, if both agents swipe right, they are said to have \textit{matched} and both receive a matching payoff $u(\theta)$, where $u(\cdot)$ is a continuous, strictly increasing function that satisfies $u(0) = 0$. 
+If either agent swipes left, then they both receive a payoff of zero; however, if both agents swipe right, they are said to have \textit{matched} and both receive a matching payoff $u(\theta_t)$, where $u(\cdot)$ is a continuous, strictly increasing function that satisfies $u(0) = 0$. 
 This last property stems from the fact that, in most SBDPs, users are allowed to unmatch with each other, and therefore matching with even the least attractive individual on the other side of the market is weakly preferred to not matching. 
 
 After payoffs have been received, agents are paired with different candidates and the stage interaction is repeated. Given the continuum of agents, I assume that interactions take place \textit{anonymously} in the style of \cite{jovanovic1988anonymous}. Furthermore, to the agents' knowledge, pairings are determined in an unknown manner (since SBDPs are generally secretive regarding the algorithms they use), effectively making their problem one of uniform random search.
