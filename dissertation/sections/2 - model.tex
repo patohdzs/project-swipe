@@ -9,7 +9,7 @@ We model agents with heterogeneous preferences (capturing the notion that `beaut
 These values are i.i.d according to a pair of absolutely continuous CDF's, $F_m$ and $F_w$, with corresponding PDF's $f_m,f_w$. 
 Female agents draw male candidate values from $F_m$ and vice versa but, importantly, the value man $i$ draws for woman $j$ does not necessarily equal the value that $j$ draws for $i$ and, for simplicity, these are modelled as independent from one another.
 
-After observing their candidate's attractiveness, agents then choose to swipe left (dislike) or right (like) on them, yielding an action space $\mathcal{A}=\{ 1, 0\}$, where $a_t=1$ indicates a right swipe. 
+After observing their candidate's attractiveness, agents then choose to swipe left (dislike) or right (like) on them, yielding an action space $\mathcal{A}=\{ 1, 0\}$, where $a_t=1$ indicates a right-swipe. 
 If either agent swipes left, then they both receive a payoff of zero; however, if both agents swipe right, they are said to have \textit{matched} and both receive a matching payoff $u(\theta_t)$, where $u(\cdot)$ is a continuous, strictly increasing function that satisfies $u(0) = 0$. 
 This last property stems from the fact that, in most SBDPs, users are allowed to unmatch with each other, and therefore matching with even the least attractive individual on the other side of the market is weakly preferred to not matching. 
 
@@ -59,17 +59,17 @@ For most of this paper, I focus on characterising user behaviour and its resulti
 As a necessary requirement, the market steady state $\Psi_t=\Psi_{t+1}=...=\Psi$ must satisfy the balanced flow conditions \footnote{Formally, these conditions rely on the exact law of large numbers, which was rigorously developed in discrete-time settings by \cite{duffie2018dynamic}, but a technical discussion of this lies outside the scope of this paper.} for our continuum model; these are presented below for the female agents, but they apply analogously to the male side of the market. 
 Firstly, the entry flow of agents into the platform must equal the departure flow: 
 \begin{equation}\label{eq:ss1} 
-    \lambda_w\;=\; \underbrace{ (1-\delta)\sum_{b\in\mathcal{B}_w}N_{wt}(b)}_{\text{Exogenous Outflow}} \;+\; \underbrace{N_w(1) \delta \tau_w\int_{\Theta}\omega(\theta,1)\,dF_{m}(\theta)}_{\text{Endogenous Outflow}} 
+    \lambda_w\;=\; \underbrace{ (1-\delta)\sum_{b\in\mathcal{B}_w}N_{w}(b)}_{\text{Exogenous Outflow}} \;+\; \underbrace{N_w(1) \delta \tau_w\int_{\Theta}\omega(\theta,1)\,dF_{m}(\theta)}_{\text{Endogenous Outflow}} 
 \end{equation} 
 
 Secondly, for both sides, the flow of agents into any particular budget level must equal the outflow of agents from that same level. Thus, for all $b\in\mathcal{B}_w$: 
 \begin{equation}\label{eq:ss2} 
-    \underbrace{N_w(b+1) \delta \tau_w \int_{\Theta} \omega(\theta,b+1)\,dF_{m}(\theta)}_{\text{Inflow into $b$}} \;=\; \underbrace{N_w(b) \Big[ (1-\delta) \;+\; \delta \tau_w\int_{\Theta} \omega(\theta,b)\,dF_{m}(\theta)\Big]}_{\text{Outflow from $b$}}
+    \underbrace{N_w(b+1) \delta \tau_w \int_{\Theta} \omega(\theta,b+1)\,dF_{m}(\theta)}_{\text{Inflow into $b$}} \;=\; \underbrace{N_w(b) \Big( (1-\delta) \;+\; \delta \tau_w\int_{\Theta} \omega(\theta,b)\,dF_{m}(\theta)\Big)}_{\text{Outflow from $b$}}
 \end{equation}
 
 Finally, the entry flow of agents into the platform must equal the outflow from the top budget level, hence: 
 \begin{equation}\label{eq:ss3} 
-    \lambda_w \;=\; \underbrace{N_w(B_w) \Big[ (1-\delta) \;+\; \tau_w \delta \int_{\Theta} \omega(\theta,B_w)\,dF_{m}(\theta) \Big]}_{\text{Outflow from $B_w$}}
+    \lambda_w \;=\; \underbrace{N_w(B_w) \Big( (1-\delta) \;+\; \tau_w \delta \int_{\Theta} \omega(\theta,B_w)\,dF_{m}(\theta) \Big)}_{\text{Outflow from $B_w$}}
 \end{equation} 
 
 Importantly, the above conditions take the strategy profile $(\mu,\omega)$ as exogenously fixed. Over the next section, these are endogenously derived by characterising the agents’ best-responses in an SDBP setting, which themselves depend on the market steady state $\Psi$.
