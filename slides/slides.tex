@@ -1,0 +1,315 @@
+\documentclass[10pt, aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Simple}
+\setbeamersize{text margin left=1.4em,text margin right=1.4em} 
+
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{fontawesome}
+\usepackage{bibentry}
+\usepackage[round]{natbib}  
+\usepackage{graphicx}
+\graphicspath{ {./figures/} } % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, 
+
+\newenvironment{myitemize}{%
+   \setlength{\topsep}{0pt}
+   \setlength{\partopsep}{0pt}
+   %\renewcommand*{\@listi}{\leftmargin\leftmargini %\parsep\z@ \topsep\z@ \itemsep\z@}
+   %\let\@listI\@listi
+   \itemize
+}{\enditemize}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+% The title
+\title[short title]{How Strong is Your Tinder Game?}
+\subtitle{Two-Sided Search in Swipe-Based Dating Platforms}
+
+\author[Patricio Hernandez Senosiain] {Patricio Hernandez Senosiain}
+\institute[UofW] 
+{
+    University of Warwick\\
+    EC331 Research in Applied Economics
+    \vskip 3pt
+}
+\date{\today}
+
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Overview}
+    \tableofcontents
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\section{Introduction}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Introduction – Context, Research Objectives, and Contributions}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{myitemize}
+\setlength\itemsep{1em}
+    \item Tinder: a two-sided decentralised matching platform with 70+ million users
+    \begin{itemize} 
+    \setlength\itemsep{0.5em} 
+        \item Agents are presented with suggestions to swipe left or right on; matches occur given a double coincidence of wants 
+    \end{itemize} 
+    \item Love is a tricky game; Tinder makes it trickier
+    \begin{itemize} 
+    \setlength\itemsep{0.5em} 
+        \item Stage interaction: simple static game of incomplete information
+        \item Dynamic interactions are harder due to platform features and repeated game complexities
+    \end{itemize}
+    
+     
+    \item \textbf{When should a user `swipe right'?}
+    \begin{itemize}
+    \setlength\itemsep{0.5em}
+        \item What arrangements emerge as equilibria?
+        \item How do exogenous factors affect the above?
+    \end{itemize}
+\end{myitemize}
+\end{column} 
+
+\begin{column}{0.5\textwidth}
+\begin{myitemize}
+\setlength\itemsep{1em}
+    \item Related Work
+    \begin{itemize}
+    \setlength\itemsep{0.5em}
+        \item Two-Sided Search: \cite{burdett1998two}, \cite{adachi2003search}, \cite{mekonnen2019random}
+        \item Mean Field Games: \cite{jovanovic1988anonymous}, \cite{iyer2014mean}
+        \item Modern Dating App Interactions: \cite{kanoria2021facilitating}, \cite{olmeda2021towards}, \cite{DBLP:journals/corr/TysonPHS16}
+    \end{itemize}
+    
+    \item Contributions
+    \begin{itemize}
+        \setlength\itemsep{0.5em}
+        \item One of the first \textit{strategic} models for swipe-based dating platforms. 
+        \item An addition to the emerging literature on mean-field game theory.
+        \item Case study for computational techniques applied to game theory. 
+    \end{itemize}
+\end{myitemize}
+\end{column}
+\end{columns}
+\end{frame} 
+%----------------------------------------------------------------------------------------
+\section{Theoretical Model}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Theoretical Model – Setup} 
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{myitemize}
+\setlength\itemsep{1em}
+    \item Time is discrete and indexed $t=0,1,2,...$ %and the market is formed by disjoint sets $\mathcal{M}$ and $\mathcal{W}$ of male and female agents.
+    \item Agents are periodically suggested partners from the opposite sex, with attractiveness $\theta_{t} \in \Theta := [0,1]$
+    \item Actions $a_t \in\mathcal{A} := \{0,1\}$ are chosen while facing a \textit{swiping budget} $b_t \in \mathcal{B}:=\{0,...,B\}$ that follows LOM: $b_{t+1}=b_t - a_t$
+    \item Matching payoff is $u(\theta_{t})$, where $u(\cdot)$ is strictly increasing, bounded, and satisfies $u(0)=0$.
+    \item We restrict attention to stationary Markov strategies: $\mu,\omega: \Theta \times \mathcal{B}\rightarrow \Delta \mathcal{A}$
+\end{myitemize}
+\end{column} 
+
+\begin{column}{0.5\textwidth}
+\begin{myitemize}
+\setlength\itemsep{1em}
+    \item Each period, $\lambda_m$ men and $\lambda_w$ women enter the platform.
+    \item Incoming agents' attractiveness is sampled i.i.d from distributions $F_m(\theta)$ and $F_w(\theta)$. 
+    \item Agents leave the platform:
+    \begin{itemize}
+        \item \textit{Endogenously}, when they exhaust their budgets
+        \item \textit{Exogenously}, at a death rate of $(1-\delta)$
+    \end{itemize}
+    \item Let $N^t_m, N^t_w$ denote the masses of men and women in the platform at period $t$.
+    \item Let $M^t(\theta,b), W^t(\theta,b)$ be the joint distributions over men and women at $t$.
+\end{myitemize}
+\end{column}
+\end{columns}
+\end{frame} 
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}{Theoretical Model – Characterising the Steady State}
+\begin{columns}
+\begin{column}{0.45\textwidth}
+\begin{myitemize}
+\setlength\itemsep{1em} 
+    \item The Tinder Market is defined by $\Psi^t=(N_m^t, N_w^t, M^t, W^t)$ 
+    \begin{itemize}
+        \item Note that this is endogenously dependent on $\mu,\omega$
+    \end{itemize}
+    \item We seek steady state such that $\Psi^t=\Psi^{t+1}=...=\Psi(\mu,\omega)$
+    \item Theorem 1 solves for this, and shows that $\theta$ and $b$ are independent.
+    \item Furthermore, it is shown that $M_\theta(\theta;\mu,\omega)= F_m(\theta)$.
+    
+\end{myitemize}
+\end{column}
+
+\begin{column}{0.55\textwidth}
+    \begin{theorem}[The Tinder Steady State]
+    \small
+    
+    Fix stationary Markov strategies $\mu,\omega$ and let:
+    
+    \begin{equation*}
+    \rho^m_b=\int_{\Theta}  \mu(\theta',b)\,dW_\theta(\theta';\mu,\omega),
+    \end{equation*} 
+    \begin{equation*} 
+    z^m_b = \prod^{B-b}_{i=1} \frac{\delta\rho^m_{B-i+1}}{\Big(1-\delta (1-\rho^m_{B-i}) \Big)},\quad z^m_B=\Big(1-\delta (1-\rho^m_B)\Big)
+    \end{equation*}  
+    \par\vspace{0.2cm}
+    Then there exists a unique market steady state (with an analogous case for women) characterised by: 
+    \par\vspace{0.2cm}
+    \begin{equation*} \begin{aligned}N_m(\mu,\omega)&=\lambda_m\left(\frac{z^m_B-\delta z^m_1\rho^m_1}{(1-\delta)z^m_B}\right), \\ M(\theta,b;\mu,\omega)&=F_m(\theta) \left(\frac{(1-\delta)}{z^m_B-\delta z^m_1\rho^m_1}\right)\sum^b_{i=1} z^m_i 
+    \end{aligned}
+    \end{equation*} 
+    \end{theorem} 
+\end{column}
+\end{columns}
+\end{frame} 
+%----------------------------------------------------------------------------------------
+\begin{frame}{Theoretical Model – The Love Search Problem}
+\begin{columns}
+\begin{column}{0.45\textwidth}
+\begin{myitemize}
+\setlength\itemsep{1em}
+    \item We consider a man's search problem in a given steady state $\Psi$ against a given $\omega$
+    \item With friction-less search, men get suggestions at a rate $\tau=\min\{\frac{N_w}{N_m} ,1\}$ 
+    \begin{itemize}
+    \setlength\itemsep{0.5em} 
+    \item Define $\alpha=\frac{\tau\delta}{1-\delta(1-\tau)}$ as the effective discounting rate
+    \end{itemize}
+    \item Agents maximise the sum of discounted expected \textit{ex-interim} payoffs $U_m(\theta, a_t)$ 
+    \begin{itemize}
+    \setlength\itemsep{0.5em} 
+    \item The optimal strategy $\widetilde\mu(\theta,b;\omega,\Psi)$ is a cutoff $\widetilde\mu_b$ at the point of indifference
+    \end{itemize}
+    
+    
+\end{myitemize}
+\end{column}
+\begin{column}{0.55\textwidth}
+\begin{equation*}
+\begin{aligned}V_m(\theta,b)= \max_{\{a_t\}^\infty_{t=0}} \;& \mathbb{E}_{\Psi}\left[\sum^\infty_{t=0} \alpha^{t} U_m(\theta_t,a_t)\;|\; \theta_0,b_0=\theta,b\right]\\ \textrm{s.t.}\; & \theta_t \sim F_w,\quad b_{t+1}  = b_t - a_t \\ &b_t\in \mathcal{B}, \quad a_t\in \mathcal{A} \end{aligned}
+\end{equation*}
+
+\begin{equation*}\begin{aligned} V_m(\theta,b) \;=\;\max\Big\{\,& U_m(\theta) +\alpha \,\mathbb{E}_{\Psi}\Big[V_m(\theta', b-1)\Big]\,,\\ & \alpha\,\mathbb{E}_\Psi\Big[ V_m(\theta', b)\Big]\,\Big\} \end{aligned} \end{equation*}  
+
+\end{column} 
+\end{columns}
+\par\vspace{0.3cm}
+\begin{equation}\begin{aligned} u(\widetilde \mu_b) \;=\; \alpha u(\widetilde \mu_b)F_w(\widetilde \mu_b)+\alpha u(\widetilde \mu_{b-1})\Big(1- F_w(\widetilde \mu_{b-1})\Big)+\int^{\widetilde \mu_{b-1}}_{\widetilde \mu_b} \alpha u(\theta')\,dF_w(\theta') \end{aligned}\end{equation}
+\begin{equation} u(\widetilde \mu_1)\;=\;\alpha  u(\widetilde\mu_1) F_w(\widetilde\mu_1) + \int^1_{\widetilde\mu_1} \alpha u(\theta')\,dF_w(\theta') \end{equation} 
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Theoretical Model – Stationary Markov Equilibrium}
+\begin{columns}
+\begin{column}{0.5\textwidth}  
+    \begin{definition}[Stationary Markov Equilibrium]
+    \par\vspace{0.4cm} 
+    A pair of strategies $\mu^*,\omega^*$ parametrised by cutoffs $\mu^*_b,\, \omega^*_b,\;\forall b \in \mathcal{B}$, and a steady-state market $\Psi^*$ is a Stationary Markov Equilibrium (SME) if:
+    \par\vspace{0.4cm} 
+    \begin{enumerate}
+        \item $\mu^*_b=\widetilde \mu(b;\Psi^*,\omega^*),\quad\forall b\in\mathcal{B}$
+        \item $\omega^*_b=\widetilde\omega(b;\Psi^* ,\mu^*),\quad\forall b\in\mathcal{B}$
+        \item $\Psi^*= \Psi(\mu^*,\omega^*)$
+    \par\vspace{0.4cm}     
+\end{enumerate}
+    \end{definition} 
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{myitemize}    
+\setlength\itemsep{1em} 
+    \item (1) and (2) imply that $\mu^*$ and $\omega^*$ are \textit{ex-ante} best-responses to each other given $\Psi^*$.
+    \item (3) implies that $\Psi^*$ is self-consistent: key property of oblivious/mean-field equilibria. 
+    \item We solve for this equilibrium computationally by formulating it as a system $\mathbf{E}(\mu,\omega)$ of non-linear equations.
+    \item This is then re-framed it as a least-squares optimisation problem that can be solved numerically.
+\end{myitemize}
+\end{column}
+\end{columns}
+\end{frame}
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+\section{Results}
+%------------------------------------------------
+\begin{frame}{Results – The Optimal Swiping Rule and Value Function} 
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Results – Comparative Statics on The Swiping Rule} 
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}{Results – Comparative Statics on The Market}  
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\section{Reflections and Further Research}
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+\begin{frame}{Reflections and Further Research}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{myitemize}
+\setlength\itemsep{1em}  
+    \item Cool stuff, but why does it matter?
+    \begin{itemize}
+    \setlength\itemsep{0.5em}
+        \item 6.6 million paid Tinder subscribers by the end of 2020.
+        \item Main subscription features: no swiping caps or location limits.
+        \item What is the value of subscriptions? Are people wasting their money?  
+    \end{itemize}
+    
+    \item Next Steps: Dynamics
+    \begin{itemize}
+    \setlength\itemsep{0.5em}
+        \item How can the s.s arise as a limiting state?
+        \item Best-Response Dynamics? Fictitious Play? 
+        \item Bayesian learning?
+    \end{itemize}
+\end{myitemize}
+\end{column} 
+
+\begin{column}{0.5\textwidth}
+\begin{myitemize}
+\setlength\itemsep{1em}
+    \item Next Steps: Noisy Search
+    \begin{itemize}
+    \setlength\itemsep{0.5em}
+        \item How does `profile noise' change the search problem for agents? 
+        \item Use of simulations for stability checks
+    \end{itemize}
+    
+    \item Next Steps: Platform Design
+    \begin{itemize}
+        \setlength\itemsep{0.5em}
+        \item How can Tinder set welfare-maximizing swiping caps?
+        \item Can directed search mechanisms lead to convergence onto stable matches?
+        \item Challenge: limited observability
+    \end{itemize}
+\end{myitemize}
+\end{column}
+\end{columns}   
+\end{frame}
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+\begin{frame}[allowframebreaks]{References}
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{frame}
+\end{document}
