@@ -69,7 +69,7 @@ Secondly, for both sides, the flow of agents into any particular budget level mu
 
 Finally, the entry flow of agents into the platform must equal the outflow from the top budget level, hence: 
 \begin{equation}\label{eq:ss3} 
-    \lambda_w \;=\; \underbrace{N_w(B_w) \Big( (1-\delta) \;+\; \tau_w \delta \int_{\Theta} \omega(\theta,B_w)\,dF_{m}(\theta) \Big)}_{\text{Outflow from $B_w$}}
+    \lambda_w \;=\; \underbrace{N_w(B_w) \Big( (1-\delta) \;+\; \delta \tau_w \int_{\Theta} \omega(\theta,B_w)\,dF_{m}(\theta) \Big)}_{\text{Outflow from $B_w$}}
 \end{equation} 
 
 Importantly, the above conditions take the strategy profile $(\mu,\omega)$ as exogenously fixed. Over the next section, these are endogenously derived by characterising the agents’ best-responses in an SDBP setting, which themselves depend on the market steady state $\Psi$.
@@ -106,7 +106,7 @@ Importantly, the first two constraints, along with the exogenous departure proce
 By standard dynamic programming arguments, this problem can be captured by two Bellman equations; one for when $j$ is paired and another for when she isn't: 
 \begin{align}
     \begin{split} 
-        V^{P}_w(\theta,b) &=\max \Big\{ \, \overline{\mu}\, u(\theta) \;+\; \delta \tau_w \,\mathbb{E}_\theta \Big[V^P_w(\theta', b-1)\Big] \;+\; \delta (1-\tau)V^{NP}_w(b-1) \, ,\\[6pt]
+        V^{P}_w(\theta,b) &=\max \Big\{ \, \overline{\mu}\, u(\theta) \;+\; \delta \tau_w \,\mathbb{E}_\theta \Big[V^P_w(\theta', b-1)\Big] \;+\; \delta (1-\tau_w)V^{NP}_w(b-1) \, ,\\[6pt]
         & \quad\quad\quad\quad\;\delta \tau_w \, \mathbb{E}_\theta\Big[ V^P_w(\theta', b) \Big] \;+\; \delta (1-\tau_w) V^{NP}_w(b) \, \Big\}
     \end{split}\\[10pt]
     \begin{split}
@@ -114,7 +114,7 @@ By standard dynamic programming arguments, this problem can be captured by two B
     \end{split} 
 \end{align} 
 
-With some straightforward algebra, the above two equations can be merged into the full Bellman equation below. Note that, by imposing the swiping budget constraint from the above MDP, it must be the case that $V_w(\theta, 0)=0$ for all $\theta \in \Theta$, since agents who expend their budget must leave the platform and can't accumulate any additional payoffs: 
+With some straightforward algebra, the above two equations can be merged into the full Bellman equation below. Note that the swiping budget constraint from the above MDP imposes the boundary condition $V_w(\theta, 0)=0$ for all $\theta \in \Theta$, since agents who expend their budget must leave the platform and can't accumulate any additional payoffs: 
 \begin{equation}\label{eq:full bellman}
     \begin{aligned} 
         V_w(\theta,b) \;=\;&\max\left\{\,\overline{\mu} \, u(\theta) +\alpha \,\mathbb{E}_\theta \Big[V_w(\theta', b-1)\Big]\,,\; \alpha\,\mathbb{E}_\theta \Big[ V_w(\theta', b)\Big]\,\right\}
@@ -123,7 +123,7 @@ With some straightforward algebra, the above two equations can be merged into th
 
 Here, $\alpha$ is the effective discount rate accounting for the exogenous possibilities of both departures and pairings, defined as:  
 \begin{equation*}
-\alpha:=\frac{\tau_w\delta}{1-\delta(1-\tau_w)}.
+\alpha:=\frac{\delta \tau_w}{1-\delta(1-\tau_w)}.
 \end{equation*}
 
 Upon inspection, it is clear that the value function is of a piecewise nature over $\Theta$. This is formally stated below (with the corresponding derivation included in \autoref{appx: b}): 
@@ -161,7 +161,7 @@ The set of reservation values for women, $\{\widetilde\omega_b\}_{b\in \mathcal{
     \end{aligned} 
 \end{equation}  
 \begin{equation}\label{eq:initial condition}
-    u(\widetilde\omega_1) \;=\; \alpha u(\widetilde\omega_1)F(\widetilde\omega_1) \;+\; \alpha \int^1_{\widetilde\omega_1}u(\theta')dF(\theta')
+    u(\widetilde\omega_1) \;=\; \alpha u(\widetilde\omega_1)F_m(\widetilde\omega_1) \;+\; \alpha \int^1_{\widetilde\omega_1}u(\theta')\,dF_m(\theta')
 \end{equation}
 \end{proposition}  
 
