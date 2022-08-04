@@ -1,0 +1,55 @@
+---
+title: "Why Do Men Keep Swiping Right?"
+subtitle: "Two-Sided Search in Swipe-Based Dating Platforms"
+author: "Patricio Hernandez Senosiain"
+format:
+  revealjs: 
+    slide-number: true 
+    incremental: true 
+    smaller: false
+    theme: default
+---
+
+## Overview
+
+1. Introduction
+2. Theoretical Model
+4. Results
+5. Simulations
+5. Conclusions
+
+## Introduction – Context {.smaller}
+
+- SBDP's: 
+    - Agents are presented with suggestions to swipe left or right on; matches occur given a double coincidence of wants
+
+- Love is a tricky game; SBDP's makes it trickier
+    - Stage interaction: simple static game of incomplete information
+    - Dynamic interactions are harder due to platform features and repeated game complexities
+
+- Multiple questions:
+    - When should a user ‘swipe right’ ?
+    - What arrangements can arise as equilibria?
+    - How do exogenous factors affect the above?
+
+
+## Introduction –  Related Work
+- Two-Sided Search: 
+    Burdett and Wright (1998), Adachi (2003), Mekonnen (2019)
+- Mean Field Games: 
+    Jovanovic and Rosenthal (1988), Iyer et al. (2014)
+- Modern Dating App Interactions: 
+    Kanoria and Saban (2021), Olmeda (2021), Tyson et al. (2016)
+
+## Theoretical Model – Setup {.smaller}
+::: columns
+::: {.column width="50%"}
+- Fix a continum of agents
+- Time is discrete and indexed $t = 0, 1, 2, ...$
+- Agents are periodically suggested partners from the opposite sex, with attractiveness $\theta_t \in \Theta := [0, 1]$
+:::
+
+::: {.column width="50%"}
+- 
+:::
+:::
