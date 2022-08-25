@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/github/license/patohdzs/project-tinder?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ### Abstract
-> In today's love market, swipe-based dating platforms (SBDPs) such as Tinder or Bumble have a well-established presence, but novel platform features can add significant complexities to the user's search problem in ways that have been largely under-studied in existing literature. This paper formulates a model of two-sided search within SBDPs, where agents with heterogeneous preferences seek multiple romantic partners whilst facing intertemporal action constraints. Using numerical methods, I approximate stationary equilibria and perform comparative statics on various exogenous parameters that help explain stylised empirical facts. Finally, agent-based simulations are used to asses the structure of stationary equilibria as well as its attainability under myopic best-response dynamics.  
+> In today's love market, swipe-based dating platforms (SBDPs) such as Tinder or Bumble have a well-established presence, but novel platform features can add significant complexities to the user's search problem in ways that have been largely under-studied in previous literature. This paper formulates a model of two-sided search within SBDPs, where agents with heterogeneous preferences seek multiple romantic partners whilst facing intertemporal action constraints. Using numerical methods, I approximate stationary equilibria and perform comparative statics on various exogenous parameters that help explain stylised empirical facts. Finally, agent-based simulations are used to asses the structure of stationary equilibria as well as its attainability under myopic best-response dynamics.  
   
 
 ### Download
