@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-0.9.577">
 
   <meta name="author" content="Patricio Hernandez Senosiain">
-  <title>Why Do Men Keep Swiping Right?</title>
+  <title>Why Do Men Keep Swiping Right?   Two-Sided Search in Swipe-Based Dating Platforms</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -319,64 +319,269 @@
     <div class="slides">
 
 <section id="title-slide" class="center">
-  <h1 class="title">Why Do Men Keep Swiping Right?</h1>
-  <p class="subtitle">Two-Sided Search in Swipe-Based Dating Platforms</p>
+  <h1 class="title">Why Do Men Keep Swiping Right? <br> Two-Sided Search in Swipe-Based Dating Platforms</h1>
   <p class="author">Patricio Hernandez Senosiain</p>
 </section>
 
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ol type="1">
-<li class="fragment">Introduction</li>
-<li class="fragment">Theoretical Model</li>
-<li class="fragment">Results</li>
-<li class="fragment">Simulations</li>
-<li class="fragment">Conclusions</li>
+<li>Introduction</li>
+<li>Related Work</li>
+<li>Theoretical Model</li>
+<li>Equilibrium</li>
+<li>Simulations</li>
+<li>Conclusion</li>
 </ol>
 </section>
-<section id="introduction-context" class="slide level2">
-<h2>Introduction – Context</h2>
-<ul>
-<li class="fragment">SBDP’s:
-<ul>
-<li class="fragment">Agents are presented with suggestions to swipe left or right on; matches occur given a double coincidence of wants</li>
-</ul></li>
-<li class="fragment">Love is a tricky game; SBDP’s makes it trickier
-<ul>
-<li class="fragment">Stage interaction: simple static game of incomplete information</li>
-<li class="fragment">Dynamic interactions are harder due to platform features and repeated game complexities</li>
-</ul></li>
-<li class="fragment">Multiple questions:
-<ul>
-<li class="fragment">When should a user ‘swipe right’ ?</li>
-<li class="fragment">What arrangements can arise as equilibria?</li>
-<li class="fragment">How do exogenous factors affect the above?</li>
-</ul></li>
-</ul>
-</section>
-<section id="introduction-related-work" class="slide level2">
-<h2>Introduction – Related Work</h2>
-<ul>
-<li class="fragment">Two-Sided Search: Burdett and Wright (1998), Adachi (2003), Mekonnen (2019)</li>
-<li class="fragment">Mean Field Games: Jovanovic and Rosenthal (1988), Iyer et al.&nbsp;(2014)</li>
-<li class="fragment">Modern Dating App Interactions: Kanoria and Saban (2021), Olmeda (2021), Tyson et al.&nbsp;(2016)</li>
-</ul>
-</section>
-<section id="theoretical-model-setup" class="slide level2 smaller">
-<h2>Theoretical Model – Setup</h2>
+<section id="introduction" class="slide level2 smaller">
+<h2>Introduction</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li class="fragment">Fix a continum of agents</li>
-<li class="fragment">Time is discrete and indexed <span class="math inline">\(t = 0, 1, 2, ...\)</span></li>
-<li class="fragment">Agents are periodically suggested partners from the opposite sex, with attractiveness <span class="math inline">\(\theta_t \in \Theta := [0, 1]\)</span></li>
+<li>SBDP’s and the modern dating market
+<ul>
+<li>Agents are presented with suggestions to swipe left or right on</li>
+<li>Matches occur given a double coincidence of wants</li>
+</ul></li>
+<li>Love is tricky; SBDP’s make it worse…
+<ul>
+<li>Dynamic interactions are harder due to repeated game complexities</li>
+<li>How do agents strategise their search? What outcomes emerge in equilibrium?<br>
+</li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
-<li class="fragment"></li>
+<li>The ‘Fast-Swiping Men’ puzzle
+<ul>
+<li>Men have higher swiping rates but face worse market outcomes… why?</li>
+<li>Lots of empirical evidence, but no theoretical analysis</li>
+</ul></li>
+<li>Related work:
+<ul>
+<li>Two-Sided Search: Burdett and Wright (1998), Adachi (2003), Mekonnen (2019)</li>
+<li>Mean Field Games: Jovanovic and Rosenthal (1988), Iyer et al.&nbsp;(2014)</li>
+<li>SBDPs: Kanoria and Saban (2021), Olmeda (2021), Tyson et al.&nbsp;(2016)</li>
+</ul></li>
 </ul>
 </div>
 </div>
+</section>
+<section id="the-stage-interaction" class="slide level2 smaller">
+<h2>The stage interaction</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Fix a continuum of heteronormative male and female agents.</li>
+<li>Time is discrete and indexed by <span class="math inline">\(t = 0, 1, 2, ...\)</span></li>
+<li>Suggested partners have attractiveness type <span class="math inline">\(\theta_t \in \Theta := [0, 1]\)</span>.</li>
+<li>Attractiveness is sampled i.i.d from absolutely continuous CDF’s, <span class="math inline">\(F_m, F_w\)</span>.</li>
+<li>Action space is <span class="math inline">\(\mathcal{A} = \{1, 0\}\)</span>, where <span class="math inline">\(a_t = 1\)</span> indicates a right-swipe.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Matching payoff is given by <span class="math inline">\(u(\theta_t)\)</span>, where <span class="math inline">\(u(\cdot)\)</span> is continuous, strictly increasing, and satisfies <span class="math inline">\(u(0) = 0\)</span>.</li>
+<li>Agents are constrained by a <em>swiping budget</em> which evolves according to <span class="math inline">\(b_{t+1}=b_t -a_t\)</span></li>
+<li>Focus (clarified later) is on pure symmetric stationary strategies, <span class="math inline">\(\mu: \Theta \times\mathcal{B}_m\rightarrow \mathcal{A}\)</span> for men and <span class="math inline">\(\omega:\Theta \times\mathcal{B}_w\rightarrow \mathcal{A}\)</span> for women.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="the-dating-market" class="slide level2 smaller">
+<h2>The dating market</h2>
+<ul>
+<li><p>Let <span class="math inline">\(N_{mt}(b), N_{wt}(b)\)</span> denote the masses of men and women at specific budget levels.</p></li>
+<li><p>Each period, masses <span class="math inline">\(\lambda_m, \lambda_w\)</span> of men and women arrive in the market.</p></li>
+<li><p>When the market is imbalanced, agents are presented suggested partners according to Bernoulli process with probabilities:</p></li>
+</ul>
+<p><span class="math display">\[\tau_{mt} := \min \left\{\frac{\sum_{b\in\mathcal{B}_w}N_{wt}(b)}{\sum_{b\in\mathcal{B}_m}N_{mt}(b)} , 1 \right\},\quad \tau_{wt}:= \left(\frac{\sum_{b\in\mathcal{B}_m}N_{mt}(b)}{\sum_{b\in\mathcal{B}_w}N_{wt}(b)} \right) \tau_{mt}\]</span></p>
+<ul>
+<li><p>Lifetime is geometrically distributed with probability of death <span class="math inline">\((1-\delta)\)</span>.</p></li>
+<li><p>Focus on behaviour in the stationary market <span class="math inline">\(\Psi=(N_m,N_w)\)</span>.</p></li>
+</ul>
+</section>
+<section id="market-stationarity-conditions" class="slide level2 smaller">
+<h2>Market stationarity conditions</h2>
+<ul>
+<li>Balanced entry/exit into the market:</li>
+</ul>
+<p><span class="math inline">\(\lambda_w\;=\; \underbrace{ (1-\delta)\sum_{b\in\mathcal{B}_w}N_{w}(b)}_{\text{Exogenous Outflow}} \;+\; \underbrace{N_w(1) \int_{\Theta} \tau_w \delta \, \omega(\theta,1)\,dF_{m}(\theta)}_{\text{Endogenous Outflow}}\)</span></p>
+<ul>
+<li>Balanced entry/exit between budget levels:</li>
+</ul>
+<p><span class="math inline">\(\underbrace{N_w(b+1) \int_{\Theta} \tau_w \delta \,\omega(\theta,b+1)\,dF_{m}(\theta)}_{\text{Inflow into $b$}} \;=\; \underbrace{N_w(b) \Big( (1-\delta) \;+\; \int_{\Theta} \tau_w \delta \, \omega(\theta,b)\,dF_{m}(\theta)\Big)}_{\text{Outflow from $b$}}\)</span></p>
+<ul>
+<li>Balanced entry/exit at the top budget level:</li>
+</ul>
+<p><span class="math inline">\(\lambda_w \;=\; \underbrace{N_w(B_w) \Big( (1-\delta) \;+\; \int_{\Theta} \tau_w \delta \, \omega(\theta,B_w)\,dF_{m}(\theta) \Big)}_{\text{Outflow from $B_w$}}\)</span></p>
+</section>
+<section id="mean-field-effects" class="slide level2 smaller">
+<h2>Mean-field effects</h2>
+<ul>
+<li><p>Consider the search problem of a woman searching in steady-state market <span class="math inline">\(\Psi\)</span>.</p></li>
+<li><p>Towards a mean field assumption:</p>
+<ul>
+<li>Agents maximize <em>expected</em> utility, conditional on beliefs for all unknowns.</li>
+<li>Beliefs over market histories are both infeasible and computationally intractable.</li>
+</ul></li>
+<li><p>Assume steady-state market and consider only the <em>average</em> interaction, then the ex-interim expected payoff is: <span class="math inline">\(U(\theta,a) = \overline\mu a u(\theta)\)</span></p></li>
+<li><p>Multi-agent dynamic game collapses onto two Markov Decision Problems:</p></li>
+</ul>
+<p><span class="math display">\[
+    \begin{aligned}
+        V_w(\theta,b)=\max_{\{a_k\}^\infty_{k=0}} \quad &amp; \mathbb{E}_{\theta}\left[\sum^\infty_{k=0} \delta^{k} U(\theta_k, a_k) \;|\; \theta_0=\theta, b_0=b\right]\\
+        \textrm{s.t.} \quad &amp; b_{k+1} = b_k - a_k \\
+        &amp; b_k\in \mathcal{B}_w \cup \{0\},\\
+        &amp; a_k\in \mathcal{A}  
+    \end{aligned}
+\]</span></p>
+</section>
+<section id="the-search-problem" class="slide level2 smaller">
+<h2>The search problem</h2>
+<ul>
+<li>Let <span class="math inline">\(\alpha := \frac{\delta \tau_w}{1-\delta(1-\tau_w)}\)</span> be the <em>effective discount rate</em>, accounting for both the pairings and departures processes (agents must discount for both of these possibilities).</li>
+<li>The agent’s search problem is then summarized by the Bellman Equation:</li>
+</ul>
+<p><span class="math display">\[V_w(\theta,b) \;=\;\max\left \{\,\overline{\mu}  u(\theta) +\alpha \,\mathbb{E}_\theta \Big[V_w(\theta', b-1)\Big]\,,\; \alpha\,\mathbb{E}_\theta \Big[ V_w(\theta', b)\Big]\,\right\}\]</span></p>
+<ul>
+<li><strong>Theorem:</strong> Fix some <span class="math inline">\(b\in\mathcal{B}_w\)</span>. Then there exists some unique reservation value <span class="math inline">\(\widetilde{\omega}_b\in \Theta\)</span> such that <span class="math inline">\(V_w(\theta,b)\)</span> admits the following piecewise form over <span class="math inline">\(\Theta\)</span>:<br>
+<span class="math display">\[ \begin{split}
+      V_w(\theta,b)=\begin{cases}
+          \overline\mu u(\theta) +\alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b-1)\Big],&amp; \theta \geq \widetilde \omega_b \\[8pt]
+          \alpha \,\mathbb{E}_{\theta}\Big[V_w(\theta', b)\Big],&amp; \theta\leq\widetilde \omega_b
+      \end{cases}\\[8pt]  
+  \end{split} \]</span></li>
+</ul>
+</section>
+<section id="towards-an-optimal-policy" class="slide level2 smaller">
+<h2>Towards an optimal policy</h2>
+<ul>
+<li><p><strong>Corollary:</strong> The threshold policy, <span class="math inline">\(\widetilde\omega\)</span>, parametrised by <span class="math inline">\(\{\widetilde\omega\}_{b\in \mathcal{B}_w}\)</span>, attains <span class="math inline">\(V_w(\theta,b)\)</span>: <span class="math display">\[
+      \begin{split}
+          \widetilde\omega(\theta,b)&amp;=\begin{cases}
+              \text{Swipe Right},\quad \theta\geq \widetilde{\omega}_b \\
+              \text{Swipe Left}, \quad\theta&lt; \widetilde\omega _b  
+          \end{cases}   
+      \end{split} \]</span></p></li>
+<li><p><strong>Theorem:</strong> The set of reservation values for women, <span class="math inline">\(\{\widetilde\omega_b\}_{b\in \mathcal{B}_w}\)</span>, uniquely satisfies the recurrence relation and initial condition below, over the budget set <span class="math inline">\(\mathcal{B}_w\)</span>:</p>
+<p><span class="math display">\[u(\widetilde \omega_b) \;=\; \alpha u(\widetilde \omega_b) F_m(\widetilde \omega_b) \;+\; \alpha u(\widetilde \omega_{b-1}) \Big[1- F_m(\widetilde \omega_{b-1})\Big] \;+\; \int^{\widetilde \omega_{b-1}}_{\widetilde \omega_b} \alpha u(\theta')\,dF_m(\theta')\]</span></p>
+<p><span class="math display">\[u(\widetilde\omega_1) \;=\; \alpha u(\widetilde\omega_1)F_m(\widetilde\omega_1) \;+\; \int^1_{\widetilde\omega_1}\alpha u(\theta')\,dF_m(\theta')\]</span></p></li>
+<li><p>Using this theorem, we can compute the optimal strategy</p>
+<ul>
+<li>Computationally efficient compared to traditional approaches (eg. value iteration), which scale quadratically with state space.</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-optimal-policy" class="slide level2">
+<h2>The optimal policy</h2>
+
+<img data-src="./figures/swiping-rule.png" class="r-stretch quarto-figure-center"></section>
+<section id="what-happens-when-people-become-more-patient" class="slide level2">
+<h2>What happens when people become more patient?</h2>
+
+<img data-src="./figures/discount-cs.png" class="r-stretch quarto-figure-center"></section>
+<section id="what-happens-when-people-become-more-desperate" class="slide level2">
+<h2>What happens when people become more desperate?</h2>
+
+<img data-src="./figures/risk-cs.png" class="r-stretch quarto-figure-center"></section>
+<section id="towards-equilibrium" class="slide level2 smaller">
+<h2>Towards equilibrium</h2>
+<ul>
+<li><strong>Definition:</strong> A Stationary Equilibrium (SE) is a triplet <span class="math inline">\((\mu^*, \omega^*, \Psi^*)\)</span> such that:
+<ol type="1">
+<li><p><span class="math inline">\(\mu^*(\theta,b)\)</span> attains <span class="math inline">\(V_m(\theta,b),\)</span> for all pairs <span class="math inline">\(\theta, b \in \Theta \times \mathcal{B}_m\)</span>, given <span class="math inline">\(\omega^*,\Psi^*\)</span>.</p></li>
+<li><p><span class="math inline">\(\omega^*(\theta,b)\)</span> attains <span class="math inline">\(V_w(\theta,b),\)</span> for all pairs <span class="math inline">\(\theta, b \in \Theta \times \mathcal{B}_w\)</span>, given <span class="math inline">\(\mu^*,\Psi^*\)</span>.</p></li>
+<li><p><span class="math inline">\(\Psi^*\)</span> satisfies the market stationarity conditions given the strategy profile <span class="math inline">\((\mu^*, \omega^*)\)</span>.</p></li>
+</ol></li>
+<li>What does this mean?
+<ul>
+<li>First two points require best-responses, conditional on market state.</li>
+<li>Third point serves as a <em>consistency check</em>, requiring market stationarity for MF assumption to be valid.</li>
+</ul></li>
+<li>We can compute equilibria by solving a system of <span class="math inline">\(2(|\mathcal{B}_m + \mathcal{B}_w +1|)\)</span> equations:
+<ul>
+<li>Optimal policy recurrence relations for each sex.</li>
+<li>Market stationarity conditions.</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-fast-swiping-men-problem" class="slide level2">
+<h2>The ‘Fast-Swiping Men’ problem…</h2>
+<ul>
+<li>Why is it that men swipe more and match less?</li>
+<li>Our model allows for the influence of behavioural factors:
+<ul>
+<li>Men could be less patient or more desperate (?)</li>
+</ul></li>
+<li>The case of gender imbalances
+<ul>
+<li>Currently, there’s a 6:1 male-to-female ratio on Tinder…</li>
+<li>What effects can market tightness have on agents’ swiping behaviour?<br>
+</li>
+<li>We calibrate our model to find out…</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-case-of-gender-imbalances" class="title-slide slide level1 center">
+<h1>The case of gender imbalances…</h1>
+
+<img data-src="./figures/mkt-cs.png" class="r-stretch quarto-figure-center"></section>
+
+<section id="and-a-potential-market-correction" class="title-slide slide level1 center">
+<h1>… and a potential market correction</h1>
+
+<img data-src="./figures/mkt-cs-bdiff.png" class="r-stretch quarto-figure-center"></section>
+
+<section id="agent-based-simulations" class="title-slide slide level1 center">
+<h1>Agent-based simulations</h1>
+<ul>
+<li><p>Tool to study how <em>“…the macro arises from the micro”</em>.</p></li>
+<li><p>Useful in cases where our model is analytically complex.</p></li>
+<li><p>We find two main applications:</p>
+<ol type="1">
+<li>Analysing <em>convergence</em> onto equilibria</li>
+<li>Checking the robustness of this convergence under myopic best-response gameplay</li>
+</ol></li>
+</ul>
+</section>
+
+<section id="steady-state-convergence" class="title-slide slide level1 center">
+<h1>Steady-state convergence…</h1>
+
+<img data-src="./figures/abm-conv-imbalanced.png" class="r-stretch quarto-figure-center"></section>
+
+<section id="at-the-limiting-case" class="title-slide slide level1 center">
+<h1>… at the limiting case …</h1>
+
+<img data-src="./figures/abm-conv-ssize.png" class="r-stretch quarto-figure-center"></section>
+
+<section id="and-under-myopic-best-responses" class="title-slide slide level1 center">
+<h1>… and under myopic best-responses</h1>
+
+<img data-src="./figures/abm-br.png" class="r-stretch quarto-figure-center"></section>
+
+<section id="conclusions-and-future-work" class="title-slide slide level1 smaller center">
+<h1>Conclusions and future work</h1>
+<ul>
+<li>What I did:
+<ul>
+<li>Modelled strategic behaviour within SBDP markets.</li>
+<li>Utilized the notion of stationary equilibria to explain empirical observations.</li>
+<li>Analysed equilibrium convergence and robustness using ABM.</li>
+</ul></li>
+<li>Why it matters:
+<ul>
+<li>Subscription pricing!</li>
+<li>Utility gained from subscribing stems from reducing search frictions.</li>
+<li>Opportunities for price discrimination</li>
+</ul></li>
+<li>What next?
+<ul>
+<li>Search frictions due to type mismatch (casual dating vs.&nbsp;hookups).</li>
+<li>Endogenising gender imbalance, perhaps by adding competing platform.</li>
+</ul></li>
+</ul>
 <div class="footer footer-default">
 
 </div>
