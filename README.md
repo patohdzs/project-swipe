@@ -10,7 +10,7 @@
 
 [Dissertation](https://github.com/patohdzs/project-swipe/raw/main/dissertation/main.pdf) 
 
-[Slides](https://github.com/patohdzs/project-swipe/raw/main/slides/slides.html) 
+[Slides](https://htmlpreview.github.io/?https://github.com/patohdzs/project-swipe/blob/main/slides/slides.html) 
 
 
 ### Conda Setup
