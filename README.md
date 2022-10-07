@@ -12,7 +12,7 @@
 
 [W-MESP Publication](https://warwick.ac.uk/fac/soc/economics/research/wmesp/manage/37_-_patricio_hernandez_senosian.pdf)
 
-[Slides](https://htmlpreview.github.io/?https://github.com/patohdzs/project-swipe/blob/main/slides/slides.html) 
+[Slides]() 
 
 
 ### Conda Setup

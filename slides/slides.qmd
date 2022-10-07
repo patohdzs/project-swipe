@@ -2,8 +2,7 @@
 title: "Why Do Men Keep Swiping Right? <br/> Two-Sided Search in Swipe-Based Dating Platforms"
 author: "Patricio Hernandez Senosiain"
 format:
-  revealjs: 
-    self-contained: true
+  revealjs:  
     slide-number: true 
     incremental: false 
     smaller: false
@@ -12,12 +11,11 @@ format:
 
 ## Overview
 
-1. Introduction
-2. Related Work
-3. Theoretical Model
-4. Equilibrium
-5. Simulations
-6. Conclusion
+1. Introduction 
+2. Theoretical Model
+3. Equilibrium
+4. Simulations
+5. Conclusion
 
 ## Introduction{.smaller}
 ::: columns
@@ -33,11 +31,11 @@ format:
 
 ::: {.column width="50%"}
 - The 'Fast-Swiping Men' puzzle
-    - Men have higher swiping rates but face worse market outcomes... why?
+    - Men have higher swiping rates but face worse matching outcomes... why?
     - Lots of empirical evidence, but no theoretical analysis.
-- Related work:
+- Related work
     - Two-Sided Search: 
-        Burdett and Wright (1998), Adachi (2003), Mekonnen (2019).
+        Burdett & Wright (1998), Mekonnen (2019).
     - Mean Field Games: 
         Jovanovic and Rosenthal (1988), Iyer et al. (2014).
     - SBDPs: 
@@ -220,3 +218,7 @@ $$V_w(\theta,b) \;=\;\max\left \{\,\overline{\mu}  u(\theta) +\alpha \,\mathbb{E
     - Search frictions due to type mismatch (casual dating vs. hookups).
     - Endogenising gender imbalance, perhaps by adding competing platform.
  
+## Contact & Outreach
+- Email: `hdzsen.patricio@gmail.com`
+- Project repo: `patohdzs/project-swipe`
+- Paper to be published in W-MESP Series 
